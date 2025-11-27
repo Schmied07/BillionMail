@@ -8,6 +8,7 @@ const routesReflectList = [
 	'template',
 	'Send API',
 	'Contacts',
+	'Prospects',
 	'MailDomain',
 	'MailBoxes',
 	'SMTP',
