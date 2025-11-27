@@ -83,6 +83,7 @@
 			"template": "Template",
 			"sendApi": "Send API",
 			"contacts": "Contacts",
+			"prospects": "Prospects",
 			"subscribers": "Subscribers",
 			"group": "Group",
 			"domain": "Domain",
@@ -98,8 +99,16 @@
 			"error_logs": "Error Logs"
 		}
 	},
+	"prospects": {
+		"menu": {
+			"pipeline": "Pipeline",
+			"list": "List",
+			"reminders": "Reminders",
+			"analytics": "Analytics"
+		}
+	},
 	"login": {
-		"title": "BillionMail",
+		"title": "Tetrisnews Emailing",
 		"form": {
 			"usernamePlaceholder": "Username",
 			"passwordPlaceholder": "Password",
