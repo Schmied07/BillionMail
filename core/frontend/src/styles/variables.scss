@@ -44,31 +44,46 @@
 }
 
 :root[theme-mode='dark'] {
-	--color-primary-1: #4caf50;
-	--color-primary-2: #1d3b23;
-	--color-primary-3: #90dda2;
-	--color-primary-hover-1: #20a53a;
-	--color-warning-1: #cd8717;
-	--color-error-1: #b23030;
-	--color-bg-1: #242424;
-	--color-bg-2: #181818;
-	--color-bg-3: #181818;
-	--color-bg-4: #2d2f33;
-	--color-text-1: #fff;
-	--color-text-2: rgba(255, 255, 255, 0.55);
-	--color-text-3: rgba(255, 255, 255, 0.35);
-	--color-text-4: #6f747f;
-	--color-text-5: #ffffff;
-	--color-border-1: #393939;
-	--color-border-2: #393939;
-	--color-menu-1: #d1d5db;
-	--color-menu-active-1: var(--color-primary-1);
-	--color-menu-active-2: var(--color-text-1);
-	--color-card-text-1: #fff;
-	--color-radio-1: #303030;
-	--color-radio-2: #5e5e5e;
+	/* Tetrisnews Emailing - Dark Blue Theme */
+	--color-primary-1: #3b82f6;
+	--color-primary-2: #1e3a5f;
+	--color-primary-3: #60a5fa;
+	--color-primary-hover-1: #2563eb;
+	--color-secondary-1: #8b5cf6;
+	--color-secondary-2: #2e1f5e;
+	--color-warning-1: #d97706;
+	--color-error-1: #dc2626;
+	--color-success-1: #059669;
+	--color-bg-1: #0f172a;
+	--color-bg-2: #1e293b;
+	--color-bg-3: #1e293b;
+	--color-bg-4: #334155;
+	--color-bg-sidebar: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+	--color-text-1: #f8fafc;
+	--color-text-2: rgba(248, 250, 252, 0.7);
+	--color-text-3: rgba(248, 250, 252, 0.4);
+	--color-text-4: #94a3b8;
+	--color-text-5: #60a5fa;
+	--color-border-1: #334155;
+	--color-border-2: #475569;
+	--color-menu-1: #e2e8f0;
+	--color-menu-active-1: rgba(59, 130, 246, 0.2);
+	--color-menu-active-2: #60a5fa;
+	--color-card-text-1: #f8fafc;
+	--color-radio-1: #334155;
+	--color-radio-2: #475569;
 	--color-button-text-1: #ffffff;
-	--color-table-th-1: #2c2c2c;
-	--color-table-td-1: #242424;
-	--color-command: #101010;
+	--color-table-th-1: #1e293b;
+	--color-table-td-1: #0f172a;
+	--color-command: #0f172a;
+	/* Prospection Status Colors - Dark */
+	--color-prospect-new: #60a5fa;
+	--color-prospect-contacted: #a78bfa;
+	--color-prospect-qualified: #fbbf24;
+	--color-prospect-converted: #34d399;
+	--color-prospect-lost: #f87171;
+	/* Card Shadows - Dark */
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.2);
 }
