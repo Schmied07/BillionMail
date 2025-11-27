@@ -25,7 +25,7 @@
 			</n-dropdown>
 			<n-dropdown size="large" :options="userOptions" @select="handleUserAction">
 				<n-button class="icon-btn" :bordered="false">
-					<i class="icon i-mdi-user-outline"></i>
+					<i class="icon i-mdi-account-circle-outline"></i>
 				</n-button>
 			</n-dropdown>
 			<n-button type="primary" text class="text-14px" @click="handleGoVersion">
