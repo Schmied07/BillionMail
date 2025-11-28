@@ -66,7 +66,7 @@ const handleCollapse = () => {
 }
 
 const handleGoIssues = () => {
-	window.open('https://github.com/aaPanel/BillionMail/issues')
+	window.open('https://tetrisnews.com/support')
 }
 
 const langOptions = ref<DropdownOption[]>([])
