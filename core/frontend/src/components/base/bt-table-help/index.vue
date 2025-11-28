@@ -25,11 +25,11 @@
 
 <script lang="ts" setup>
 const handleGoIssues = () => {
-	window.open('https://github.com/aaPanel/BillionMail/issues')
+	window.open('https://tetrisnews.com/support')
 }
 
 const handleGoStar = () => {
-	window.open('https://github.com/aaPanel/BillionMail')
+	window.open('https://tetrisnews.com')
 }
 </script>
 
