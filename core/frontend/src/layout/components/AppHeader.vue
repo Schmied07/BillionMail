@@ -96,7 +96,7 @@ const handleUserAction = (key: string) => {
 }
 
 const handleGoVersion = () => {
-	window.open('https://github.com/aaPanel/BillionMail/releases')
+	window.open('https://tetrisnews.com/releases')
 }
 
 const getLangOptions = async () => {
