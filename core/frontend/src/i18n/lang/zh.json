@@ -427,7 +427,7 @@
 			"useAiTools": "使用人工智能工具帮您自动生成邮件内容，提升工作您的效率",
 			"create": "创建",
 			"notices": {
-				"domainListEmpty": "请先为BillionMail创建第一个用于发件的域名",
+				"domainListEmpty": "请先为TETRISNEWS EMAILING创建第一个用于发件的域名",
 				"aiConfigurationInvalid": "当前并未配置AI大模型，您无法使用AI模型创建邮件模板",
 				"invalidBrandDomain": "请先为域名创建品牌信息"
 			},
