@@ -48,7 +48,7 @@
 					{{ $t('api.createNew') }}
 				</n-button>
 				<bt-help
-					href="https://www.billionmail.com/start/api_mail_guide.html"
+					href="https://tetrisnews.com/support"
 					:text="$t('common.actions.help')">
 				</bt-help>
 			</template>
