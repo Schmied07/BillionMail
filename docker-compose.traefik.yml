@@ -194,14 +194,14 @@ services:
         
         # HTTP Router - Redirection vers HTTPS
         - "traefik.http.routers.tetrisnews-http.rule=Host(`${DOMAIN}`)"
-        - "traefik.http.routers.tetrisnews-http.entrypoints=http"
+        - "traefik.http.routers.tetrisnews-http.entrypoints=web"
         - "traefik.http.routers.tetrisnews-http.middlewares=redirect-to-https"
         
         # HTTPS Router
         - "traefik.http.routers.tetrisnews.rule=Host(`${DOMAIN}`)"
-        - "traefik.http.routers.tetrisnews.entrypoints=https"
+        - "traefik.http.routers.tetrisnews.entrypoints=websecure"
         - "traefik.http.routers.tetrisnews.tls=true"
-        - "traefik.http.routers.tetrisnews.tls.certresolver=letsencrypt"
+        - "traefik.http.routers.tetrisnews.tls.certresolver=myresolver"
         
         # Service
         - "traefik.http.services.tetrisnews.loadbalancer.server.port=80"
