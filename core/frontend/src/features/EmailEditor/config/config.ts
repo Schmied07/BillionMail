@@ -420,14 +420,14 @@ export const copyrightVNode = h(
 		h(
 			'a',
 			{
-				href: 'https://www.billionmail.com',
+				href: 'https://tetrisnews.com',
 				target: '_blank',
 				style: {
 					color: '#999',
 					textDecoration: 'underline',
 				},
 			},
-			'BillionMail'
+			'TETRISNEWS EMAILING'
 		),
 	]
 )
