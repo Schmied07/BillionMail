@@ -1,4 +1,4 @@
-name: billionmail
+name: tetrisnews-emailing
 
 services:
     pgsql-billionmail:
