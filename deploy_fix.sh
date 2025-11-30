@@ -52,6 +52,9 @@ echo "========================================"
 echo "4. Nettoyage des anciennes versions..."
 echo "========================================"
 
+# Supprime explicitement l'image originale si elle existe encore
+docker rmi billionmail/core:4.8.3 2>/dev/null || true
+
 # Supprime les images "dangling" (l'ancienne version qui a été remplacée)
 docker image prune -f
 
