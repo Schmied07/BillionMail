@@ -12,7 +12,7 @@
 		}">
 		<!-- 应用标志和名称 -->
 		<div class="app-logo" :class="{ collapse: isCollapse }">
-			<a href="/">
+			<router-link to="/">
 				<img class="icon" src="@/assets/images/logo.png"></img>
 				<span v-show="!isCollapse" class="app-name">TETRISNEWS EMAILING</span>
 			</a>
