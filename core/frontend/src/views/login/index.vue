@@ -4,18 +4,15 @@
                         <div class="shape shape-1"></div>
                         <div class="shape shape-2"></div>
                         <div class="shape shape-3"></div>
+                        <div class="shape shape-4"></div>
                 </div>
                 <div class="login-card">
                         <div class="logo-container">
-                                <div class="logo">
-                                        <div class="logo-icon">
-                                                <i class="i-mdi-email-fast text-28px text-white"></i>
-                                        </div>
-                                </div>
+                                <TetrisLogo :size="56" />
                         </div>
 
-                        <h2 class="login-title">Tetrisnews Emailing</h2>
-                        <p class="login-subtitle">Gérez vos prospections efficacement</p>
+                        <h2 class="login-title">TETRISNEWS</h2>
+                        <p class="login-subtitle">Plateforme d'emailing professionnelle</p>
 
                         <n-form ref="formRef" size="large" :model="form" :rules="rules">
                                 <n-form-item :show-label="false" path="username">
