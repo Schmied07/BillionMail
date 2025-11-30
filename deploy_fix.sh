@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# Détection de la commande Docker Compose
+if command -v docker-compose &> /dev/null; then
+    DOCKER_COMPOSE="docker-compose"
+else
+    DOCKER_COMPOSE="docker compose"
+fi
+
 echo "========================================"
 echo "1. Compilation du binaire Go (Backend)..."
 echo "========================================"
@@ -34,8 +41,8 @@ echo "========================================"
 echo "3. Redémarrage du service core-billionmail..."
 echo "========================================"
 
-# Redémarrage du conteneur spécifique
-docker compose -f docker-compose.traefik-fixed.yml up -d core-billionmail
+# Redémarrage du conteneur spécifique avec la nouvelle image
+$DOCKER_COMPOSE -f docker-compose.traefik-fixed.yml up -d core-billionmail
 
 echo ""
 echo "✅ Déploiement terminé avec succès !"
