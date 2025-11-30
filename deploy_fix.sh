@@ -36,8 +36,8 @@ echo "========================================"
 echo "2. Construction de l'image Docker locale..."
 echo "========================================"
 
-# Reconstruction de l'image avec le nouveau binaire
-docker build -f Dockerfiles/core/Dockerfile -t billionmail/core:4.8.3 .
+# Reconstruction de l'image avec un tag personnalisé pour éviter les conflits
+docker build -f Dockerfiles/core/Dockerfile -t billionmail/core:custom .
 
 echo ""
 echo "========================================"
@@ -48,4 +48,12 @@ echo "========================================"
 $DOCKER_COMPOSE -f docker-compose.traefik-fixed.yml up -d core-billionmail
 
 echo ""
-echo "✅ Déploiement terminé avec succès !"
+echo "========================================"
+echo "4. Nettoyage des anciennes versions..."
+echo "========================================"
+
+# Supprime les images "dangling" (l'ancienne version qui a été remplacée)
+docker image prune -f
+
+echo ""
+echo "✅ Déploiement terminé ! Vous utilisez maintenant la version 'custom' unique."
