@@ -97,6 +97,7 @@ declare module 'vue' {
     NUploadDragger: typeof import('naive-ui')['NUploadDragger']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TetrisLogo: typeof import('./../src/components/common/TetrisLogo.vue')['default']
     UploadError: typeof import('./../src/components/base/bt-file-upload/UploadError.vue')['default']
     UploadProgress: typeof import('./../src/components/base/bt-file-upload/UploadProgress.vue')['default']
     UploadPrompt: typeof import('./../src/components/base/bt-file-upload/UploadPrompt.vue')['default']
