@@ -74,7 +74,7 @@
                         </n-form>
                         
                         <div class="login-footer">
-                                <span>Tetrisnews Emailing © 2025</span>
+                                <span>TETRISNEWS Emailing © 2025</span>
                         </div>
                 </div>
         </div>
