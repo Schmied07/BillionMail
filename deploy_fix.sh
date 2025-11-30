@@ -12,14 +12,17 @@ echo "========================================"
 echo "1. Compilation du binaire Go (Backend)..."
 echo "========================================"
 
+# S'assurer que le script de build est exécutable
+if [ -f "core/go-build.sh" ]; then
+    chmod +x core/go-build.sh
+fi
+
 # On détecte si on est sur le système hôte sans 'apk' (Debian/Ubuntu)
-# Si c'est le cas, on lance la compilation dans un conteneur Docker Alpine pour garantir la compatibilité
 if ! command -v apk &> /dev/null; then
     echo "⚠️ Environnement non-Alpine détecté. Lancement du build via Docker (Alpine)..."
     
-    # On utilise une image alpine pour compiler, en montant le dossier core
-    # On installe go, file et bash (requis par go-build.sh)
-    docker run --rm -v "$(pwd)/core:/opt/core" -w /opt/core alpine:3.20 sh -c "apk update && apk add --no-cache go file bash && ./go-build.sh all"
+    # Utilisation de bash pour exécuter le script pour éviter les erreurs de permission "./"
+    docker run --rm -v "$(pwd)/core:/opt/core" -w /opt/core alpine:3.20 sh -c "apk update && apk add --no-cache go file bash && bash go-build.sh all"
     
 else
     # Si on est déjà sur Alpine ou si on veut forcer le local
