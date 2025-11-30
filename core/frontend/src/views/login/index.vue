@@ -84,6 +84,7 @@
 import { useUserStore } from '@/store'
 import { isObject } from '@/utils'
 import { getValidateCode, login } from '@/api/modules/user'
+import TetrisLogo from '@/components/common/TetrisLogo.vue'
 
 const { t } = useI18n()
 
