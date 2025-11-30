@@ -15,7 +15,7 @@
 			<router-link to="/">
 				<img class="icon" src="@/assets/images/logo.png"></img>
 				<span v-show="!isCollapse" class="app-name">TETRISNEWS EMAILING</span>
-			</a>
+			</router-link>
 		</div>
 
 		<!-- 导航菜单 -->
