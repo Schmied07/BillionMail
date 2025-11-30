@@ -2,41 +2,43 @@
 	<n-layout-sider
 		collapse-mode="width"
 		:collapsed="isCollapse"
-		:width="200"
-		:collapsed-width="64"
+		:width="220"
+		:collapsed-width="68"
 		:content-style="{
 			display: 'flex',
 			flexDirection: 'column',
 			height: '100%',
 			overflow: 'hidden',
 		}">
-		<!-- 应用标志和名称 -->
+		<!-- Logo et nom de l'application -->
 		<div class="app-logo" :class="{ collapse: isCollapse }">
-			<router-link to="/">
-				<img class="icon" src="@/assets/images/logo.png"></img>
-				<span v-show="!isCollapse" class="app-name">TETRISNEWS EMAILING</span>
+			<router-link to="/overview" class="logo-link">
+				<TetrisLogo :size="isCollapse ? 32 : 38" />
+				<transition name="fade">
+					<span v-show="!isCollapse" class="app-name">TETRISNEWS</span>
+				</transition>
 			</router-link>
 		</div>
 
-		<!-- 导航菜单 -->
+		<!-- Menu de navigation -->
 		<div class="nav-section">
 			<n-menu
 				:value="activeMenuKey"
 				:collapsed="isCollapse"
-				:collapsed-width="64"
+				:collapsed-width="68"
 				:options="menuOptions"
-				:root-indent="24"
+				:root-indent="20"
 				@update:value="handleUpdateMenu">
 			</n-menu>
 		</div>
-		<!-- 退出登录 -->
+		<!-- Bouton de déconnexion -->
 		<div class="footer-section">
 			<n-menu
 				value=""
 				:collapsed="isCollapse"
-				:collapsed-width="64"
+				:collapsed-width="68"
 				:options="logoutOptions"
-				:root-indent="24"
+				:root-indent="20"
 				@update:value="handleUpdateMenu">
 			</n-menu>
 		</div>
@@ -50,6 +52,7 @@ import { storeToRefs } from 'pinia'
 import { RouterLink } from 'vue-router'
 import { useMenuStore, useGlobalStore, useUserStore } from '@/store'
 import { menuList } from '@/router/router'
+import TetrisLogo from '@/components/common/TetrisLogo.vue'
 
 const { t } = useI18n()
 
@@ -61,17 +64,17 @@ const globalStore = useGlobalStore()
 
 const { isCollapse } = storeToRefs(globalStore)
 
-// 当前菜单名称
+// Clé du menu actif
 const activeMenuKey = computed(() => {
 	return String(route.meta?.key || '')
 })
 
-// 路由菜单
+// Menus du routeur
 const routerMenus = computed(() => {
 	return menuStore.menuList.filter(route => route.meta && !route.meta.hidden)
 })
 
-// 导航菜单选项
+// Options du menu de navigation
 const menuOptions = computed(() => {
 	return routerMenus.value.map(route => {
 		const name = String(route.children?.[0]?.name || '')
@@ -103,15 +106,15 @@ const renderLabel = (name: string, title: string) => {
 }
 
 const iconMap: Record<string, VNodeChild> = {
-	overview: <i class="i-mdi-web"></i>,
+	overview: <i class="i-mdi-view-dashboard-outline"></i>,
 	market: <i class="i-mdi-email-fast-outline"></i>,
-	api: <i class="i-mdi-chart-line"></i>,
-	contacts: <i class="i-mdi-user-multiple-outline"></i>,
+	api: <i class="i-mdi-api"></i>,
+	contacts: <i class="i-mdi-account-group-outline"></i>,
 	domain: <i class="i-mdi-web"></i>,
 	mailbox: <i class="i-custom:mailbox"></i>,
 	smtp: <i class="i-custom:smtp"></i>,
-	settings: <i class="i-mdi-settings-outline"></i>,
-	template: <i class="i-mdi-settings-outline"></i>,
+	settings: <i class="i-mdi-cog-outline"></i>,
+	template: <i class="i-mdi-file-document-outline"></i>,
 	logs: <i class="i-icon-park-outline:log"></i>,
 	logout: <i class="i-mdi-logout"></i>,
 }
@@ -121,7 +124,7 @@ const renderIcon = (key: string) => {
 }
 
 const handleUpdateMenu = (key: string) => {
-	if (key === 'logout') {        
+	if (key === 'logout') {
 		userStore.logout()
 	}
 	if (key === 'webmail') {
@@ -140,65 +143,116 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .n-layout-sider {
-	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+	box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
 	z-index: 1010;
 }
 
 .app-logo {
 	display: flex;
-	padding: 16px 24px;
-	border-bottom: 1px solid var(--color-border-1);
+	padding: 20px 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	transition: all 0.3s ease;
 
 	&.collapse {
 		justify-content: center;
-		padding: 16px 0;
+		padding: 20px 0;
 	}
 
-	a {
+	.logo-link {
 		display: flex;
 		align-items: center;
-		gap: 10px;
+		gap: 12px;
+		text-decoration: none;
 	}
 
-	.icon {
-		width: 36px;
-	}
-	
 	.app-name {
-		font-size: 19px;
-		font-weight: bold;
-		color: var(--color-text-5);
+		font-size: 17px;
+		font-weight: 700;
+		color: #ffffff;
+		letter-spacing: 0.5px;
+		white-space: nowrap;
 	}
 }
 
 .nav-section {
 	flex: 1;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 8px 0;
+	
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+	
+	&::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 4px;
+	}
 }
 
 .footer-section {
-	border-top: 1px solid var(--color-border-1);
-	transition: all 0.3s ease;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 8px 0;
 }
 
 .n-menu {
-	--n-item-height: 48px;
+	--n-item-height: 44px;
 	--n-font-size: 14px;
-	padding: 16px 0;
+	--n-item-text-color: rgba(255, 255, 255, 0.85);
+	--n-item-text-color-hover: #ffffff;
+	--n-item-text-color-active: #ffffff;
+	--n-item-icon-color: rgba(255, 255, 255, 0.7);
+	--n-item-icon-color-hover: #ffffff;
+	--n-item-icon-color-active: #ffffff;
+	--n-item-color-hover: rgba(255, 255, 255, 0.1);
+	--n-item-color-active: rgba(255, 255, 255, 0.15);
+	--n-item-color-active-hover: rgba(255, 255, 255, 0.2);
+	background: transparent;
 
 	:deep(.n-menu-item) {
-		margin-top: 0;
-		margin-bottom: 8px;
+		margin: 4px 8px;
+		border-radius: 8px;
+		transition: all 0.2s ease;
 
-		&:last-of-type {
-			margin-bottom: 0;
+		&:hover {
+			background: rgba(255, 255, 255, 0.1);
 		}
 
 		.n-menu-item-content {
-			padding-right: 24px;
-			line-height: 24px;
+			padding: 0 12px;
+			border-radius: 8px;
+			
+			&.n-menu-item-content--selected {
+				background: rgba(255, 255, 255, 0.2);
+				
+				&::before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 3px;
+					height: 60%;
+					background: #ffffff;
+					border-radius: 0 3px 3px 0;
+				}
+			}
+		}
+		
+		.n-menu-item-content__icon {
+			font-size: 20px;
 		}
 	}
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>
