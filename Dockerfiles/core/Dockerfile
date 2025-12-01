@@ -36,7 +36,7 @@ RUN apk add --no-cache \
     iptables \
     ipset \
     && rm -rf /var/cache/apk/* \
-    && chmod +x /stop-supervisor.sh /core.sh /restart_fail2ban.sh /opt/billionmail/core/billionmail
+    && chmod +x /stop-supervisor.sh /core.sh /restart_fail2ban.sh /opt/tetrisnewsemailing/core/tetrisnewsemailing
 
 # Copy file
 
