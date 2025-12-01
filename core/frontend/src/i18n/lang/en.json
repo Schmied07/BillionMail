@@ -50,6 +50,10 @@
 			"settings": "Settings",
 			"clear": "Clear"
 		},
+		"cancel": "Cancel",
+		"next": "Next",
+		"previous": "Previous",
+		"create": "Create",
 		"useCopy": {
 			"noText": "No text to copy",
 			"success": "Copy successful",
