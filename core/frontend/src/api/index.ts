@@ -103,8 +103,9 @@ instance.interceptors.response.use(
 			fetchOptions.loadFn()
 		}
 
-		if (response.data.type === 'application/octet-stream') {
-			const url = window.URL.createObjectURL(new Blob([response.data]))
+		// Check if response is a Blob (for file downloads)
+		if (response.data instanceof Blob) {
+			const url = window.URL.createObjectURL(response.data)
 			const link = document.createElement('a')
 			link.href = url
 			const disposition = response.headers['content-disposition']
@@ -116,7 +117,11 @@ instance.interceptors.response.use(
 			link.click()
 			document.body.removeChild(link)
 			window.URL.revokeObjectURL(url)
-			return Promise.resolve(data)
+			
+			if (fetchOptions?.successMessage) {
+				Message.success('Export successful')
+			}
+			return Promise.resolve({ success: true })
 		}
 
 		if (code === 0 && success) {
