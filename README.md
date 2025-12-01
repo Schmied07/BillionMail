@@ -99,16 +99,16 @@ Most email marketing platforms are either **expensive**, **closed-source**, or *
 
 ## How You Can Help 🌟
 
-BillionMail is a **community-driven project**, and we need your support to get started! Here's how you can help:
+TETRISNEWS EMAILING is a **community-driven project**, and we need your support to get started! Here's how you can help:
 
 1. **Star This Repository**: Show your interest by starring this repo.  
-2. **Spread the Word**: Share BillionMail with your network—developers, marketers, and open-source enthusiasts.  
-3. **Share Feedback**: Let us know what features you'd like to see in BillionMail by opening an issue or joining the discussion.  
+2. **Spread the Word**: Share TETRISNEWS EMAILING with your network—developers, marketers, and open-source enthusiasts.  
+3. **Share Feedback**: Let us know what features you'd like to see in TETRISNEWS EMAILING by opening an issue or joining the discussion.  
 4. **Contribute**: Once development begins, we'll welcome contributions from the community. Stay tuned for updates!
 
 ---
 
-📧 **BillionMail – The Future of Open-Source Email Marketing.**
+📧 **TETRISNEWS EMAILING – The Future of Open-Source Email Marketing.**
 
 ## Issues
 
