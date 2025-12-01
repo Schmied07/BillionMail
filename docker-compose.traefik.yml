@@ -98,6 +98,9 @@ services:
         - tetrisnews-network
 
     postfix-tetrisnewsemailing:
+      build:
+        context: .
+        dockerfile: Dockerfiles/postfix/Dockerfile
       image: tetrisnewsemailing/postfix:1.6
       hostname: postfix
       depends_on:
