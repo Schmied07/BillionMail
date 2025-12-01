@@ -212,6 +212,11 @@ const funnelSteps = [
 	margin: 0;
 }
 
+.header-right {
+	display: flex;
+	gap: 12px;
+}
+
 .kpi-grid {
 	display: grid;
 	grid-template-columns: repeat(6, 1fr);
