@@ -398,7 +398,7 @@ const cardActions = [
 	{ label: 'Supprimer', key: 'delete' },
 ]
 
-const formData = reactive<Partial<Prospect>>({
+const formData = reactive({
 	company: '',
 	contact: '',
 	email: '',
@@ -406,14 +406,23 @@ const formData = reactive<Partial<Prospect>>({
 	value: 0,
 	score: 3,
 	status: 'new',
-	tags: [],
+	tags: [] as string[],
 	notes: '',
+	source_id: null as number | null,
 })
+
+const sourceOptions = computed(() =>
+	sources.value.map((s) => ({
+		label: s.name,
+		value: s.id,
+	}))
+)
 
 const formRules = {
 	company: { required: true, message: 'Entreprise requise' },
 	contact: { required: true, message: 'Contact requis' },
 	email: { required: true, type: 'email', message: 'Email valide requis' },
+	source_id: { required: true, type: 'number', message: 'Source requise' },
 }
 
 const getColumnProspects = (columnId: string) => {
