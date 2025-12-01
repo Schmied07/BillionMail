@@ -566,9 +566,24 @@ const handleImportSuccess = () => {
 	loadProspects()
 }
 
-// Load prospects on mount
+const loadSources = async () => {
+	loadingSources.value = true
+	try {
+		const res = await getSourceAll()
+		if (res.data?.data?.list) {
+			sources.value = res.data.data.list
+		}
+	} catch (error) {
+		console.error('Failed to load sources:', error)
+	} finally {
+		loadingSources.value = false
+	}
+}
+
+// Load prospects and sources on mount
 onMounted(() => {
 	loadProspects()
+	loadSources()
 })
 </script>
 
