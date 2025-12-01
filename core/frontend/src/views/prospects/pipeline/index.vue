@@ -471,23 +471,49 @@ const handleCardAction = (key: string, prospect: Prospect) => {
 	}
 }
 
-const handleAddProspect = () => {
-	const newProspect: Prospect = {
-		id: Date.now().toString(),
-		company: formData.company || '',
-		contact: formData.contact || '',
-		email: formData.email || '',
-		phone: formData.phone,
-		value: formData.value || 0,
-		score: formData.score || 3,
-		status: formData.status || 'new',
-		tags: formData.tags || [],
-		notes: formData.notes,
-		createdAt: Date.now(),
+const handleAddProspect = async () => {
+	if (!formData.source_id) {
+		message.warning('Veuillez sélectionner une source')
+		return
 	}
-	prospects.value.push(newProspect)
-	showAddModal.value = false
-	Object.assign(formData, { company: '', contact: '', email: '', phone: '', value: 0, score: 3, status: 'new', tags: [], notes: '' })
+	
+	try {
+		const res = await createProspect({
+			company: formData.company || '',
+			contact: formData.contact || '',
+			email: formData.email || '',
+			phone: formData.phone || undefined,
+			value: formData.value || 0,
+			score: formData.score || 3,
+			status: formData.status || 'new',
+			tags: formData.tags || [],
+			notes: formData.notes || undefined,
+			source_id: formData.source_id,
+		})
+		
+		if (res.data?.data) {
+			message.success('Prospect ajouté avec succès')
+			showAddModal.value = false
+			// Reset form
+			Object.assign(formData, { 
+				company: '', 
+				contact: '', 
+				email: '', 
+				phone: '', 
+				value: 0, 
+				score: 3, 
+				status: 'new', 
+				tags: [], 
+				notes: '',
+				source_id: null 
+			})
+			// Reload prospects
+			loadProspects()
+		}
+	} catch (error) {
+		console.error('Failed to create prospect:', error)
+		message.error('Erreur lors de la création du prospect')
+	}
 }
 
 const updateProspectStatus = (status: string) => {
