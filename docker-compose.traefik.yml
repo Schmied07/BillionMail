@@ -165,6 +165,9 @@ services:
         - tetrisnews-network
 
     core-tetrisnewsemailing:
+      build:
+        context: .
+        dockerfile: Dockerfiles/core/Dockerfile
       image: tetrisnewsemailing/core:4.8.3
       hostname: core-manage
       depends_on:
