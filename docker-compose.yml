@@ -110,7 +110,10 @@ services:
             - dovecot
 
     postfix-tetrisnewsemailing:
-      image: billionmail/postfix:1.6
+      build:
+        context: .
+        dockerfile: Dockerfiles/postfix/Dockerfile
+      image: tetrisnewsemailing/postfix:1.6
       hostname: postfix
       depends_on:
         pgsql-tetrisnewsemailing:
