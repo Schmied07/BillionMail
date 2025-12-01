@@ -263,6 +263,7 @@ var (
 					operation_log.NewV1(),
 					askai.NewV1(),
 					tags.NewV1(),
+					prospect.NewV1(),
 				)
 			})
 
