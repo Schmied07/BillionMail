@@ -93,11 +93,6 @@ instance.interceptors.response.use(
 		removeController(response.config)
 
 		const { fetchOptions } = response.config
-		const { code, data, msg, success } = response.data || {}
-
-		if (fetchOptions?.cancelResInterceptor) {
-			return Promise.resolve(data)
-		}
 
 		if (fetchOptions?.loadFn) {
 			fetchOptions.loadFn()
