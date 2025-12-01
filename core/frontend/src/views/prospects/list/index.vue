@@ -65,70 +65,6 @@ const filterSource = ref<number | null>(null)
 const sources = ref<any[]>([])
 
 const prospects = ref<any[]>([])
-		company: 'Tech Solutions SA',
-		contact: 'Jean Dupont',
-		email: 'jean.dupont@techsolutions.fr',
-		phone: '+33 1 23 45 67 89',
-		value: 15000,
-		score: 4,
-		status: 'new',
-		tags: ['Tech', 'Premium'],
-		lastContact: Date.now() - 86400000 * 2,
-		createdAt: Date.now() - 86400000 * 5,
-	},
-	{
-		id: '2',
-		company: 'Marketing Pro',
-		contact: 'Marie Martin',
-		email: 'marie@marketingpro.com',
-		phone: '',
-		value: 8500,
-		score: 3,
-		status: 'contacted',
-		tags: ['Marketing'],
-		lastContact: Date.now() - 86400000,
-		createdAt: Date.now() - 86400000 * 10,
-	},
-	{
-		id: '3',
-		company: 'Global Industries',
-		contact: 'Pierre Durand',
-		email: 'p.durand@global-ind.com',
-		phone: '+33 6 12 34 56 78',
-		value: 45000,
-		score: 5,
-		status: 'qualified',
-		tags: ['Industrie', 'Grand compte'],
-		lastContact: Date.now() - 3600000 * 5,
-		createdAt: Date.now() - 86400000 * 15,
-	},
-	{
-		id: '4',
-		company: 'StartupXYZ',
-		contact: 'Sophie Bernard',
-		email: 'sophie@startupxyz.io',
-		phone: '',
-		value: 5000,
-		score: 4,
-		status: 'negotiation',
-		tags: ['Startup', 'Tech'],
-		lastContact: Date.now() - 3600000 * 2,
-		createdAt: Date.now() - 86400000 * 7,
-	},
-	{
-		id: '5',
-		company: 'Retail Plus',
-		contact: 'Luc Petit',
-		email: 'luc.petit@retailplus.fr',
-		phone: '+33 4 56 78 90 12',
-		value: 22000,
-		score: 5,
-		status: 'converted',
-		tags: ['Retail', 'Premium'],
-		lastContact: Date.now() - 86400000 * 3,
-		createdAt: Date.now() - 86400000 * 30,
-	},
-])
 
 const statusOptions = [
 	{ label: 'Nouveau', value: 'new' },
@@ -137,6 +73,13 @@ const statusOptions = [
 	{ label: 'Négociation', value: 'negotiation' },
 	{ label: 'Converti', value: 'converted' },
 ]
+
+const sourceOptions = computed(() =>
+	sources.value.map((s) => ({
+		label: s.name,
+		value: s.id,
+	}))
+)
 
 const statusConfig: Record<string, { label: string; type: 'info' | 'warning' | 'success' | 'error' | 'default' }> = {
 	new: { label: 'Nouveau', type: 'info' },
@@ -151,13 +94,16 @@ const filteredProspects = computed(() => {
 	if (searchQuery.value) {
 		const query = searchQuery.value.toLowerCase()
 		result = result.filter(p => 
-			p.company.toLowerCase().includes(query) ||
-			p.contact.toLowerCase().includes(query) ||
-			p.email.toLowerCase().includes(query)
+			(p.company || '').toLowerCase().includes(query) ||
+			(p.contact || '').toLowerCase().includes(query) ||
+			(p.email || '').toLowerCase().includes(query)
 		)
 	}
 	if (filterStatus.value) {
 		result = result.filter(p => p.status === filterStatus.value)
+	}
+	if (filterSource.value) {
+		result = result.filter(p => p.source_id === filterSource.value)
 	}
 	return result
 })
