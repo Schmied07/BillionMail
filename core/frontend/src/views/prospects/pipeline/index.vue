@@ -494,6 +494,42 @@ const removeTag = (tag: string) => {
 		}
 	}
 }
+
+const loadProspects = async () => {
+	try {
+		const res = await getProspectList({ page: 1, page_size: 1000 })
+		if (res.data?.data?.list) {
+			prospects.value = res.data.data.list.map((p: any) => ({
+				id: String(p.id),
+				company: p.company || '',
+				contact: p.contact || '',
+				email: p.email,
+				phone: p.phone || '',
+				value: p.value || 0,
+				score: p.score || 3,
+				status: p.status || 'new',
+				tags: p.tags || [],
+				notes: p.notes || '',
+				lastContact: p.last_contact ? p.last_contact * 1000 : undefined,
+				createdAt: p.create_time * 1000,
+				sourceId: p.source_id,
+				sourceName: p.source_name,
+			}))
+		}
+	} catch (error) {
+		console.error('Failed to load prospects:', error)
+	}
+}
+
+const handleImportSuccess = () => {
+	message.success('Import réussi !')
+	loadProspects()
+}
+
+// Load prospects on mount
+onMounted(() => {
+	loadProspects()
+})
 </script>
 
 <style lang="scss" scoped>
