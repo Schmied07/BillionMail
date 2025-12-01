@@ -56,6 +56,7 @@ import ImportModal from '../components/ImportModal.vue'
 import { getProspectList, getSourceAll, deleteProspects } from '@/api/modules/prospects'
 
 const message = useMessage()
+const dialog = useDialog()
 const loading = ref(false)
 const showImportModal = ref(false)
 
