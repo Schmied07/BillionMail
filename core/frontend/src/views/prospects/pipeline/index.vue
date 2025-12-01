@@ -9,6 +9,12 @@
 				<p class="page-subtitle">Gérez vos prospects par étape de conversion</p>
 			</div>
 			<div class="header-right">
+				<n-button @click="showImportModal = true">
+					<template #icon>
+						<i class="i-mdi-file-upload-outline"></i>
+					</template>
+					Importer CSV
+				</n-button>
 				<n-button type="primary" @click="showAddModal = true">
 					<template #icon>
 						<i class="i-mdi-plus"></i>
