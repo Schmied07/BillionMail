@@ -294,16 +294,16 @@ func (m *ConfigManager) addCustomNetworksText(lines []string, configs []map[stri
 
 		// Copy existing tetrisnewsemailing-network configuration and detect indentation style
 		tetrisnewsemailingNetworkLines := []string{}
-		inBillionmailNetwork := false
+		inTetrisnewsemailingNetwork := false
 
 		for i := networksStartIdx + 1; i < len(lines) && (networksEndIdx == -1 || i < networksEndIdx); i++ {
 			line := lines[i]
 			if strings.Contains(line, "tetrisnewsemailing-network:") {
-				inBillionmailNetwork = true
+				inTetrisnewsemailingNetwork = true
 				// Detect indentation level of network name
 				baseIndent = line[:len(line)-len(strings.TrimLeft(line, " \t"))]
 				tetrisnewsemailingNetworkLines = append(tetrisnewsemailingNetworkLines, line)
-			} else if inBillionmailNetwork {
+			} else if inTetrisnewsemailingNetwork {
 				if strings.TrimSpace(line) == "" {
 					tetrisnewsemailingNetworkLines = append(tetrisnewsemailingNetworkLines, line)
 				} else {

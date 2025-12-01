@@ -1141,7 +1141,7 @@ Domain_record() {
     fi
 }
 
-Init_Billionmail()
+Init_Tetrisnewsemailing()
 {
     # SQL file path
     SQL_FILE="./init.sql"
@@ -1251,7 +1251,7 @@ Init_Billionmail()
 }
 
 
-Billionmail(){
+Tetrisnewsemailing(){
     Check_Port=$(ss -tlnp | grep -E ":(${HTTP_PORT})\b")
     if [ ! -z "${Check_Port}" ]; then
         HTTP_PORT=5678
@@ -1360,7 +1360,7 @@ EOF
     ${DOCKER_COMPOSE} pull
     ${DOCKER_COMPOSE} up -d
     if [ $? -eq 0 ]; then
-        echo -e "Billionmail installation completed successfully!"
+        echo -e "Tetrisnewsemailing installation completed successfully!"
     else
         echo ""
         echo -e "--------------------------------------------------"
@@ -1374,7 +1374,7 @@ EOF
 
     # echo -e "Initialize the data..."
     # sleep 5
-    # Init_Billionmail
+    # Init_Tetrisnewsemailing
 
     [ ! -d "/opt" ] && mkdir /opt
     echo "${PWD_d}" > /opt/PWD-Billion-Mail.txt
@@ -1415,7 +1415,7 @@ Install_Main(){
    
     Docker_Start
 
-    Billionmail
+    Tetrisnewsemailing
     
     Set_Firewall
     
