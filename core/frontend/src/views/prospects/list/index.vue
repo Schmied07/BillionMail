@@ -16,7 +16,14 @@
 						</template>
 					</n-input>
 					<n-select v-model:value="filterStatus" :options="statusOptions" placeholder="Statut" style="width: 150px;" clearable />
+					<n-select v-model:value="filterSource" :options="sourceOptions" placeholder="Source" style="width: 150px;" clearable />
 				</n-input-group>
+				<n-button @click="showImportModal = true">
+					<template #icon>
+						<i class="i-mdi-file-upload-outline"></i>
+					</template>
+					Importer CSV
+				</n-button>
 				<n-button type="primary">
 					<template #icon>
 						<i class="i-mdi-download"></i>
@@ -32,22 +39,32 @@
 			:pagination="pagination"
 			:bordered="false"
 			:row-key="(row) => row.id"
+			:loading="loading"
 		>
 		</n-data-table>
+
+		<!-- Import Modal -->
+		<ImportModal v-model:show="showImportModal" @success="handleImportSuccess" />
 	</div>
 </template>
 
 <script lang="tsx" setup>
-import { NButton, NTag, NRate, NFlex } from 'naive-ui'
+import { NButton, NTag, NRate, NFlex, useMessage } from 'naive-ui'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
+import ImportModal from '../components/ImportModal.vue'
+import { getProspectList, getSourceAll } from '@/api/modules/prospects'
+
+const message = useMessage()
+const loading = ref(false)
+const showImportModal = ref(false)
 
 const searchQuery = ref('')
 const filterStatus = ref<string | null>(null)
+const filterSource = ref<number | null>(null)
+const sources = ref<any[]>([])
 
-const prospects = ref([
-	{
-		id: '1',
+const prospects = ref<any[]>([])
 		company: 'Tech Solutions SA',
 		contact: 'Jean Dupont',
 		email: 'jean.dupont@techsolutions.fr',
