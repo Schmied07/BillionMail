@@ -1,6 +1,6 @@
 FROM alpine:3.20
 
-LABEL maintainer="https://github.com/aaPanel/BillionMail"
+LABEL maintainer="https://github.com/aaPanel/TetrisNewsEmailing"
 
 # Set environment variables
 ENV LANG=C.UTF-8
@@ -9,12 +9,12 @@ ENV LC_ALL=C.UTF-8
 
 # Platform-specific binary copy
 ARG TARGETARCH
-COPY core/billionmail-${TARGETARCH} /opt/billionmail/core/billionmail
-COPY core/manifest /opt/billionmail/core/manifest
-COPY core/languages /opt/billionmail/core/languages
-COPY core/public /opt/billionmail/core/public
-COPY core/resource /opt/billionmail/core/resource
-COPY core/template /opt/billionmail/core/template
+COPY core/tetrisnewsemailing-${TARGETARCH} /opt/tetrisnewsemailing/core/tetrisnewsemailing
+COPY core/manifest /opt/tetrisnewsemailing/core/manifest
+COPY core/languages /opt/tetrisnewsemailing/core/languages
+COPY core/public /opt/tetrisnewsemailing/core/public
+COPY core/resource /opt/tetrisnewsemailing/core/resource
+COPY core/template /opt/tetrisnewsemailing/core/template
 
 # Copy file
 # COPY repositories /etc/apk/repositories
