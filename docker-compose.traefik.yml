@@ -33,6 +33,9 @@ services:
         - tetrisnews-network
 
     rspamd-tetrisnewsemailing:
+      build:
+        context: .
+        dockerfile: Dockerfiles/rspamd/Dockerfile
       image: tetrisnewsemailing/rspamd:1.2
       hostname: rspamd
       depends_on:
