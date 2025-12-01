@@ -478,8 +478,8 @@ func updatePostfixMasterCf(ctx context.Context, configs []*entity.BmRelayConfig)
 		g.Log().Info(ctx, "smtps configuration block updated in master.cf")
 	}
 
-	beginMarker := "# BEGIN BILLIONMAIL RELAY CONFIG - DO NOT EDIT THIS MARKER"
-	endMarker := "# END BILLIONMAIL RELAY CONFIG - DO NOT EDIT THIS MARKER"
+	beginMarker := "# BEGIN TETRISNEWSEMAILING RELAY CONFIG - DO NOT EDIT THIS MARKER"
+	endMarker := "# END TETRISNEWSEMAILING RELAY CONFIG - DO NOT EDIT THIS MARKER"
 
 	var customConfigBlock strings.Builder
 	customConfigBlock.WriteString(beginMarker + "\n")
@@ -930,8 +930,8 @@ func generateSmtpServiceName(config *entity.BmRelayConfig) string {
 
 func ensureSmtpsConfigInMasterCf(content string) (string, bool) {
 	const (
-		markerBegin = "# BEGIN BILLIONMAIL SMTPS CONFIG - DO NOT EDIT THIS MARKER"
-		markerEnd   = "# END BILLIONMAIL SMTPS CONFIG - DO NOT EDIT THIS MARKER"
+		markerBegin = "# BEGIN TETRISNEWSEMAILING SMTPS CONFIG - DO NOT EDIT THIS MARKER"
+		markerEnd   = "# END TETRISNEWSEMAILING SMTPS CONFIG - DO NOT EDIT THIS MARKER"
 	)
 	smtpsService := `smtps     unix  -       -       n       -       -       smtp
     -o smtp_tls_wrappermode=yes

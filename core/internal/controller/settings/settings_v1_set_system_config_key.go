@@ -82,7 +82,7 @@ func convertJsonKeyToEnvKey(jsonKey string, value string, envMap map[string]stri
 		"admin_username":       "ADMIN_USERNAME",
 		"admin_password":       "ADMIN_PASSWORD",
 		"safe_path":            "SafePath",
-		"tetrisnewsemailing_hostname": "BILLIONMAIL_HOSTNAME",
+		"tetrisnewsemailing_hostname": "TETRISNEWSEMAILING_HOSTNAME",
 		"db_name":              "DBNAME",
 		"db_user":              "DBUSER",
 		"db_pass":              "DBPASS",

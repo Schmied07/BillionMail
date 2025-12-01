@@ -43,7 +43,7 @@ nano .env
 ```env
 # Votre domaine
 DOMAIN=mail.votredomaine.com
-BILLIONMAIL_HOSTNAME=mail.votredomaine.com
+TETRISNEWSEMAILING_HOSTNAME=mail.votredomaine.com
 
 # Identifiants admin
 ADMIN_USERNAME=admin

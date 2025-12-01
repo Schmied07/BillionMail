@@ -210,10 +210,10 @@ func ApplyConsoleCert(ctx context.Context) error {
 	if err != nil {
 		return err
 	}
-	hostname := envMap["BILLIONMAIL_HOSTNAME"]
+	hostname := envMap["TETRISNEWSEMAILING_HOSTNAME"]
 
 	if hostname == "" {
-		return gerror.New("BILLIONMAIL_HOSTNAME environment variable is not set")
+		return gerror.New("TETRISNEWSEMAILING_HOSTNAME environment variable is not set")
 	}
 	//mailDomain := public.FormatMX(hostname)
 

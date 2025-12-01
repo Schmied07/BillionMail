@@ -2726,9 +2726,9 @@ func GethostUrl() string {
 		}
 	}
 
-	hostname := MustGetDockerEnv("BILLIONMAIL_HOSTNAME", "")
+	hostname := MustGetDockerEnv("TETRISNEWSEMAILING_HOSTNAME", "")
 	if hostname == "" {
-		hostname, _ = DockerEnv("BILLIONMAIL_HOSTNAME")
+		hostname, _ = DockerEnv("TETRISNEWSEMAILING_HOSTNAME")
 	}
 
 	if hostname != "" && hostname != "mail.example.com" {

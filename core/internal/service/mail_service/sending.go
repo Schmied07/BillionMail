@@ -125,7 +125,7 @@ func NewEmailSender() *EmailSender {
 	if public.IsRunningInContainer() {
 		e.Host = "postfix"
 		// e.Port = "587"
-		// e.SNI, _ = public.DockerEnv("BILLIONMAIL_HOSTNAME")
+		// e.SNI, _ = public.DockerEnv("TETRISNEWSEMAILING_HOSTNAME")
 	}
 
 	return e

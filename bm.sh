@@ -19,7 +19,7 @@ fi
 
 PWD_d=`pwd`
 
-SWITCH_TO_BILLIONMAIL_DIR(){
+SWITCH_TO_TETRISNEWSEMAILING_DIR(){
     if [ -f "/opt/PWD-Billion-Mail.txt" ]; then
         DIR=$(cat /opt/PWD-Billion-Mail.txt)
         if [ -d "${DIR}" ]; then
@@ -30,12 +30,12 @@ SWITCH_TO_BILLIONMAIL_DIR(){
 }
 
 if [ -s ".env" ]; then
-   CHECK_BILLIONMAIL=$(grep "BILLIONMAIL_HOSTNAME" .env)
-   if [ -z "${CHECK_BILLIONMAIL}" ]; then
-        SWITCH_TO_BILLIONMAIL_DIR
+   CHECK_TETRISNEWSEMAILING=$(grep "TETRISNEWSEMAILING_HOSTNAME" .env)
+   if [ -z "${CHECK_TETRISNEWSEMAILING}" ]; then
+        SWITCH_TO_TETRISNEWSEMAILING_DIR
    fi
 else
-    SWITCH_TO_BILLIONMAIL_DIR
+    SWITCH_TO_TETRISNEWSEMAILING_DIR
 fi
 
 if [ ! -s ".env" ]; then
@@ -160,7 +160,7 @@ Init_Email() {
     # Regular expression verification email address format
     if [[ "$input" =~ ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$ ]]; then
         mailbox=$(echo "$input" | cut -d '@' -f 1 | tr '[:upper:]' '[:lower:]')
-        BILLIONMAIL_HOSTNAME=$(echo "$input" | cut -d '@' -f 2 | tr '[:upper:]' '[:lower:]')
+        TETRISNEWSEMAILING_HOSTNAME=$(echo "$input" | cut -d '@' -f 2 | tr '[:upper:]' '[:lower:]')
         
     else
         echo "Enter an email address that is not a legal one: $input"
@@ -171,49 +171,49 @@ Init_Email() {
 
 
 Init_Domain() {
-    BILLIONMAIL_HOSTNAME="$2"
+    TETRISNEWSEMAILING_HOSTNAME="$2"
 
     # Regular expression check domain name format
-    # if [[ ! "${BILLIONMAIL_HOSTNAME}" =~ ^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])*$ ]]; then
-    if [[ ! "${BILLIONMAIL_HOSTNAME}" =~ ^([a-zA-Z0-9]([a-zA-Z0-9-]{0,62}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$ ]]; then
-        echo -e "\e[31m(${BILLIONMAIL_HOSTNAME}) is not a FQDN!\e[0m"
+    # if [[ ! "${TETRISNEWSEMAILING_HOSTNAME}" =~ ^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])*$ ]]; then
+    if [[ ! "${TETRISNEWSEMAILING_HOSTNAME}" =~ ^([a-zA-Z0-9]([a-zA-Z0-9-]{0,62}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$ ]]; then
+        echo -e "\e[31m(${TETRISNEWSEMAILING_HOSTNAME}) is not a FQDN!\e[0m"
         echo "Please change it to a FQDN"
         exit 1
-    elif [[ "${BILLIONMAIL_HOSTNAME: -1}" == "." ]]; then
-        echo "(${BILLIONMAIL_HOSTNAME}) is ending with a dot. This is not a valid FQDN!"
+    elif [[ "${TETRISNEWSEMAILING_HOSTNAME: -1}" == "." ]]; then
+        echo "(${TETRISNEWSEMAILING_HOSTNAME}) is ending with a dot. This is not a valid FQDN!"
         exit 1
 
     fi
 
     # Convert to lowercase
-    BILLIONMAIL_HOSTNAME=$(echo "${BILLIONMAIL_HOSTNAME}" | tr '[:upper:]' '[:lower:]')
+    TETRISNEWSEMAILING_HOSTNAME=$(echo "${TETRISNEWSEMAILING_HOSTNAME}" | tr '[:upper:]' '[:lower:]')
 
 }
 
 Domain_DKIM_record(){
-    if [ -z "${BILLIONMAIL_HOSTNAME}" ]; then
+    if [ -z "${TETRISNEWSEMAILING_HOSTNAME}" ]; then
         echo "Please enter the domain name"
         exit 1
     fi
 
-    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';" | grep -w "^ ${BILLIONMAIL_HOSTNAME}")
+    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "^ ${TETRISNEWSEMAILING_HOSTNAME}")
     if [ -z "${Check_domain}" ]; then
-        echo "Error: ${BILLIONMAIL_HOSTNAME} Domain does not exist."
+        echo "Error: ${TETRISNEWSEMAILING_HOSTNAME} Domain does not exist."
         exit 1
     fi
 
     ## DKIM key generation
-    docker exec -i -e BILLIONMAIL_HOSTNAME=${BILLIONMAIL_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash -c 'cat << "EOF" > /tmp/1.sh
+    docker exec -i -e TETRISNEWSEMAILING_HOSTNAME=${TETRISNEWSEMAILING_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash -c 'cat << "EOF" > /tmp/1.sh
 #!/bin/bash
-if [ ! -d "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/" ]; then
-    mkdir -p "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/"
+if [ ! -d "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/" ]; then
+    mkdir -p "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/"
 fi
-if [ -f "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.private" ] && [ -f "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.pub" ]; then
+if [ -f "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.private" ] && [ -f "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.pub" ]; then
     #echo "DKIM key already exists, skipping generation."
     exit 0
 fi
 
-rspamadm dkim_keygen -s 'default' -b 1024 -d {domain} -k "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.private" > "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.pub"
+rspamadm dkim_keygen -s 'default' -b 1024 -d {domain} -k "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.private" > "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.pub"
 if [ $? -eq 0 ]; then
     # Define the root directory for private keys
     DKIM_KEYS_DIR="/var/lib/rspamd/dkim"
@@ -259,10 +259,10 @@ else
     echo -e "DKIM key generation failed!"
     exit 1
 fi
-chmod 755 -R "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/"
+chmod 755 -R "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/"
 EOF'
-    docker exec -i -e BILLIONMAIL_HOSTNAME=${BILLIONMAIL_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash /tmp/1.sh && rm -f /tmp/1.sh
-    DKIM_RECORD=$(docker exec ${RSPAMD_CONTAINER_NAME} cat "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.pub")
+    docker exec -i -e TETRISNEWSEMAILING_HOSTNAME=${TETRISNEWSEMAILING_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash /tmp/1.sh && rm -f /tmp/1.sh
+    DKIM_RECORD=$(docker exec ${RSPAMD_CONTAINER_NAME} cat "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.pub")
     # echo "DKIM RECORD: ${DKIM_RECORD}"
     
 }
@@ -270,7 +270,7 @@ EOF'
 
 Domain_record() {
 
-    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';" | grep -w "^ ${BILLIONMAIL_HOSTNAME}")
+    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "^ ${TETRISNEWSEMAILING_HOSTNAME}")
     if [ "${Check_domain}" ]; then
 
         IPV4_ADDRESS=$(curl -sS -4 --connect-timeout 10 -m 20 https://ifconfig.me)
@@ -287,10 +287,10 @@ Domain_record() {
         echo -e "\e[31mPlease add the following record to your domain name\e[0m"
         echo -e "==========================================================="
         echo -e " Type | Host record    |    IPv4 address   |"
-        echo -e "  \e[1;33mA\e[0m   | \e[1;33mmail.${BILLIONMAIL_HOSTNAME}\e[0m | \e[1;33m${IPV4_ADDRESS}\e[0m |"
+        echo -e "  \e[1;33mA\e[0m   | \e[1;33mmail.${TETRISNEWSEMAILING_HOSTNAME}\e[0m | \e[1;33m${IPV4_ADDRESS}\e[0m |"
         echo -e "==========================================================="
         echo -e " Type | Host record | MX priority |  Record value    "
-        echo -e "  \e[1;33mMX\e[0m  |     \e[1;33m@\e[0m       |      \e[1;33m10\e[0m     | \e[1;33mmail.${BILLIONMAIL_HOSTNAME}\e[0m "
+        echo -e "  \e[1;33mMX\e[0m  |     \e[1;33m@\e[0m       |      \e[1;33m10\e[0m     | \e[1;33mmail.${TETRISNEWSEMAILING_HOSTNAME}\e[0m "
         echo -e "==========================================================="
         if [ "${IPV4_ADDRESS}" ]; then
             echo -e " Type | Host record |    Record value   |"
@@ -301,7 +301,7 @@ Domain_record() {
         fi
         echo -e "==========================================================="
         echo -e " Type | Host record |    Record value     |"
-        echo -e "  \e[1;33mTXT\e[0m |   \e[1;33m_dmarc\e[0m    | \e[1;33mv=DMARC1;p=quarantine;rua=mailto:admin@${BILLIONMAIL_HOSTNAME}\e[0m |"
+        echo -e "  \e[1;33mTXT\e[0m |   \e[1;33m_dmarc\e[0m    | \e[1;33mv=DMARC1;p=quarantine;rua=mailto:admin@${TETRISNEWSEMAILING_HOSTNAME}\e[0m |"
         echo -e "==========================================================="
 
         Domain_DKIM_record
@@ -313,10 +313,10 @@ Domain_record() {
             echo -e "  \e[1;33mTXT\e[0m | \e[1;33mdefault._domainkey\e[0m | \e[1;33m${DKIM_RECORD}\e[0m |<-- Start from \"v=DKIM1\" end, A single line."
             echo -e "==========================================================="
         else
-            echo -e "${BILLIONMAIL_HOSTNAME} DKIM key generation failed!"
+            echo -e "${TETRISNEWSEMAILING_HOSTNAME} DKIM key generation failed!"
         fi
     else
-        echo -e "Domain ${BILLIONMAIL_HOSTNAME} does not exist."
+        echo -e "Domain ${TETRISNEWSEMAILING_HOSTNAME} does not exist."
     fi
 }
 
@@ -339,14 +339,14 @@ Add_Domain() {
 
     echo "Creating domain..."
     
-    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';" | grep -w "^ ${BILLIONMAIL_HOSTNAME}")
+    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "^ ${TETRISNEWSEMAILING_HOSTNAME}")
     if [ -z "${Check_domain}" ]; then
         # Create a domain
         
         docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "INSERT INTO domain (domain, a_record, mailboxes, mailbox_quota, quota, rate_limit, create_time, active)
-        VALUES ('${BILLIONMAIL_HOSTNAME}', 'mail.${BILLIONMAIL_HOSTNAME}', 500, 5368709120, 5368709120, 12, ${create_time}, 1);"
+        VALUES ('${TETRISNEWSEMAILING_HOSTNAME}', 'mail.${TETRISNEWSEMAILING_HOSTNAME}', 500, 5368709120, 5368709120, 12, ${create_time}, 1);"
         if [ $? -eq 0 ]; then
-            echo "${BILLIONMAIL_HOSTNAME} Domain creation was successful!"
+            echo "${TETRISNEWSEMAILING_HOSTNAME} Domain creation was successful!"
             Domain_record
         else
             Red_Error "Domain creation failed!"
@@ -359,17 +359,17 @@ Add_Domain() {
 Del_Domain() {
     echo "Deleting domain..."
 
-    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';" | grep -w "^ ${BILLIONMAIL_HOSTNAME}")
+    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "^ ${TETRISNEWSEMAILING_HOSTNAME}")
     
     if [ -z "${Check_domain}" ]; then
-        echo "Domain '${BILLIONMAIL_HOSTNAME}' does not exist!"
+        echo "Domain '${TETRISNEWSEMAILING_HOSTNAME}' does not exist!"
     else
         # Delete the domain
-        docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "DELETE FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';"
+        docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "DELETE FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';"
         if [ $? -eq 0 ]; then
-            echo "Domain '${BILLIONMAIL_HOSTNAME}' deleted successfully!"
+            echo "Domain '${TETRISNEWSEMAILING_HOSTNAME}' deleted successfully!"
         else
-            Red_Error "Failed to delete domain '${BILLIONMAIL_HOSTNAME}'!"
+            Red_Error "Failed to delete domain '${TETRISNEWSEMAILING_HOSTNAME}'!"
         fi
     fi
 }
@@ -378,9 +378,9 @@ Del_Domain() {
 Add_Email() {
     echo "Creating mailbox..."
 
-    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';" | grep -w "^ ${BILLIONMAIL_HOSTNAME}")
+    Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "^ ${TETRISNEWSEMAILING_HOSTNAME}")
     if [ -z "${Check_domain}" ]; then
-        Red_Error "Domain '${BILLIONMAIL_HOSTNAME}' does not exist, please create it first!"
+        Red_Error "Domain '${TETRISNEWSEMAILING_HOSTNAME}' does not exist, please create it first!"
     fi
 
     # Create a mailbox
@@ -397,8 +397,8 @@ Add_Email() {
         echo "Generate_mailbox_password: ${Generate_mailbox_password}"
         echo "mailbox_password: ${Encrypt_mailbox_password}"
     else
-        # Generate the default password after failure: BILLIONMAIL
-        Generate_mailbox_password="BILLIONMAIL"
+        # Generate the default password after failure: TETRISNEWSEMAILING
+        Generate_mailbox_password="TETRISNEWSEMAILING"
         Encrypt_mailbox_password='$1$ELBUCcYE$TbdGKBvLkFbjQguDbi3s01'
         echo "Generate_mailbox_password--default: ${Generate_mailbox_password}"
         Default_password=1
@@ -420,19 +420,19 @@ Add_Email() {
         password_encode="516b6c4d54456c50546b31425355773d"
     fi
 
-    Check_mailbox=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${BILLIONMAIL_HOSTNAME}';" | grep -w "${mailbox}@${BILLIONMAIL_HOSTNAME}")
+    Check_mailbox=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}")
     if [ -z "${Check_mailbox}" ]; then
         INSERT_mailbox='INSERT INTO mailbox (username, password, password_encode, full_name, is_admin, maildir, quota, local_part, domain, create_time, update_time, active)
         VALUES (
-            '\'${mailbox}@${BILLIONMAIL_HOSTNAME}\'',
+            '\'${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}\'',
             '\'${Encrypt_mailbox_password}\'',
             '\'${password_encode}\'',
             '\'${mailbox}\'',
             0,
-            '\'${mailbox}@${BILLIONMAIL_HOSTNAME}/\'',
+            '\'${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}/\'',
             5368709120,
             '\'${mailbox}\'',
-            '\'${BILLIONMAIL_HOSTNAME}\'',
+            '\'${TETRISNEWSEMAILING_HOSTNAME}\'',
             '${create_time}',
             '${create_time}',
             1
@@ -444,13 +444,13 @@ Add_Email() {
         else
             Red_Error "Mailbox creation failed!"
         fi
-        #docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${BILLIONMAIL_HOSTNAME}';"
+        #docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}';"
     else
         echo ""${Check_mailbox}" Mailbox already exists!"
     fi
     
     echo -e "\e[31mPlease save the following information:\e[0m"
-    echo -e "Mailbox (e-mail): \e[33m${mailbox}@${BILLIONMAIL_HOSTNAME}\e[0m \nPassword: \e[33m${Generate_mailbox_password}\e[0m" 
+    echo -e "Mailbox (e-mail): \e[33m${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}\e[0m \nPassword: \e[33m${Generate_mailbox_password}\e[0m" 
 }
 
 
@@ -458,16 +458,16 @@ Del_Email() {
     
     echo "Deleting mailbox..."
 
-    Check_mailbox=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${BILLIONMAIL_HOSTNAME}';" | grep -w "${mailbox}@${BILLIONMAIL_HOSTNAME}")
+    Check_mailbox=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}")
     
     if [ -z "${Check_mailbox}" ]; then
-        echo "Mailbox '${mailbox}@${BILLIONMAIL_HOSTNAME}' does not exist!"
+        echo "Mailbox '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}' does not exist!"
     else
-        docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "DELETE FROM mailbox WHERE username = '${mailbox}@${BILLIONMAIL_HOSTNAME}';"
+        docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "DELETE FROM mailbox WHERE username = '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}';"
         if [ $? -eq 0 ]; then
-            echo "Mailbox '${mailbox}@${BILLIONMAIL_HOSTNAME}' deleted successfully!"
+            echo "Mailbox '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}' deleted successfully!"
         else
-            Red_Error "Failed to delete mailbox '${mailbox}@${BILLIONMAIL_HOSTNAME}'!"
+            Red_Error "Failed to delete mailbox '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}'!"
         fi
     fi
 }
@@ -536,11 +536,11 @@ Default_info() {
     pool=https
 
     if [ -f "core-data/tetrisnewsemailing_hostname.txt" ];then
-        BILLIONMAIL_Domain=$(cat core-data/tetrisnewsemailing_hostname.txt)
+        TETRISNEWSEMAILING_Domain=$(cat core-data/tetrisnewsemailing_hostname.txt)
         if [ "${HTTPS_PORT}" = "443" ];then
-            echo  "TetrisNewsEmailing Domain Address:        ${pool}://${BILLIONMAIL_Domain}/${SafePath}"
+            echo  "TetrisNewsEmailing Domain Address:        ${pool}://${TETRISNEWSEMAILING_Domain}/${SafePath}"
         else
-            echo  "TetrisNewsEmailing Domain Address:        ${pool}://${BILLIONMAIL_Domain}:${HTTPS_PORT}/${SafePath}"
+            echo  "TetrisNewsEmailing Domain Address:        ${pool}://${TETRISNEWSEMAILING_Domain}:${HTTPS_PORT}/${SafePath}"
         fi
     fi
     

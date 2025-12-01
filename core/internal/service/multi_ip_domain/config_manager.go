@@ -28,8 +28,8 @@ var (
 )
 
 const (
-	masterCfBlockMarkerStart = "# BEGIN BILLIONMAIL multi-ip services"
-	masterCfBlockMarkerEnd   = "# END BILLIONMAIL multi-ip services"
+	masterCfBlockMarkerStart = "# BEGIN TETRISNEWSEMAILING multi-ip services"
+	masterCfBlockMarkerEnd   = "# END TETRISNEWSEMAILING multi-ip services"
 )
 
 // ConfigManager

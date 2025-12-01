@@ -127,7 +127,7 @@ func buildBaseURL(hostname string) (s string) {
 	}
 
 	if hostname == "" {
-		hostname, err = public.DockerEnv("BILLIONMAIL_HOSTNAME")
+		hostname, err = public.DockerEnv("TETRISNEWSEMAILING_HOSTNAME")
 		if hostname != "" && hostname != "mail.example.com" {
 			s = scheme + "://" + hostname
 		} else {

@@ -38,7 +38,7 @@ func (c *ControllerV1) SetSystemConfig(ctx context.Context, req *v1.SetSystemCon
 		}
 	}
 	if req.Hostname != "" {
-		if err := validateConfigValue("BILLIONMAIL_HOSTNAME", req.Hostname); err != nil {
+		if err := validateConfigValue("TETRISNEWSEMAILING_HOSTNAME", req.Hostname); err != nil {
 			res.SetError(gerror.New(public.LangCtx(ctx, "Parameter validation failed: {}", err)))
 			return res, nil
 		}
@@ -99,8 +99,8 @@ func updateEnvMap(envMap map[string]string, req *v1.SetSystemConfigReq) bool {
 		modified = true
 
 	}
-	if req.Hostname != "" && req.Hostname != envMap["BILLIONMAIL_HOSTNAME"] {
-		envMap["BILLIONMAIL_HOSTNAME"] = req.Hostname
+	if req.Hostname != "" && req.Hostname != envMap["TETRISNEWSEMAILING_HOSTNAME"] {
+		envMap["TETRISNEWSEMAILING_HOSTNAME"] = req.Hostname
 		modified = true
 
 	}

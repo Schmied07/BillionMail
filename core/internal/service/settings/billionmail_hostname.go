@@ -8,9 +8,9 @@ import (
 	"strings"
 )
 
-// Check whether the A record of BILLIONMAIL_HOSTNAME is consistent with the local public network IP and write or delete the tag file
+// Check whether the A record of TETRISNEWSEMAILING_HOSTNAME is consistent with the local public network IP and write or delete the tag file
 func CheckHostname() {
-	hostname := public.MustGetDockerEnv("BILLIONMAIL_HOSTNAME", "")
+	hostname := public.MustGetDockerEnv("TETRISNEWSEMAILING_HOSTNAME", "")
 	flagFile := public.AbsPath("../core/data/tetrisnewsemailing_hostname.txt")
 	if hostname == "" || hostname == "mail.example.com" {
 		_ = os.Remove(flagFile)

@@ -104,7 +104,7 @@ func convertEnvToConfig(envMap map[string]string) *v1.SystemConfig {
 	config.AdminUsername = envMap["ADMIN_USERNAME"]
 	config.AdminPassword = envMap["ADMIN_PASSWORD"]
 	config.SafePath = envMap["SafePath"]
-	config.Hostname = envMap["BILLIONMAIL_HOSTNAME"]
+	config.Hostname = envMap["TETRISNEWSEMAILING_HOSTNAME"]
 
 	// Database configuration
 	config.DBName = envMap["DBNAME"]
@@ -197,7 +197,7 @@ func validateConfigValue(key, value string) error {
 			return fmt.Errorf("password length must be at least 4 characters")
 		}
 
-	case "BILLIONMAIL_HOSTNAME", "tetrisnewsemailing_hostname":
+	case "TETRISNEWSEMAILING_HOSTNAME", "tetrisnewsemailing_hostname":
 		// Hostname: allowed letters, numbers, dots, hyphens
 		if !public.IsValidHostname(value) {
 			return fmt.Errorf("hostname format is incorrect")

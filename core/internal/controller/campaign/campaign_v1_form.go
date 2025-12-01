@@ -105,7 +105,7 @@ func sendConfirmationEmail(ctx context.Context, email, name string) error {
 		domain = u.Hostname()
 	} else {
 		// Fallback: try to get from environment
-		if hostname, err := public.DockerEnv("BILLIONMAIL_HOSTNAME"); err == nil && hostname != "" {
+		if hostname, err := public.DockerEnv("TETRISNEWSEMAILING_HOSTNAME"); err == nil && hostname != "" {
 			domain = hostname
 		} else {
 			return fmt.Errorf("unable to determine domain for noreply email")

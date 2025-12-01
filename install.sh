@@ -68,11 +68,11 @@ while [ ${#} -gt 0 ]; do
             exit 0
             ;;
         -d|--domain)
-            BILLIONMAIL_HOSTNAME=$2
+            TETRISNEWSEMAILING_HOSTNAME=$2
             shift 1
             ;;
         -t|--TZ)
-            BILLIONMAIL_TIME_ZONE=$2
+            TETRISNEWSEMAILING_TIME_ZONE=$2
             shift 1
             ;;
     esac
@@ -99,41 +99,41 @@ case $gogo in
 esac
 fi
 
-# while [ -z "${BILLIONMAIL_HOSTNAME}" ]; do
+# while [ -z "${TETRISNEWSEMAILING_HOSTNAME}" ]; do
 # echo "Press Enter to confirm the detected value '[value]', or enter a custom value."
 # echo -e ""
 #     echo -e "Mail Server hostname (FQDN), \e[0;33mAs: example.com\e[0m"
 #     echo -e ""
-#     read -p "Please enter the Mail Server hostname (FQDN: e.g. example.com): " -e BILLIONMAIL_HOSTNAME
-#     #if [[ ! "${BILLIONMAIL_HOSTNAME}" =~ ^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])*$ ]]; then
-#     if [[ ! "${BILLIONMAIL_HOSTNAME}" =~ ^([a-zA-Z0-9]([a-zA-Z0-9-]{0,62}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$ ]]; then
-#         echo -e "\e[31m(${BILLIONMAIL_HOSTNAME}) is not a FQDN!\e[0m"
+#     read -p "Please enter the Mail Server hostname (FQDN: e.g. example.com): " -e TETRISNEWSEMAILING_HOSTNAME
+#     #if [[ ! "${TETRISNEWSEMAILING_HOSTNAME}" =~ ^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](\.[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9])*$ ]]; then
+#     if [[ ! "${TETRISNEWSEMAILING_HOSTNAME}" =~ ^([a-zA-Z0-9]([a-zA-Z0-9-]{0,62}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$ ]]; then
+#         echo -e "\e[31m(${TETRISNEWSEMAILING_HOSTNAME}) is not a FQDN!\e[0m"
 #         echo "Please change it to a FQDN"
 #         exit 1
-#     elif [[ "${BILLIONMAIL_HOSTNAME: -1}" == "." ]]; then
-#         echo "(${BILLIONMAIL_HOSTNAME}) is ending with a dot. This is not a valid FQDN!"
+#     elif [[ "${TETRISNEWSEMAILING_HOSTNAME: -1}" == "." ]]; then
+#         echo "(${TETRISNEWSEMAILING_HOSTNAME}) is ending with a dot. This is not a valid FQDN!"
 #         exit 1
 
 #     fi
 # done
 
-if [ -z "${BILLIONMAIL_HOSTNAME}" ]; then
-    BILLIONMAIL_HOSTNAME="example.com"
+if [ -z "${TETRISNEWSEMAILING_HOSTNAME}" ]; then
+    TETRISNEWSEMAILING_HOSTNAME="example.com"
 fi
 
 # Count number of dots in the domain
-DOT_COUNT=$(echo "${BILLIONMAIL_HOSTNAME}" | tr -cd '.' | wc -c)
+DOT_COUNT=$(echo "${TETRISNEWSEMAILING_HOSTNAME}" | tr -cd '.' | wc -c)
 
 # If only one dot, prepend "mail."
 if [ "${DOT_COUNT}" -eq 1 ]; then
-    ADD_MAIL_BILLIONMAIL_HOSTNAME="mail.${BILLIONMAIL_HOSTNAME}"
-    echo "Postfix myhostname configuration use: ${ADD_MAIL_BILLIONMAIL_HOSTNAME}"
+    ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME="mail.${TETRISNEWSEMAILING_HOSTNAME}"
+    echo "Postfix myhostname configuration use: ${ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME}"
 fi
 
-# Ensure ADD_MAIL_BILLIONMAIL_HOSTNAME is always set (fallback to original if empty)
-if [ -z "${ADD_MAIL_BILLIONMAIL_HOSTNAME}" ]; then
-    ADD_MAIL_BILLIONMAIL_HOSTNAME="${BILLIONMAIL_HOSTNAME}"
-    echo "Postfix myhostname configuration use: ${ADD_MAIL_BILLIONMAIL_HOSTNAME}"
+# Ensure ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME is always set (fallback to original if empty)
+if [ -z "${ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME}" ]; then
+    ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME="${TETRISNEWSEMAILING_HOSTNAME}"
+    echo "Postfix myhostname configuration use: ${ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME}"
 fi
 
 if [ -a /etc/timezone ]; then
@@ -142,23 +142,23 @@ elif [ -a /etc/localtime ]; then
     SYSTEM_TIME_ZONE=$(readlink /etc/localtime|sed -n 's|^.*zoneinfo/||p')
 fi
 
-# while [ -z "${BILLIONMAIL_TIME_ZONE}" ]; do
+# while [ -z "${TETRISNEWSEMAILING_TIME_ZONE}" ]; do
 #     echo -e ""
 #     echo -e "See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for a list of timezones"
 #     echo -e "Use a column named "TZ identifier" + note the column named "Notes""
 #     echo -e "Please enter your time zone"
 #     echo -e ""
 #     if [ -z "${SYSTEM_TIME_ZONE}" ]; then
-#         read -p "Timezone: " -e BILLIONMAIL_TIME_ZONE
+#         read -p "Timezone: " -e TETRISNEWSEMAILING_TIME_ZONE
 #     else
-#         read -p "Timezone [${SYSTEM_TIME_ZONE}]: " -e BILLIONMAIL_TIME_ZONE
-#         [ -z "${BILLIONMAIL_TIME_ZONE}" ] && BILLIONMAIL_TIME_ZONE=${SYSTEM_TIME_ZONE}
+#         read -p "Timezone [${SYSTEM_TIME_ZONE}]: " -e TETRISNEWSEMAILING_TIME_ZONE
+#         [ -z "${TETRISNEWSEMAILING_TIME_ZONE}" ] && TETRISNEWSEMAILING_TIME_ZONE=${SYSTEM_TIME_ZONE}
 #     fi
 # done
 
-BILLIONMAIL_TIME_ZONE=${SYSTEM_TIME_ZONE}
-if [ -z "${BILLIONMAIL_TIME_ZONE}" ]; then
-    BILLIONMAIL_TIME_ZONE="America/New_York"
+TETRISNEWSEMAILING_TIME_ZONE=${SYSTEM_TIME_ZONE}
+if [ -z "${TETRISNEWSEMAILING_TIME_ZONE}" ]; then
+    TETRISNEWSEMAILING_TIME_ZONE="America/New_York"
 fi
 
 DBPASS_file=DBPASS_file.pl
@@ -1031,17 +1031,17 @@ Check_Connect_PgSql(){
 
 Domain_DKIM_record(){
     ## DKIM key generation
-    docker exec -i -e BILLIONMAIL_HOSTNAME=${BILLIONMAIL_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash -c 'cat << "EOF" > /tmp/1.sh
+    docker exec -i -e TETRISNEWSEMAILING_HOSTNAME=${TETRISNEWSEMAILING_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash -c 'cat << "EOF" > /tmp/1.sh
 #!/bin/bash
-if [ ! -d "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/" ]; then
-    mkdir -p "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/"
+if [ ! -d "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/" ]; then
+    mkdir -p "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/"
 fi
-if [ -f "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.private" ] && [ -f "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.pub" ]; then
+if [ -f "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.private" ] && [ -f "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.pub" ]; then
     #echo "DKIM key already exists, skipping generation."
     exit 0
 fi
 
-rspamadm dkim_keygen -s 'default' -b 1024 -d {domain} -k "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.private" > "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.pub"
+rspamadm dkim_keygen -s 'default' -b 1024 -d {domain} -k "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.private" > "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.pub"
 if [ $? -eq 0 ]; then
     # Define the root directory for private keys
     DKIM_KEYS_DIR="/var/lib/rspamd/dkim"
@@ -1087,10 +1087,10 @@ else
     echo -e "DKIM key generation failed!"
     exit 1
 fi
-chmod 755 -R "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/"
+chmod 755 -R "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/"
 EOF'
-    docker exec -i -e BILLIONMAIL_HOSTNAME=${BILLIONMAIL_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash /tmp/1.sh && rm -f /tmp/1.sh
-    DKIM_RECORD=$(docker exec ${RSPAMD_CONTAINER_NAME} cat "/var/lib/rspamd/dkim/${BILLIONMAIL_HOSTNAME}/default.pub")
+    docker exec -i -e TETRISNEWSEMAILING_HOSTNAME=${TETRISNEWSEMAILING_HOSTNAME} ${RSPAMD_CONTAINER_NAME} bash /tmp/1.sh && rm -f /tmp/1.sh
+    DKIM_RECORD=$(docker exec ${RSPAMD_CONTAINER_NAME} cat "/var/lib/rspamd/dkim/${TETRISNEWSEMAILING_HOSTNAME}/default.pub")
     # echo "DKIM RECORD: ${DKIM_RECORD}"
 }
 
@@ -1111,10 +1111,10 @@ Domain_record() {
     echo -e "\e[31mPlease add the following record to your domain name\e[0m"
     echo -e "==========================================================="
     echo -e " Type | Host record    |    IPv4 address   |"
-    echo -e "  \e[1;33mA\e[0m   | \e[1;33mmail.${BILLIONMAIL_HOSTNAME}\e[0m | \e[1;33m${IPV4_ADDRESS}\e[0m |"
+    echo -e "  \e[1;33mA\e[0m   | \e[1;33mmail.${TETRISNEWSEMAILING_HOSTNAME}\e[0m | \e[1;33m${IPV4_ADDRESS}\e[0m |"
     echo -e "==========================================================="
     echo -e " Type | Host record | MX priority |  Record value    "
-    echo -e "  \e[1;33mMX\e[0m  |     \e[1;33m@\e[0m       |      \e[1;33m10\e[0m     | \e[1;33mmail.${BILLIONMAIL_HOSTNAME}\e[0m "
+    echo -e "  \e[1;33mMX\e[0m  |     \e[1;33m@\e[0m       |      \e[1;33m10\e[0m     | \e[1;33mmail.${TETRISNEWSEMAILING_HOSTNAME}\e[0m "
     echo -e "==========================================================="
     if [ "${IPV4_ADDRESS}" ]; then
         echo -e " Type | Host record |    Record value   |"
@@ -1125,7 +1125,7 @@ Domain_record() {
     fi
     echo -e "==========================================================="
     echo -e " Type | Host record |    Record value     |"
-    echo -e "  \e[1;33mTXT\e[0m |   \e[1;33m_dmarc\e[0m    | \e[1;33mv=DMARC1;p=quarantine;rua=mailto:admin@${BILLIONMAIL_HOSTNAME}\e[0m |"
+    echo -e "  \e[1;33mTXT\e[0m |   \e[1;33m_dmarc\e[0m    | \e[1;33mv=DMARC1;p=quarantine;rua=mailto:admin@${TETRISNEWSEMAILING_HOSTNAME}\e[0m |"
     echo -e "==========================================================="
 
     Domain_DKIM_record
@@ -1137,7 +1137,7 @@ Domain_record() {
         echo -e "  \e[1;33mTXT\e[0m | \e[1;33mdefault._domainkey\e[0m | \e[1;33m${DKIM_RECORD}\e[0m |<-- Start from \"v=DKIM1\" end, A single line."
         echo -e "==========================================================="
     else
-        echo -e "${BILLIONMAIL_HOSTNAME} DKIM key generation failed!"
+        echo -e "${TETRISNEWSEMAILING_HOSTNAME} DKIM key generation failed!"
     fi
 }
 
@@ -1162,12 +1162,12 @@ Init_Tetrisnewsemailing()
             Red_Error "Database import failed!"
         fi
         echo "Creating domain..."
-        BILLIONMAIL_HOSTNAME=$(echo "${BILLIONMAIL_HOSTNAME}" | tr '[:upper:]' '[:lower:]')
-        Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${BILLIONMAIL_HOSTNAME}';" | grep -w "^ ${BILLIONMAIL_HOSTNAME}")
+        TETRISNEWSEMAILING_HOSTNAME=$(echo "${TETRISNEWSEMAILING_HOSTNAME}" | tr '[:upper:]' '[:lower:]')
+        Check_domain=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM domain WHERE domain = '${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "^ ${TETRISNEWSEMAILING_HOSTNAME}")
         if [ -z "${Check_domain}" ]; then
             # Create a domain
             docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "INSERT INTO domain (domain, a_record, mailboxes, mailbox_quota, quota, rate_limit, create_time, active)
-            VALUES ('${BILLIONMAIL_HOSTNAME}', 'mail.${BILLIONMAIL_HOSTNAME}', 500, 5368709120, 5368709120, 12, ${create_time}, 1);"
+            VALUES ('${TETRISNEWSEMAILING_HOSTNAME}', 'mail.${TETRISNEWSEMAILING_HOSTNAME}', 500, 5368709120, 5368709120, 12, ${create_time}, 1);"
             if [ $? -eq 0 ]; then
                 echo "Domain creation was successful!"
                 Domain_DKIM_record
@@ -1192,8 +1192,8 @@ Init_Tetrisnewsemailing()
             echo "Generate_mailbox_password: ${Generate_mailbox_password}"
             echo "mailbox_password: ${Encrypt_mailbox_password}"
         else
-            # Generate the default password after failure: BILLIONMAIL
-            Generate_mailbox_password="BILLIONMAIL"
+            # Generate the default password after failure: TETRISNEWSEMAILING
+            Generate_mailbox_password="TETRISNEWSEMAILING"
             Encrypt_mailbox_password='$1$ELBUCcYE$TbdGKBvLkFbjQguDbi3s01'
             echo "Generate_mailbox_password--default: ${Generate_mailbox_password}"
             Default_password=1
@@ -1215,19 +1215,19 @@ Init_Tetrisnewsemailing()
             password_encode="516b6c4d54456c50546b31425355773d"
         fi
 
-        Check_mailbox=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${BILLIONMAIL_HOSTNAME}';" | grep -w "${mailbox}@${BILLIONMAIL_HOSTNAME}")
+        Check_mailbox=$(docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}';" | grep -w "${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}")
         if [ -z "${Check_mailbox}" ]; then
             INSERT_mailbox='INSERT INTO mailbox (username, password, password_encode, full_name, is_admin, maildir, quota, local_part, domain, create_time, update_time, active)
             VALUES (
-                '\'${mailbox}@${BILLIONMAIL_HOSTNAME}\'',
+                '\'${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}\'',
                 '\'${Encrypt_mailbox_password}\'',
                 '\'${password_encode}\'',
                 '\'${mailbox}\'',
                 0,
-                '\'${mailbox}@${BILLIONMAIL_HOSTNAME}/\'',
+                '\'${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}/\'',
                 5368709120,
                 '\'${mailbox}\'',
-                '\'${BILLIONMAIL_HOSTNAME}\'',
+                '\'${TETRISNEWSEMAILING_HOSTNAME}\'',
                 '${create_time}',
                 '${create_time}',
                 1
@@ -1239,7 +1239,7 @@ Init_Tetrisnewsemailing()
             else
                 Red_Error "Mailbox creation failed!"
             fi
-            #docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${BILLIONMAIL_HOSTNAME}';"
+            #docker exec -i -e PGPASSWORD=${DBPASS} ${PGSQL_CONTAINER_NAME} psql -U ${DBUSER} -d ${DBNAME} -c "SELECT * FROM mailbox WHERE username = '${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}';"
         else
             echo ""${Check_mailbox}" Mailbox already exists!"
         fi
@@ -1292,8 +1292,8 @@ ADMIN_PASSWORD=${ADMIN_PASSWORD}
 # Manage Safe entrance
 SafePath=${SafePath}
 
-# BILLIONMAIL_HOSTNAME configuration, Postfix myhostname configuration
-BILLIONMAIL_HOSTNAME=${ADD_MAIL_BILLIONMAIL_HOSTNAME}
+# TETRISNEWSEMAILING_HOSTNAME configuration, Postfix myhostname configuration
+TETRISNEWSEMAILING_HOSTNAME=${ADD_MAIL_TETRISNEWSEMAILING_HOSTNAME}
 
 # pgsql NAME and USER and PASSWORD configuration
 
@@ -1324,7 +1324,7 @@ HTTPS_PORT=${HTTPS_PORT}
 # See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for a list of timezones"
 # echo -e "Use a column named "TZ identifier" + note the column named "Notes""
 
-TZ=${BILLIONMAIL_TIME_ZONE}
+TZ=${TETRISNEWSEMAILING_TIME_ZONE}
 
 # Default containers IPV4 intranet segment
 IPV4_NETWORK=172.66.1
@@ -1348,7 +1348,7 @@ EOF
     fi
     openssl genrsa -out ${SSL_path}/key.pem 2048
     openssl req -x509 -new -nodes -key ${SSL_path}/key.pem -sha256 -days 3650 -out ${SSL_path}/cert.pem \
-    -subj "/C=US/ST=State/L=City/O=${BILLIONMAIL_HOSTNAME}/OU=${BILLIONMAIL_HOSTNAME}/CN=*.${BILLIONMAIL_HOSTNAME}" -nodes
+    -subj "/C=US/ST=State/L=City/O=${TETRISNEWSEMAILING_HOSTNAME}/OU=${TETRISNEWSEMAILING_HOSTNAME}/CN=*.${TETRISNEWSEMAILING_HOSTNAME}" -nodes
     mkdir ssl
     cp -d -n ${SSL_path}/* ssl/
 
@@ -1442,7 +1442,7 @@ intenal_ip=$(ip addr | grep -E -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3
 # else
 #     echo -e "Webmail address: \e[1;33mhttps://${IPV4_ADDRESS}:${HTTP_PORT}/roundcube/\e[0m"
 # fi
-# echo -e "Webmail Username(e-mail): \e[1;33m${mailbox}@${BILLIONMAIL_HOSTNAME}\e[0m Password: \e[1;33m${Generate_mailbox_password}\e[0m"
+# echo -e "Webmail Username(e-mail): \e[1;33m${mailbox}@${TETRISNEWSEMAILING_HOSTNAME}\e[0m Password: \e[1;33m${Generate_mailbox_password}\e[0m"
 # echo -e ""
 if [ ${HTTPS_PORT} = "443" ]; then
     echo -e "TetrisNewsEmailing Internet address: \e[1;33mhttps://${IPV4_ADDRESS}/${SafePath}\e[0m"
