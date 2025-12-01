@@ -128,11 +128,11 @@ const columns = [
 		render: (row: any) => (
 			<div class="flex items-center gap-12px">
 				<div class="w-36px h-36px rounded-10px bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-600 text-12px">
-					{row.company.split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase()}
+					{(row.company || row.email || '?').split(' ').map((n: string) => n[0]).join('').substring(0, 2).toUpperCase()}
 				</div>
 				<div>
-					<div class="font-600 text-14px">{row.company}</div>
-					<div class="text-12px text-gray-400">{row.contact}</div>
+					<div class="font-600 text-14px">{row.company || '-'}</div>
+					<div class="text-12px text-gray-400">{row.contact || '-'}</div>
 				</div>
 			</div>
 		),
@@ -143,23 +143,29 @@ const columns = [
 		width: 220,
 	},
 	{
+		title: 'Source',
+		key: 'source_name',
+		width: 130,
+		render: (row: any) => row.source_name ? <NTag size="small" bordered={false}>{row.source_name}</NTag> : '-',
+	},
+	{
 		title: 'Valeur',
 		key: 'value',
 		width: 120,
-		render: (row: any) => <span class="font-600 text-green-600">{formatValue(row.value)}</span>,
+		render: (row: any) => <span class="font-600 text-green-600">{formatValue(row.value || 0)}</span>,
 	},
 	{
 		title: 'Score',
 		key: 'score',
 		width: 140,
-		render: (row: any) => <NRate value={row.score} readonly size="small" />,
+		render: (row: any) => <NRate value={row.score || 0} readonly size="small" />,
 	},
 	{
 		title: 'Statut',
 		key: 'status',
 		width: 130,
 		render: (row: any) => {
-			const config = statusConfig[row.status]
+			const config = statusConfig[row.status] || statusConfig.new
 			return <NTag type={config.type} size="small" round>{config.label}</NTag>
 		},
 	},
@@ -169,7 +175,7 @@ const columns = [
 		width: 160,
 		render: (row: any) => (
 			<NFlex size="small">
-				{row.tags.slice(0, 2).map((tag: string) => (
+				{(row.tags || []).slice(0, 2).map((tag: string) => (
 					<NTag key={tag} size="tiny" bordered={false}>{tag}</NTag>
 				))}
 			</NFlex>
@@ -177,9 +183,9 @@ const columns = [
 	},
 	{
 		title: 'Dernier contact',
-		key: 'lastContact',
+		key: 'last_contact',
 		width: 140,
-		render: (row: any) => row.lastContact ? formatDate(row.lastContact) : '--',
+		render: (row: any) => row.last_contact ? formatDate(row.last_contact * 1000) : '--',
 	},
 	{
 		title: 'Actions',
@@ -201,6 +207,43 @@ const columns = [
 		),
 	},
 ]
+
+// Load functions
+const loadProspects = async () => {
+	loading.value = true
+	try {
+		const res = await getProspectList({ page: 1, page_size: 1000 })
+		if (res.data?.data?.list) {
+			prospects.value = res.data.data.list
+		}
+	} catch (error) {
+		console.error('Failed to load prospects:', error)
+	} finally {
+		loading.value = false
+	}
+}
+
+const loadSources = async () => {
+	try {
+		const res = await getSourceAll()
+		if (res.data?.data?.list) {
+			sources.value = res.data.data.list
+		}
+	} catch (error) {
+		console.error('Failed to load sources:', error)
+	}
+}
+
+const handleImportSuccess = () => {
+	message.success('Import réussi !')
+	loadProspects()
+}
+
+// Load on mount
+onMounted(() => {
+	loadProspects()
+	loadSources()
+})
 </script>
 
 <style lang="scss" scoped>
