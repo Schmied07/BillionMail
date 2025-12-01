@@ -1,6 +1,6 @@
 <div align="center">
   <a name="readme-top"></a>
-  <h1><a href="https://www.billionmail.com/" target="_blank">BillionMail 📧</a></h1>
+  <h1>TETRISNEWS EMAILING 📧</h1>
 
 
 ## An Open-Source MailServer, NewsLetter, Email Marketing Solution for Smarter Campaigns
