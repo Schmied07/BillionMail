@@ -241,9 +241,11 @@ import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import { useMessage } from 'naive-ui'
 import ImportModal from '../components/ImportModal.vue'
-import { getProspectList } from '@/api/modules/prospects'
+import { getProspectList, getSourceAll, createProspect } from '@/api/modules/prospects'
 
 const message = useMessage()
+const sources = ref<any[]>([])
+const loadingSources = ref(false)
 
 interface Prospect {
 	id: string
