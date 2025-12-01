@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "================================"
-echo "BillionMail RoundCube Diagnostics"
+echo "TetrisNewsEmailing RoundCube Diagnostics"
 echo "================================"
 echo ""
 

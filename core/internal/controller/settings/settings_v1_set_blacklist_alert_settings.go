@@ -118,7 +118,7 @@ func testSMTPConnectionWithRelay(ctx context.Context, settings *v1.SetBlacklistA
 func sendTestEmailWithMailService(ctx context.Context, settings *v1.SetBlacklistAlertSettingsReq) error {
 	//g.Log().Infof(ctx, "Sending test email to %v", settings.RecipientList)
 
-	subject := "Blacklist Alert Test - BillionMail"
+	subject := "Blacklist Alert Test - TetrisNewsEmailing"
 	body := buildTestEmailHTML(settings)
 
 	sender := mail_service.NewEmailSender()
@@ -353,7 +353,7 @@ func buildTestEmailHTML(settings *v1.SetBlacklistAlertSettingsReq) string {
 			<div class="footer">
 				<div>
 					<span>Powered by </span>
-					<a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail</a>
+					<a href="https://www.tetrisnewsemailing.com/" target="_blank">TetrisNewsEmailing</a>
 				</div>
 			</div>
 		</div>

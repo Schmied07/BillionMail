@@ -8,7 +8,7 @@ CONTAINER_NAME="tetrisnews-emailing-pgsql-tetrisnewsemailing-1"
 DOVECOT_CONTAINER="tetrisnews-emailing-dovecot-tetrisnewsemailing-1"
 
 echo "================================"
-echo "Création de la mailbox BillionMail"
+echo "Création de la mailbox TetrisNewsEmailing"
 echo "================================"
 echo ""
 echo "Domaine: $DOMAIN"

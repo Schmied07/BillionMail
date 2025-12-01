@@ -232,5 +232,5 @@ dig mail.votredomaine.com
 ## 📞 Support
 
 Pour toute question, consultez:
-- [Documentation BillionMail](https://www.tetrisnewsemailing.com/)
-- [Issues GitHub](https://github.com/aaPanel/BillionMail/issues)
+- [Documentation TetrisNewsEmailing](https://www.tetrisnewsemailing.com/)
+- [Issues GitHub](https://github.com/aaPanel/TetrisNewsEmailing/issues)

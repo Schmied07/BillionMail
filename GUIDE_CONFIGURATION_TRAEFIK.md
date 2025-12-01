@@ -1,9 +1,9 @@
-# 🚀 Guide de Configuration BillionMail avec Traefik
+# 🚀 Guide de Configuration TetrisNewsEmailing avec Traefik
 
 ## 📋 Ce qui a été modifié
 
 ### Problème initial:
-- BillionMail exposait directement les ports 80 et 443
+- TetrisNewsEmailing exposait directement les ports 80 et 443
 - Conflit avec Traefik qui écoute déjà sur ces ports
 - Aucun label Traefik configuré
 - ➡️ Résultat: Application inaccessible (404 Not Found)
@@ -28,7 +28,7 @@ Les fichiers suivants ont été créés:
 ### 2. Exécuter le script d'installation
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 chmod +x fix_traefik_config.sh
 bash fix_traefik_config.sh
 ```
@@ -37,7 +37,7 @@ Le script va:
 1. Sauvegarder votre configuration actuelle
 2. Appliquer la nouvelle configuration
 3. Créer le réseau `web` si nécessaire
-4. Redémarrer les services BillionMail
+4. Redémarrer les services TetrisNewsEmailing
 5. Vérifier que tout fonctionne
 
 ### 3. Attendre la génération du certificat SSL
@@ -48,7 +48,7 @@ Le script va:
 
 ## 🌐 Accès aux applications
 
-### BillionMail (Application principale)
+### TetrisNewsEmailing (Application principale)
 - **URL:** https://emailing.tetrisnews.fr/
 - **Username:** billion
 - **Password:** billion
@@ -64,7 +64,7 @@ Le script va:
 
 Deux méthodes sont disponibles:
 
-### Méthode 1: Via l'interface BillionMail (Recommandé)
+### Méthode 1: Via l'interface TetrisNewsEmailing (Recommandé)
 1. Connectez-vous à https://emailing.tetrisnews.fr/
 2. Allez dans "Domains" → Ajoutez `tetrisnews.fr`
 3. Allez dans "Mailboxes" → Créez `contact@tetrisnews.fr`
@@ -72,7 +72,7 @@ Deux méthodes sont disponibles:
 
 ### Méthode 2: Via script (si l'interface ne fonctionne pas)
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 chmod +x create_mailbox.sh
 bash create_mailbox.sh
 ```
@@ -83,7 +83,7 @@ bash create_mailbox.sh
 
 ### Vérifier que les services tournent:
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 docker compose ps
 ```
 
@@ -101,7 +101,7 @@ Tous les services doivent être "Up":
 docker logs tetrisnews-emailing-core-tetrisnewsemailing-1 --tail 50
 ```
 
-### Vérifier que Traefik voit BillionMail:
+### Vérifier que Traefik voit TetrisNewsEmailing:
 ```bash
 docker logs traefik 2>&1 | grep tetrisnewsemailing
 ```
@@ -120,7 +120,7 @@ Vous devriez voir un code HTTP 200 ou 301/302.
 Si quelque chose ne va pas, restaurez l'ancienne configuration:
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 cp docker-compose.yml.backup docker-compose.yml
 docker compose down
 docker compose up -d
@@ -158,7 +158,7 @@ labels:
 ### Q: RoundCube donne une erreur 401
 **R:** Vous devez d'abord créer une mailbox. Suivez les instructions dans la section "Création d'une mailbox".
 
-### Q: L'interface BillionMail est en anglais
+### Q: L'interface TetrisNewsEmailing est en anglais
 **R:** Vous pouvez changer la langue dans les paramètres après connexion.
 
 ### Q: Je n'arrive pas à me connecter avec billion/billion

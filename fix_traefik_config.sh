@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "========================================="
-echo "Configuration de BillionMail avec Traefik"
+echo "Configuration de TetrisNewsEmailing avec Traefik"
 echo "========================================="
 echo ""
 
-cd ~/BillionMail || cd /app
+cd ~/TetrisNewsEmailing || cd /app
 
 # Backup original docker-compose.yml
 echo "1. Sauvegarde de la configuration actuelle..."
@@ -40,7 +40,7 @@ fi
 echo ""
 
 # Stop services
-echo "4. Arrêt des services BillionMail..."
+echo "4. Arrêt des services TetrisNewsEmailing..."
 docker compose down 2>/dev/null || docker-compose down 2>/dev/null
 echo "✅ Services arrêtés"
 echo ""
@@ -71,7 +71,7 @@ docker compose ps 2>/dev/null || docker-compose ps 2>/dev/null
 echo ""
 
 # Test connection
-echo "8. Test de la connexion à BillionMail..."
+echo "8. Test de la connexion à TetrisNewsEmailing..."
 echo "   Attendez quelques secondes pour que le certificat SSL soit généré..."
 sleep 10
 echo ""
@@ -80,7 +80,7 @@ echo "========================================="
 echo "✅ CONFIGURATION TERMINÉE!"
 echo "========================================="
 echo ""
-echo "🌐 Accédez à BillionMail:"
+echo "🌐 Accédez à TetrisNewsEmailing:"
 echo "   URL: https://emailing.tetrisnews.fr/"
 echo ""
 echo "📧 RoundCube (Webmail):"
@@ -91,7 +91,7 @@ echo "   - Le certificat SSL peut prendre 1-2 minutes pour être généré"
 echo "   - Patientez avant d'accéder au site"
 echo "   - Si vous voyez une erreur SSL, attendez encore quelques instants"
 echo ""
-echo "📝 Identifiants par défaut BillionMail:"
+echo "📝 Identifiants par défaut TetrisNewsEmailing:"
 echo "   Username: billion"
 echo "   Password: billion"
 echo ""

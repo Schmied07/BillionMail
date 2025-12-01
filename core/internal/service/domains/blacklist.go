@@ -768,7 +768,7 @@ func buildBlacklistAlertEmailHTML(ip, domain string, result *model.BlacklistChec
 			<div class="footer">
 				<div>
 					<span>Powered by </span>
-					<a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail</a>
+					<a href="https://www.tetrisnewsemailing.com/" target="_blank">TetrisNewsEmailing</a>
 				</div>
 			</div>
 		</div>

@@ -12,7 +12,7 @@ English | [简体中文](README-zh_CN.md) | [日本語](README-ja.md) | [Türkç
 <br/>
 
 <div align="center">
-<a href="https://trendshift.io/repositories/13842" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13842" alt="aaPanel%2FBillionMail | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+<a href="https://trendshift.io/repositories/13842" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13842" alt="aaPanel%2FTetrisNewsEmailing | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </div>
 
 ## What is TETRISNEWS EMAILING?
@@ -25,7 +25,7 @@ TETRISNEWS EMAILING is a **future open-source Mail server, Email marketing platf
 ### Step 1️⃣ Install TETRISNEWS EMAILING: 
 ✅ It takes **only 8️⃣ minutes** from installation to **✅ successful email sending**
 ```shell
-cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail && bash install.sh
+cd /opt && git clone https://github.com/aaPanel/TetrisNewsEmailing && cd TetrisNewsEmailing && bash install.sh
 ```
 
 
@@ -62,7 +62,7 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
 **Docker**
 ```shell
-cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail && cp env_init .env && docker compose up -d || docker-compose up -d
+cd /opt && git clone https://github.com/aaPanel/TetrisNewsEmailing && cd TetrisNewsEmailing && cp env_init .env && docker compose up -d || docker-compose up -d
 ```
 
 ## Management script
@@ -112,7 +112,7 @@ TETRISNEWS EMAILING is a **community-driven project**, and we need your support 
 
 ## Issues
 
-If you encounter any issues or have feature requests, please [open an issue](https://github.com/aaPanel/BillionMail/issues). Be sure to include:
+If you encounter any issues or have feature requests, please [open an issue](https://github.com/aaPanel/TetrisNewsEmailing/issues). Be sure to include:
 
 - A clear description of the problem or request.
 - Steps to reproduce the issue (if applicable).
@@ -121,13 +121,13 @@ If you encounter any issues or have feature requests, please [open an issue](htt
 ## Install Now:
 ✅It takes **only 8 minutes** from installation to **successful email sending**
 ```shell
-cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail && bash install.sh
+cd /opt && git clone https://github.com/aaPanel/TetrisNewsEmailing && cd TetrisNewsEmailing && bash install.sh
 ```
 
 
 **Install with Docker:** (Please install Docker and docker-compose-plugin manually, and modify .env file)
 ```shell
-cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail && cp env_init .env && docker compose up -d || docker-compose up -d
+cd /opt && git clone https://github.com/aaPanel/TetrisNewsEmailing && cd TetrisNewsEmailing && cp env_init .env && docker compose up -d || docker-compose up -d
 ```
 
 ## Star History
@@ -146,17 +146,17 @@ See the [LICENSE](LICENSE) file for more details.
 
 ---
 
-<!-- BillionMail official link -->
+<!-- TetrisNewsEmailing official link -->
 [docs-link]: https://www.tetrisnewsemailing.com/
 
-<!-- BillionMail Other link-->
+<!-- TetrisNewsEmailing Other link-->
 [license-link]: https://www.gnu.org/licenses/agpl-3.0.html
-[github-release-link]: https://github.com/aaPanel/BillionMail/releases/latest
-[github-stars-link]: https://github.com/aaPanel/BillionMail
-[github-issues-link]: https://github.com/aaPanel/BillionMail/issues
+[github-release-link]: https://github.com/aaPanel/TetrisNewsEmailing/releases/latest
+[github-stars-link]: https://github.com/aaPanel/TetrisNewsEmailing
+[github-issues-link]: https://github.com/aaPanel/TetrisNewsEmailing/issues
 
 <!-- Shield link-->
 [docs-shield]: https://img.shields.io/badge/documentation-148F76
-[github-release-shield]: https://img.shields.io/github/v/release/aaPanel/BillionMail
-[github-stars-shield]: https://img.shields.io/github/stars/aaPanel/BillionMail?color=%231890FF&style=flat-square   
-[license-shield]: https://img.shields.io/github/license/aaPanel/BillionMail
+[github-release-shield]: https://img.shields.io/github/v/release/aaPanel/TetrisNewsEmailing
+[github-stars-shield]: https://img.shields.io/github/stars/aaPanel/TetrisNewsEmailing?color=%231890FF&style=flat-square   
+[license-shield]: https://img.shields.io/github/license/aaPanel/TetrisNewsEmailing
