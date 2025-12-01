@@ -56,8 +56,8 @@ services:
 
     dovecot-tetrisnewsemailing:
       build:
-        context: .
-        dockerfile: Dockerfiles/dovecot/Dockerfile
+        context: ./Dockerfiles/dovecot
+        dockerfile: Dockerfile
       image: tetrisnewsemailing/dovecot:1.6
       hostname: dovecot
       depends_on:
