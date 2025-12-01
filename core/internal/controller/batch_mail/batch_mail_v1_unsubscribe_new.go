@@ -1,13 +1,13 @@
 package batch_mail
 
 import (
-	"billionmail-core/api/batch_mail/v1"
-	"billionmail-core/internal/controller/subscribe_list"
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/batch_mail"
-	"billionmail-core/internal/service/contact_activity"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/batch_mail/v1"
+	"tetrisnewsemailing-core/internal/controller/subscribe_list"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/batch_mail"
+	"tetrisnewsemailing-core/internal/service/contact_activity"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/os/gtimer"

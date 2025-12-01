@@ -1,7 +1,7 @@
 package main
 
 import (
-	"billionmail-core/internal/service/acme"
+	"tetrisnewsemailing-core/internal/service/acme"
 	"os"
 )
 

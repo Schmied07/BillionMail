@@ -1,10 +1,10 @@
 package settings
 
 import (
-	"billionmail-core/api/settings/v1"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
-	"billionmail-core/internal/service/relay"
+	"tetrisnewsemailing-core/api/settings/v1"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/relay"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -353,7 +353,7 @@ func buildTestEmailHTML(settings *v1.SetBlacklistAlertSettingsReq) string {
 			<div class="footer">
 				<div>
 					<span>Powered by </span>
-					<a href="https://www.billionmail.com/" target="_blank">BillionMail</a>
+					<a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail</a>
 				</div>
 			</div>
 		</div>

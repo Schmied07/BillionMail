@@ -1,7 +1,7 @@
 package acme
 
 import (
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/public"
 	"encoding/json"
 	"flag"
 	"fmt"

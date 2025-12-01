@@ -18,18 +18,18 @@ docker-compose ps 2>/dev/null || docker compose ps 2>/dev/null
 echo ""
 echo "2. Checking RoundCube Container Logs (last 30 lines)..."
 echo "-------------------------------------"
-docker-compose logs --tail=30 webmail-billionmail 2>/dev/null || docker compose logs --tail=30 webmail-billionmail 2>/dev/null
+docker-compose logs --tail=30 webmail-tetrisnewsemailing 2>/dev/null || docker compose logs --tail=30 webmail-tetrisnewsemailing 2>/dev/null
 
 echo ""
 echo "3. Checking Dovecot Container Logs (last 30 lines)..."
 echo "-------------------------------------"
-docker-compose logs --tail=30 dovecot-billionmail 2>/dev/null || docker compose logs --tail=30 dovecot-billionmail 2>/dev/null
+docker-compose logs --tail=30 dovecot-tetrisnewsemailing 2>/dev/null || docker compose logs --tail=30 dovecot-tetrisnewsemailing 2>/dev/null
 
 echo ""
 echo "4. Checking PostgreSQL Database for Mail Accounts..."
 echo "-------------------------------------"
-docker-compose exec -T pgsql-billionmail psql -U billionmail -d billionmail -c "SELECT username, domain, active FROM mailbox LIMIT 10;" 2>/dev/null || \
-docker compose exec -T pgsql-billionmail psql -U billionmail -d billionmail -c "SELECT username, domain, active FROM mailbox LIMIT 10;" 2>/dev/null
+docker-compose exec -T pgsql-tetrisnewsemailing psql -U tetrisnewsemailing -d tetrisnewsemailing -c "SELECT username, domain, active FROM mailbox LIMIT 10;" 2>/dev/null || \
+docker compose exec -T pgsql-tetrisnewsemailing psql -U tetrisnewsemailing -d tetrisnewsemailing -c "SELECT username, domain, active FROM mailbox LIMIT 10;" 2>/dev/null
 
 echo ""
 echo "5. Checking RoundCube Configuration..."
@@ -43,8 +43,8 @@ fi
 echo ""
 echo "6. Testing IMAP Connection to Dovecot..."
 echo "-------------------------------------"
-docker-compose exec -T dovecot-billionmail nc -zv localhost 143 2>&1 || \
-docker compose exec -T dovecot-billionmail nc -zv localhost 143 2>&1
+docker-compose exec -T dovecot-tetrisnewsemailing nc -zv localhost 143 2>&1 || \
+docker compose exec -T dovecot-tetrisnewsemailing nc -zv localhost 143 2>&1
 
 echo ""
 echo "================================"

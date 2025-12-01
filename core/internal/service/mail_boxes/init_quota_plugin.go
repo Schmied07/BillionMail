@@ -1,9 +1,9 @@
 package mail_boxes
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/dockerapi"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/dockerapi"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"errors"
 	"fmt"

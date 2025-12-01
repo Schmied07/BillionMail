@@ -132,7 +132,7 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=aapanel/billionmail&type=Date)](https://www.star-history.com/#aapanel/billionmail&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=aapanel/tetrisnewsemailing&type=Date)](https://www.star-history.com/#aapanel/tetrisnewsemailing&Date)
 
 ## License
 
@@ -147,7 +147,7 @@ See the [LICENSE](LICENSE) file for more details.
 ---
 
 <!-- BillionMail official link -->
-[docs-link]: https://www.billionmail.com/
+[docs-link]: https://www.tetrisnewsemailing.com/
 
 <!-- BillionMail Other link-->
 [license-link]: https://www.gnu.org/licenses/agpl-3.0.html

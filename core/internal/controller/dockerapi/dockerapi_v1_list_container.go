@@ -1,8 +1,8 @@
 package dockerapi
 
 import (
-	"billionmail-core/api/dockerapi/v1"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/dockerapi/v1"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 )

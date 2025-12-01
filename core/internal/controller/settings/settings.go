@@ -5,9 +5,9 @@
 package settings
 
 import (
-	v1 "billionmail-core/api/settings/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	v1 "tetrisnewsemailing-core/api/settings/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
@@ -197,7 +197,7 @@ func validateConfigValue(key, value string) error {
 			return fmt.Errorf("password length must be at least 4 characters")
 		}
 
-	case "BILLIONMAIL_HOSTNAME", "billionmail_hostname":
+	case "BILLIONMAIL_HOSTNAME", "tetrisnewsemailing_hostname":
 		// Hostname: allowed letters, numbers, dots, hyphens
 		if !public.IsValidHostname(value) {
 			return fmt.Errorf("hostname format is incorrect")

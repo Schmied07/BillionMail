@@ -1,13 +1,13 @@
 package settings
 
 import (
-	"billionmail-core/internal/consts"
+	"tetrisnewsemailing-core/internal/consts"
 	"context"
 	"github.com/gogf/gf/os/gtimer"
 	"time"
 
-	"billionmail-core/api/settings/v1"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/settings/v1"
+	"tetrisnewsemailing-core/internal/service/public"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
 	"strings"
@@ -82,7 +82,7 @@ func convertJsonKeyToEnvKey(jsonKey string, value string, envMap map[string]stri
 		"admin_username":       "ADMIN_USERNAME",
 		"admin_password":       "ADMIN_PASSWORD",
 		"safe_path":            "SafePath",
-		"billionmail_hostname": "BILLIONMAIL_HOSTNAME",
+		"tetrisnewsemailing_hostname": "BILLIONMAIL_HOSTNAME",
 		"db_name":              "DBNAME",
 		"db_user":              "DBUSER",
 		"db_pass":              "DBPASS",

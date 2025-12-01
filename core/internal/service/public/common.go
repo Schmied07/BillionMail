@@ -1,9 +1,9 @@
 package public
 
 import (
-	v1 "billionmail-core/api/domains/v1"
-	docker "billionmail-core/internal/service/dockerapi"
-	"billionmail-core/utility/types/api_v1"
+	v1 "tetrisnewsemailing-core/api/domains/v1"
+	docker "tetrisnewsemailing-core/internal/service/dockerapi"
+	"tetrisnewsemailing-core/utility/types/api_v1"
 	"bufio"
 	"context"
 	"crypto/md5"
@@ -43,7 +43,7 @@ import (
 
 	"github.com/g0rbe/go-chattr"
 
-	"billionmail-core/internal/consts"
+	"tetrisnewsemailing-core/internal/consts"
 )
 
 // Check if it is a development environment

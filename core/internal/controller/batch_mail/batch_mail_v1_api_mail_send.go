@@ -1,10 +1,10 @@
 package batch_mail
 
 import (
-	"billionmail-core/api/batch_mail/v1"
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/batch_mail/v1"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"database/sql"
 	"errors"

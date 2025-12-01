@@ -1,9 +1,9 @@
 package batch_mail
 
 import (
-	"billionmail-core/api/batch_mail/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/batch_mail/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"

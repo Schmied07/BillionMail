@@ -1,10 +1,10 @@
 package domains
 
 import (
-	"billionmail-core/api/domains/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/domains/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/errors/gerror"
 )

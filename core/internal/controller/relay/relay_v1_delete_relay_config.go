@@ -1,10 +1,10 @@
 package relay
 
 import (
-	"billionmail-core/api/relay/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
-	"billionmail-core/internal/service/relay"
+	"tetrisnewsemailing-core/api/relay/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/relay"
 	"context"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"

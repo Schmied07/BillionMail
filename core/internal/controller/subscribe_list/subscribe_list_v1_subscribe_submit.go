@@ -1,10 +1,10 @@
 package subscribe_list
 
 import (
-	"billionmail-core/api/subscribe_list/v1"
-	"billionmail-core/internal/service/contact_activity"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/subscribe_list/v1"
+	"tetrisnewsemailing-core/internal/service/contact_activity"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/os/gtimer"

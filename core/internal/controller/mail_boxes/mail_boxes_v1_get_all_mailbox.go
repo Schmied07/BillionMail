@@ -1,9 +1,9 @@
 package mail_boxes
 
 import (
-	"billionmail-core/api/mail_boxes/v1"
-	"billionmail-core/internal/service/mail_boxes"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/mail_boxes/v1"
+	"tetrisnewsemailing-core/internal/service/mail_boxes"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 )

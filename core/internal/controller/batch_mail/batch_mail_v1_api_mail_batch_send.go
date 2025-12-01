@@ -1,15 +1,15 @@
 package batch_mail
 
 import (
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
 	"strings"
 	"time"
 
-	"billionmail-core/api/batch_mail/v1"
+	"tetrisnewsemailing-core/api/batch_mail/v1"
 )
 
 func (c *ControllerV1) ApiMailBatchSend(ctx context.Context, req *v1.ApiMailBatchSendReq) (res *v1.ApiMailBatchSendRes, err error) {

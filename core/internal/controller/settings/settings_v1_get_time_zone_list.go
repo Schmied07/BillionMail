@@ -1,8 +1,8 @@
 package settings
 
 import (
-	"billionmail-core/api/settings/v1"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/settings/v1"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"encoding/json"
 	"github.com/gogf/gf/v2/os/gfile"

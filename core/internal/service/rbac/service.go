@@ -1,7 +1,7 @@
 package rbac
 
 import (
-	"billionmail-core/internal/model"
+	"tetrisnewsemailing-core/internal/model"
 	"context"
 )
 

@@ -1,6 +1,6 @@
 <div align="center">
   <a name="readme-top"></a>
-  <h1><a href="https://www.billionmail.com/" target="_blank">BillionMail 📧</a></h1>
+  <h1><a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail 📧</a></h1>
 
 
 ## Daha Akıllı Kampanyalar İçin Açık Kaynaklı Bir Posta Sunucusu, Bülten ve E-posta Pazarlama Çözümü
@@ -19,7 +19,7 @@ English | [简体中文](README-zh_CN.md) | [日本語](README-ja.md) | [Türkç
 
 BillionMail, işletmelerin ve bireylerin e-posta kampanyalarını kolayca yönetmelerine yardımcı olmak için tasarlanmış **geleceğe yönelik açık kaynaklı bir Posta sunucusu ve E-posta pazarlama platformudur**. İster bültenler, ister tanıtım e-postaları veya işlem mesajları gönderiyor olun, bu araç e-posta pazarlama çabalarınız üzerinde **tam kontrol sağlar**. **Gelişmiş analitik** ve **müşteri yönetimi** gibi özelliklerle, e-postaları bir profesyonel gibi oluşturabilir, gönderebilir ve takip edebilirsiniz.
 
-![BillionMail Banner](https://www.billionmail.com/home.png?v1)
+![BillionMail Banner](https://www.tetrisnewsemailing.com/home.png?v1)
 
 # Bir Milyar E-posta Göndermek İçin Sadece 3 Adım!
 **Bir milyar e-posta. Her işletme. Garantili.**
@@ -86,11 +86,11 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
   `bm update`
 
 ## Canlı Demo
-BillionMail Demo: [https://demo.billionmail.com/billionmail](https://demo.billionmail.com/billionmail)
+BillionMail Demo: [https://demo.tetrisnewsemailing.com/tetrisnewsemailing](https://demo.tetrisnewsemailing.com/tetrisnewsemailing)
 
-Kullanıcı Adı: `billionmail` 
+Kullanıcı Adı: `tetrisnewsemailing` 
 
-Şifre: `billionmail` 
+Şifre: `tetrisnewsemailing` 
 
 
 ## WebMail
@@ -143,7 +143,7 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
 ## Yıldız Geçmişi
 
-[![Star History Chart](https://api.star-history.com/svg?repos=aapanel/billionmail&type=Date)](https://www.star-history.com/#aapanel/billionmail&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=aapanel/tetrisnewsemailing&type=Date)](https://www.star-history.com/#aapanel/tetrisnewsemailing&Date)
 
 ## Lisans
 
@@ -158,7 +158,7 @@ Daha fazla ayrıntı için [LICENSE](LICENSE) dosyasına bakın.
 ---
 
 <!-- BillionMail official link -->
-[docs-link]: https://www.billionmail.com/
+[docs-link]: https://www.tetrisnewsemailing.com/
 
 <!-- BillionMail Other link-->
 [license-link]: https://www.gnu.org/licenses/agpl-3.0.html

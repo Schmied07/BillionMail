@@ -1,8 +1,8 @@
 package database_initialization
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/database/gdb"
@@ -26,9 +26,9 @@ func InitDatabase() (err error) {
 			gdb.ConfigNode{
 				// Debug: true,
 				Host:             public.AbsPath(consts.POSTGRESQL_SOCK),
-				User:             "billionmail",
+				User:             "tetrisnewsemailing",
 				Pass:             dbPass,
-				Name:             "billionmail",
+				Name:             "tetrisnewsemailing",
 				Type:             "pgsql",
 				Role:             "master",
 				MaxOpenConnCount: 100,

@@ -37,15 +37,15 @@ echo "2. Construction de l'image Docker locale..."
 echo "========================================"
 
 # Reconstruction de l'image avec un tag personnalisé pour éviter les conflits
-docker build -f Dockerfiles/core/Dockerfile -t billionmail/core:custom .
+docker build -f Dockerfiles/core/Dockerfile -t tetrisnewsemailing/core:custom .
 
 echo ""
 echo "========================================"
-echo "3. Redémarrage du service core-billionmail..."
+echo "3. Redémarrage du service core-tetrisnewsemailing..."
 echo "========================================"
 
 # Redémarrage du conteneur spécifique avec la nouvelle image
-$DOCKER_COMPOSE -f docker-compose.traefik-fixed.yml up -d core-billionmail
+$DOCKER_COMPOSE -f docker-compose.traefik-fixed.yml up -d core-tetrisnewsemailing
 
 echo ""
 echo "========================================"
@@ -53,7 +53,7 @@ echo "4. Nettoyage des anciennes versions..."
 echo "========================================"
 
 # Supprime explicitement l'image originale si elle existe encore
-docker rmi billionmail/core:4.8.3 2>/dev/null || true
+docker rmi tetrisnewsemailing/core:4.8.3 2>/dev/null || true
 
 # Supprime les images "dangling" (l'ancienne version qui a été remplacée)
 docker image prune -f

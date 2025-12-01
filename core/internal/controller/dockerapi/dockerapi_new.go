@@ -5,7 +5,7 @@
 package dockerapi
 
 import (
-	"billionmail-core/api/dockerapi"
+	"tetrisnewsemailing-core/api/dockerapi"
 )
 
 type ControllerV1 struct{}

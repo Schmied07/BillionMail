@@ -5,7 +5,7 @@
 package contact
 
 import (
-	"billionmail-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/model/entity"
 	"bytes"
 	"encoding/csv"
 	"fmt"

@@ -5,7 +5,7 @@
 package relay
 
 import (
-	"billionmail-core/api/relay"
+	"tetrisnewsemailing-core/api/relay"
 )
 
 type ControllerV1 struct{}

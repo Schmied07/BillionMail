@@ -9,7 +9,7 @@
 - ➡️ Résultat: Application inaccessible (404 Not Found)
 
 ### Solution appliquée:
-✅ Ajout des labels Traefik au service `core-billionmail`  
+✅ Ajout des labels Traefik au service `core-tetrisnewsemailing`  
 ✅ Connexion au réseau `web` de Traefik  
 ✅ Suppression de l'exposition directe des ports 80/443  
 ✅ Configuration du certificat SSL automatique (Let's Encrypt)  
@@ -88,22 +88,22 @@ docker compose ps
 ```
 
 Tous les services doivent être "Up":
-- ✅ pgsql-billionmail
-- ✅ redis-billionmail
-- ✅ rspamd-billionmail
-- ✅ dovecot-billionmail
-- ✅ postfix-billionmail
-- ✅ webmail-billionmail
-- ✅ core-billionmail
+- ✅ pgsql-tetrisnewsemailing
+- ✅ redis-tetrisnewsemailing
+- ✅ rspamd-tetrisnewsemailing
+- ✅ dovecot-tetrisnewsemailing
+- ✅ postfix-tetrisnewsemailing
+- ✅ webmail-tetrisnewsemailing
+- ✅ core-tetrisnewsemailing
 
 ### Vérifier les logs du service core:
 ```bash
-docker logs tetrisnews-emailing-core-billionmail-1 --tail 50
+docker logs tetrisnews-emailing-core-tetrisnewsemailing-1 --tail 50
 ```
 
 ### Vérifier que Traefik voit BillionMail:
 ```bash
-docker logs traefik 2>&1 | grep billionmail
+docker logs traefik 2>&1 | grep tetrisnewsemailing
 ```
 
 ### Tester la connexion:
@@ -134,15 +134,15 @@ docker compose up -d
 ```yaml
 labels:
   - "traefik.enable=true"
-  - "traefik.http.routers.billionmail.rule=Host(`emailing.tetrisnews.fr`)"
-  - "traefik.http.routers.billionmail.entrypoints=websecure"
-  - "traefik.http.routers.billionmail.tls.certresolver=myresolver"
-  - "traefik.http.services.billionmail.loadbalancer.server.port=80"
+  - "traefik.http.routers.tetrisnewsemailing.rule=Host(`emailing.tetrisnews.fr`)"
+  - "traefik.http.routers.tetrisnewsemailing.entrypoints=websecure"
+  - "traefik.http.routers.tetrisnewsemailing.tls.certresolver=myresolver"
+  - "traefik.http.services.tetrisnewsemailing.loadbalancer.server.port=80"
   - "traefik.docker.network=web"
 ```
 
 ### Réseaux:
-- `billionmail-network` - Réseau interne pour la communication entre services
+- `tetrisnewsemailing-network` - Réseau interne pour la communication entre services
 - `web` - Réseau Traefik pour l'exposition externe
 
 ---
@@ -173,7 +173,7 @@ Si vous rencontrez des problèmes:
 1. Vérifiez les logs: `docker compose logs`
 2. Vérifiez l'état des services: `docker compose ps`
 3. Vérifiez la configuration Traefik: `docker logs traefik`
-4. Consultez la documentation officielle: https://www.billionmail.com/
+4. Consultez la documentation officielle: https://www.tetrisnewsemailing.com/
 
 ---
 

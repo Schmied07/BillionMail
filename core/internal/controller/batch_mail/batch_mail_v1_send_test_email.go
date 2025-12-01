@@ -1,21 +1,21 @@
 package batch_mail
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/batch_mail"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/batch_mail"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/mail_service"
 	"database/sql"
 	"strings"
 
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
 
-	"billionmail-core/api/batch_mail/v1"
+	"tetrisnewsemailing-core/api/batch_mail/v1"
 )
 
 func (c *ControllerV1) SendTestEmail(ctx context.Context, req *v1.SendTestEmailReq) (res *v1.SendTestEmailRes, err error) {

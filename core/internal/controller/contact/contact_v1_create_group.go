@@ -1,10 +1,10 @@
 package contact
 
 import (
-	"billionmail-core/api/contact/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/contact"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/contact/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/contact"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/errors/gerror"
 )

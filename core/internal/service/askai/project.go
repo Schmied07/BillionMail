@@ -1,7 +1,7 @@
 package askai
 
 import (
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/public"
 	"encoding/json"
 	"fmt"
 	"net/url"
@@ -13,7 +13,7 @@ import (
 
 const (
 	PRODUCT_CONFIG_PATH = "../conf/askai"
-	FILE_CDN_API        = "https://cdn.billionmail.com" // CDN API for file access
+	FILE_CDN_API        = "https://cdn.tetrisnewsemailing.com" // CDN API for file access
 )
 
 type KnowledgeInfo struct {

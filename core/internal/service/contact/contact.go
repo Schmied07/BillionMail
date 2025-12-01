@@ -1,8 +1,8 @@
 package contact
 
 import (
-	v1 "billionmail-core/api/contact/v1"
-	"billionmail-core/internal/model/entity"
+	v1 "tetrisnewsemailing-core/api/contact/v1"
+	"tetrisnewsemailing-core/internal/model/entity"
 	"context"
 	"database/sql"
 	"encoding/json"

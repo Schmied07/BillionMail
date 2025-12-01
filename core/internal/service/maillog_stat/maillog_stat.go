@@ -1,8 +1,8 @@
 package maillog_stat
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"errors"
 	"fmt"

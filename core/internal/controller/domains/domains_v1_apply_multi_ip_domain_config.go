@@ -1,15 +1,15 @@
 package domains
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/multi_ip_domain"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/multi_ip_domain"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"billionmail-core/api/domains/v1"
+	"tetrisnewsemailing-core/api/domains/v1"
 )
 
 func (c *ControllerV1) ApplyMultiIPDomainConfig(ctx context.Context, req *v1.ApplyMultiIPDomainConfigReq) (res *v1.ApplyMultiIPDomainConfigRes, err error) {

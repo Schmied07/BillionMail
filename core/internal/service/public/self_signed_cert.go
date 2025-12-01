@@ -1,7 +1,7 @@
 package public
 
 import (
-	"billionmail-core/internal/consts"
+	"tetrisnewsemailing-core/internal/consts"
 	"context"
 	"crypto/rand"
 	"crypto/rsa"
@@ -161,7 +161,7 @@ func (sp *selfSignedCertProvider) generateCACertTemplate() *x509.Certificate {
 		IsCA:                  true,                                                                       // Is CA certificate
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth}, // Certificate purposes
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
-		EmailAddresses:        []string{"billionmail@aapanel.com"},
+		EmailAddresses:        []string{"tetrisnewsemailing@aapanel.com"},
 	}
 
 	return cer
@@ -195,7 +195,7 @@ func (sp *selfSignedCertProvider) generateCertTemplate() *x509.Certificate {
 		IsCA:                  false,                                                                      // Is CA certificate
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth}, // Certificate purposes
 		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageDataEncipherment,
-		EmailAddresses:        []string{"billionmail@aapanel.com"},
+		EmailAddresses:        []string{"tetrisnewsemailing@aapanel.com"},
 		IPAddresses:           []net.IP{net.ParseIP(serverIp), net.ParseIP(localIp)}, // Supported IP addresses
 		DNSNames:              []string{},                                            // Supported domains
 	}

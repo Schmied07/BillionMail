@@ -1,8 +1,8 @@
 package prospect
 
 import (
-	v1 "billionmail-core/api/prospect/v1"
-	"billionmail-core/internal/service/public"
+	v1 "tetrisnewsemailing-core/api/prospect/v1"
+	"tetrisnewsemailing-core/internal/service/public"
 	"bytes"
 	"context"
 	"encoding/base64"

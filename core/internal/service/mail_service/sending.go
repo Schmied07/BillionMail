@@ -1,7 +1,7 @@
 package mail_service
 
 import (
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/public"
 	"bytes"
 	"context"
 	"crypto/tls"
@@ -295,7 +295,7 @@ func (e *EmailSender) GenerateMessageID() string {
 	timestampMillis := time.Now().UnixMilli()
 
 	domain := strings.SplitN(e.Email, "@", 2)
-	domainPart := "billionmail"
+	domainPart := "tetrisnewsemailing"
 	if len(domain) > 1 {
 		domainPart = domain[1]
 	}

@@ -1,14 +1,14 @@
 package tags
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/frame/g"
 
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"billionmail-core/api/tags/v1"
+	"tetrisnewsemailing-core/api/tags/v1"
 )
 
 func (c *ControllerV1) TagUpdate(ctx context.Context, req *v1.TagUpdateReq) (res *v1.TagUpdateRes, err error) {

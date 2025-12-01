@@ -1,15 +1,15 @@
 package mail_boxes
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"billionmail-core/api/mail_boxes/v1"
-	"billionmail-core/internal/service/mail_boxes"
+	"tetrisnewsemailing-core/api/mail_boxes/v1"
+	"tetrisnewsemailing-core/internal/service/mail_boxes"
 )
 
 func (c *ControllerV1) DeleteMailbox(ctx context.Context, req *v1.DeleteMailboxReq) (res *v1.DeleteMailboxRes, err error) {

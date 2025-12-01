@@ -1,10 +1,10 @@
 package mail_services
 
 import (
-	"billionmail-core/api/mail_services/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/mail_services/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/frame/g"
 	"time"

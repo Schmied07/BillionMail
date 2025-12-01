@@ -1,8 +1,8 @@
 package operation_log
 
 import (
-	"billionmail-core/api/operation_log/v1"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/operation_log/v1"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 )
 

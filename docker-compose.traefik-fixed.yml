@@ -1,7 +1,7 @@
 name: tetrisnews-emailing
 
 services:
-    pgsql-billionmail:
+    pgsql-tetrisnewsemailing:
       image: postgres:17.4-alpine
       hostname: pgsql
       volumes:
@@ -16,11 +16,11 @@ services:
       ports:
         - "${SQL_PORT:-127.0.0.1:25432}:5432"
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - pgsql
 
-    redis-billionmail:
+    redis-tetrisnewsemailing:
       image: redis:7.4.2-alpine
       hostname: redis
       entrypoint: ["/bin/sh","/redis-conf.sh"]
@@ -36,15 +36,15 @@ services:
       sysctls:
         - net.core.somaxconn=4096
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - redis
 
-    rspamd-billionmail:
-      image: billionmail/rspamd:1.2
+    rspamd-tetrisnewsemailing:
+      image: tetrisnewsemailing/rspamd:1.2
       hostname: rspamd
       depends_on:
-        - redis-billionmail
+        - redis-tetrisnewsemailing
       environment:
         - TZ=${TZ}
         - REDISPASS=${REDISPASS}
@@ -57,16 +57,16 @@ services:
         - ./logs/rspamd:/var/log/rspamd
       restart: always
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - rspamd
 
-    dovecot-billionmail:
-      image: billionmail/dovecot:1.6
+    dovecot-tetrisnewsemailing:
+      image: tetrisnewsemailing/dovecot:1.6
       hostname: dovecot
       depends_on:
-        - pgsql-billionmail
-        - redis-billionmail
+        - pgsql-tetrisnewsemailing
+        - redis-tetrisnewsemailing
       cap_add:
         - NET_BIND_SERVICE
       volumes:
@@ -99,15 +99,15 @@ services:
           soft: 20000
           hard: 40000
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - dovecot
 
-    postfix-billionmail:
-      image: billionmail/postfix:1.6
+    postfix-tetrisnewsemailing:
+      image: tetrisnewsemailing/postfix:1.6
       hostname: postfix
       depends_on:
-        pgsql-billionmail:
+        pgsql-tetrisnewsemailing:
           condition: service_started
       volumes:
         - ./conf/postfix/main.cf:/etc/postfix/main.cf
@@ -136,18 +136,18 @@ services:
         - "${SUBMISSION_PORT:-587}:587"
       restart: always
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - postfix
 
 
-    webmail-billionmail:
+    webmail-tetrisnewsemailing:
       image: roundcube/roundcubemail:1.6.11-fpm-alpine
       hostname: roundcube
       depends_on:
-        - pgsql-billionmail
-        - dovecot-billionmail
-        - postfix-billionmail
+        - pgsql-tetrisnewsemailing
+        - dovecot-tetrisnewsemailing
+        - postfix-tetrisnewsemailing
       volumes:
         - ./webmail-data:/var/www/html
         - ./conf/webmail/mime.types:/var/roundcube/config/mime.types
@@ -168,33 +168,33 @@ services:
         - ROUNDCUBEMAIL_REQUEST_PATH=/roundcube
       restart: always
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - webmail
 
-    core-billionmail:
-      image: billionmail/core:custom
+    core-tetrisnewsemailing:
+      image: tetrisnewsemailing/core:custom
       hostname: core-manage
       depends_on:
-        - pgsql-billionmail
+        - pgsql-tetrisnewsemailing
       volumes:
         - ./ssl:/etc/ssl/mail
         - ./ssl-self-signed:/etc/ssl/ssl-self-signed
         - ./conf/core/fail2ban/filter.d:/etc/fail2ban/filter.d
         - ./conf/core/fail2ban/jail.d:/etc/fail2ban/jail.d
         - ./logs/fail2ban:/var/log/fail2ban
-        - ./postgresql-socket:/opt/billionmail/postgresql-socket
-        - ./php-sock:/opt/billionmail/php-sock
-        - ./rspamd-data:/opt/billionmail/rspamd-data
-        - ./webmail-data:/opt/billionmail/webmail-data
-        - ./.env:/opt/billionmail/.env
-        - ./conf:/opt/billionmail/conf
-        - ./logs:/opt/billionmail/logs
-        - ./logs/core:/opt/billionmail/core/logs
-        - ./core-data:/opt/billionmail/core/data
+        - ./postgresql-socket:/opt/tetrisnewsemailing/postgresql-socket
+        - ./php-sock:/opt/tetrisnewsemailing/php-sock
+        - ./rspamd-data:/opt/tetrisnewsemailing/rspamd-data
+        - ./webmail-data:/opt/tetrisnewsemailing/webmail-data
+        - ./.env:/opt/tetrisnewsemailing/.env
+        - ./conf:/opt/tetrisnewsemailing/conf
+        - ./logs:/opt/tetrisnewsemailing/logs
+        - ./logs/core:/opt/tetrisnewsemailing/core/logs
+        - ./core-data:/opt/tetrisnewsemailing/core/data
         - /var/run/docker.sock:/var/run/docker.sock:ro
-        - ./vmail-data:/opt/billionmail/vmail-data
-        - ./core/public/dist:/opt/billionmail/core/public/dist
+        - ./vmail-data:/opt/tetrisnewsemailing/vmail-data
+        - ./core/public/dist:/opt/tetrisnewsemailing/core/public/dist
       environment:
         - TZ=${TZ}
         - FAIL2BAN_INIT=${FAIL2BAN_INIT:-y}
@@ -204,23 +204,23 @@ services:
         - NET_RAW
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.billionmail.rule=Host(`emailing.tetrisnews.fr`)"
-        - "traefik.http.routers.billionmail.entrypoints=websecure"
-        - "traefik.http.routers.billionmail.tls.certresolver=myresolver"
-        - "traefik.http.services.billionmail.loadbalancer.server.port=80"
+        - "traefik.http.routers.tetrisnewsemailing.rule=Host(`emailing.tetrisnews.fr`)"
+        - "traefik.http.routers.tetrisnewsemailing.entrypoints=websecure"
+        - "traefik.http.routers.tetrisnewsemailing.tls.certresolver=myresolver"
+        - "traefik.http.services.tetrisnewsemailing.loadbalancer.server.port=80"
         - "traefik.docker.network=web"
       restart: always
       networks:
-        billionmail-network:
+        tetrisnewsemailing-network:
           aliases:
             - core
         web:
 
 networks:
-  billionmail-network:
+  tetrisnewsemailing-network:
     driver: bridge
     driver_opts:
-      com.docker.network.bridge.name: br-billionmail
+      com.docker.network.bridge.name: br-tetrisnewsemailing
     ipam:
       driver: default
       config:

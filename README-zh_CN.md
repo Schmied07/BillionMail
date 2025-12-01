@@ -1,6 +1,6 @@
 <div align="center">
   <a name="readme-top"></a>
-  <h1><a href="https://www.billionmail.com/" target="_blank">BillionMail 📧</a></h1>
+  <h1><a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail 📧</a></h1>
 
 
 ## 一个开源的邮件服务器，为智能营销提供电子邮件解决方案
@@ -16,17 +16,17 @@
 </div>
 
 ## 在线演示
-BillionMail 演示: [https://demo.billionmail.com/billionmail](https://demo.billionmail.com/billionmail)
+BillionMail 演示: [https://demo.tetrisnewsemailing.com/tetrisnewsemailing](https://demo.tetrisnewsemailing.com/tetrisnewsemailing)
 
-用户名: `billionmail` 
+用户名: `tetrisnewsemailing` 
 
-密码: `billionmail` 
+密码: `tetrisnewsemailing` 
 
 ## 什么是 BillionMail？
 
 BillionMail 是一个**未来的开源邮件服务器和电子邮件营销平台**，旨在帮助企业和个人轻松管理他们的电子邮件营销活动。无论您是发送新闻通讯、促销邮件还是交易消息，这个工具都将为您的电子邮件营销工作提供**完全控制**。通过**高级分析**和**客户管理**等功能，您将能够像专业人士一样创建、发送和跟踪电子邮件。
 
-![BillionMail Banner](https://www.billionmail.com/home.png?v1)
+![BillionMail Banner](https://www.tetrisnewsemailing.com/home.png?v1)
 
 ## 如何使用？
 **安装脚本：** (✅该脚本会自动安装所有必需的运行环境，包括Docker)
@@ -116,7 +116,7 @@ BillionMail根据**AGPLv3许可证**授权。这意味着您可以：
 
 
 <!-- BillionMail official link -->
-[docs-link]: https://www.billionmail.com/
+[docs-link]: https://www.tetrisnewsemailing.com/
 
 <!-- BillionMail Other link-->
 [license-link]: https://www.gnu.org/licenses/gpl-3.0.html

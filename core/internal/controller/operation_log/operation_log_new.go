@@ -5,7 +5,7 @@
 package operation_log
 
 import (
-	"billionmail-core/api/operation_log"
+	"tetrisnewsemailing-core/api/operation_log"
 )
 
 type ControllerV1 struct{}

@@ -4,11 +4,11 @@ export PATH
 
 # Add domain name and email
 
-CONTAINER_PROJECT_NAME=billionmail
-PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-billionmail-1"
-DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-billionmail-1"
-POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-billionmail-1"
-RSPAMD_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-rspamd-billionmail-1"
+CONTAINER_PROJECT_NAME=tetrisnewsemailing
+PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-tetrisnewsemailing-1"
+DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-tetrisnewsemailing-1"
+POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-tetrisnewsemailing-1"
+RSPAMD_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-rspamd-tetrisnewsemailing-1"
 create_time=$(date +%s)
 time=$(date +%Y_%m_%d_%H_%M_%S)
 
@@ -88,23 +88,23 @@ GET_SERVICE_NAME() {
         #echo "Getting the "${SERVICE}" service..."
         SERVICE_NAME=$(${DOCKER_COMPOSE} ps -a --format " {{.Service}} {{.ID}} {{.Image}}" |grep "/core:" | awk '{print $1}' )
     
-    elif [[ "${SERVICE}" == "postfix" ]] || [[ "${SERVICE}" == "postfix-billionmail" ]]; then
-        SERVICE_NAME="postfix-billionmail"
+    elif [[ "${SERVICE}" == "postfix" ]] || [[ "${SERVICE}" == "postfix-tetrisnewsemailing" ]]; then
+        SERVICE_NAME="postfix-tetrisnewsemailing"
     
-    elif [[ "${SERVICE}" == "dovecot" ]] || [[ "${SERVICE}" == "dovecot-billionmail" ]]; then
-        SERVICE_NAME="dovecot-billionmail"
+    elif [[ "${SERVICE}" == "dovecot" ]] || [[ "${SERVICE}" == "dovecot-tetrisnewsemailing" ]]; then
+        SERVICE_NAME="dovecot-tetrisnewsemailing"
     
-    elif [[ "${SERVICE}" == "rspamd" ]] || [[ "${SERVICE}" == "rspamd-billionmail" ]]; then
-        SERVICE_NAME="rspamd-billionmail"
+    elif [[ "${SERVICE}" == "rspamd" ]] || [[ "${SERVICE}" == "rspamd-tetrisnewsemailing" ]]; then
+        SERVICE_NAME="rspamd-tetrisnewsemailing"
     
-    elif [[ "${SERVICE}" == "pgsql" ]] || [[ "${SERVICE}" == "postgres" ]] || [[ "${SERVICE}" == "pgsql-billionmail" ]]; then
-        SERVICE_NAME="pgsql-billionmail"
+    elif [[ "${SERVICE}" == "pgsql" ]] || [[ "${SERVICE}" == "postgres" ]] || [[ "${SERVICE}" == "pgsql-tetrisnewsemailing" ]]; then
+        SERVICE_NAME="pgsql-tetrisnewsemailing"
     
-    elif [[ "${SERVICE}" == "redis" ]] || [[ "${SERVICE}" == "redis-billionmail" ]]; then
-        SERVICE_NAME="redis-billionmail"
+    elif [[ "${SERVICE}" == "redis" ]] || [[ "${SERVICE}" == "redis-tetrisnewsemailing" ]]; then
+        SERVICE_NAME="redis-tetrisnewsemailing"
 
-    elif [[ "${SERVICE}" == "webmail" ]] || [[ "${SERVICE}" == "roundcube" ]] || [[ "${SERVICE}" == "webmail-billionmail" ]]; then
-        SERVICE_NAME="webmail-billionmail"
+    elif [[ "${SERVICE}" == "webmail" ]] || [[ "${SERVICE}" == "roundcube" ]] || [[ "${SERVICE}" == "webmail-tetrisnewsemailing" ]]; then
+        SERVICE_NAME="webmail-tetrisnewsemailing"
     
     else
         echo "Please use: core|postfix|dovecot|rspamd|pgsql|redis|webmail"
@@ -128,22 +128,22 @@ GET_CONTAINER_ID() {
     if [[ "${CONTAINER}" == "core" ]] || [[ "${CONTAINER}" == "manage" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "/core:" | awk '{print $1}' )
     
-    elif [[ ""${CONTAINER}"" == "postfix" ]] || [[ ""${CONTAINER}"" == "postfix-billionmail" ]]; then
+    elif [[ ""${CONTAINER}"" == "postfix" ]] || [[ ""${CONTAINER}"" == "postfix-tetrisnewsemailing" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "/postfix:" | awk '{print $1}' )
     
-    elif [[ ""${CONTAINER}"" == "dovecot" ]] || [[ ""${CONTAINER}"" == "dovecot-billionmail" ]]; then
+    elif [[ ""${CONTAINER}"" == "dovecot" ]] || [[ ""${CONTAINER}"" == "dovecot-tetrisnewsemailing" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "/dovecot:" | awk '{print $1}' )
     
-    elif [[ ""${CONTAINER}"" == "rspamd" ]] || [[ ""${CONTAINER}"" == "rspamd-billionmail" ]]; then
+    elif [[ ""${CONTAINER}"" == "rspamd" ]] || [[ ""${CONTAINER}"" == "rspamd-tetrisnewsemailing" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "/rspamd:" | awk '{print $1}' )
     
-    elif [[ ""${CONTAINER}"" == "pgsql" ]] || [[ ""${CONTAINER}"" == "postgres" ]] || [[ ""${CONTAINER}"" == "pgsql-billionmail" ]]; then
+    elif [[ ""${CONTAINER}"" == "pgsql" ]] || [[ ""${CONTAINER}"" == "postgres" ]] || [[ ""${CONTAINER}"" == "pgsql-tetrisnewsemailing" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "postgres:" | awk '{print $1}' )
     
-    elif [[ ""${CONTAINER}"" == "redis" ]] || [[ ""${CONTAINER}"" == "redis-billionmail" ]]; then
+    elif [[ ""${CONTAINER}"" == "redis" ]] || [[ ""${CONTAINER}"" == "redis-tetrisnewsemailing" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "redis:" | awk '{print $1}' )
 
-    elif [[ ""${CONTAINER}"" == "webmail" ]] || [[ ""${CONTAINER}"" == "roundcube" ]] || [[ ""${CONTAINER}"" == "webmail-billionmail" ]]; then
+    elif [[ ""${CONTAINER}"" == "webmail" ]] || [[ ""${CONTAINER}"" == "roundcube" ]] || [[ ""${CONTAINER}"" == "webmail-tetrisnewsemailing" ]]; then
         CONTAINER_ID=$(${DOCKER_COMPOSE} ps -a --format "{{.ID}} {{.Image}}" |grep "roundcubemail:" | awk '{print $1}' )
     
     else
@@ -535,8 +535,8 @@ Default_info() {
     echo -e "=================================================================="
     pool=https
 
-    if [ -f "core-data/billionmail_hostname.txt" ];then
-        BILLIONMAIL_Domain=$(cat core-data/billionmail_hostname.txt)
+    if [ -f "core-data/tetrisnewsemailing_hostname.txt" ];then
+        BILLIONMAIL_Domain=$(cat core-data/tetrisnewsemailing_hostname.txt)
         if [ "${HTTPS_PORT}" = "443" ];then
             echo  "BillionMail Domain Address:        ${pool}://${BILLIONMAIL_Domain}/${SafePath}"
         else
@@ -1092,9 +1092,9 @@ CLEAR_OLD_IMAGE() {
     fi
 
     # Extract complete image names (including tags) defined in compose file
-    # echo "Extracting billionmail images from docker-compose.yml..."
+    # echo "Extracting tetrisnewsemailing images from docker-compose.yml..."
     # COMPOSE_IMAGES=$(grep -oP 'image:\s*\K[^"\s]+' docker-compose.yml | sort -u)
-    COMPOSE_IMAGES=$(grep -oP 'image:\s*\K(?:billionmail|ghcr\.io/aapanel)[^"\s]+' docker-compose.yml | sort -u)
+    COMPOSE_IMAGES=$(grep -oP 'image:\s*\K(?:tetrisnewsemailing|ghcr\.io/aapanel)[^"\s]+' docker-compose.yml | sort -u)
 
     # Check if any images were found
     if [ -z "${COMPOSE_IMAGES}" ]; then
@@ -1361,8 +1361,8 @@ APPLY_MULTI_IP() {
     ${DOCKER_COMPOSE} ps
 
     # Check if critical services are running properly
-    CORE_STATUS=$(${DOCKER_COMPOSE} ps core-billionmail --format "{{.State}}" 2>/dev/null || echo "missing")
-    POSTFIX_STATUS=$(${DOCKER_COMPOSE} ps postfix-billionmail --format "{{.State}}" 2>/dev/null || echo "missing")
+    CORE_STATUS=$(${DOCKER_COMPOSE} ps core-tetrisnewsemailing --format "{{.State}}" 2>/dev/null || echo "missing")
+    POSTFIX_STATUS=$(${DOCKER_COMPOSE} ps postfix-tetrisnewsemailing --format "{{.State}}" 2>/dev/null || echo "missing")
 
     if [[ "$CORE_STATUS" != "running" || "$POSTFIX_STATUS" != "running" ]]; then
         echo "⚠️ Warning: Some critical services may not have started properly"

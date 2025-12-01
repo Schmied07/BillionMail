@@ -1,7 +1,7 @@
 package prospect
 
 import (
-	v1 "billionmail-core/api/prospect/v1"
+	v1 "tetrisnewsemailing-core/api/prospect/v1"
 	"context"
 	"encoding/json"
 	"strings"

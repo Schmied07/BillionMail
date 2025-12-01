@@ -2,11 +2,11 @@
 package batch_mail
 
 import (
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/maillog_stat"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/maillog_stat"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/frame/g"

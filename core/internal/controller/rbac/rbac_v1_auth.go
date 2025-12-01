@@ -1,10 +1,10 @@
 package rbac
 
 import (
-	"billionmail-core/api/rbac/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
-	service "billionmail-core/internal/service/rbac"
+	"tetrisnewsemailing-core/api/rbac/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
+	service "tetrisnewsemailing-core/internal/service/rbac"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/util/gconv"

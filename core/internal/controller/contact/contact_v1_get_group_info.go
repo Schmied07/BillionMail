@@ -1,15 +1,15 @@
 package contact
 
 import (
-	"billionmail-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/domains"
 	"context"
 
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"billionmail-core/api/contact/v1"
-	"billionmail-core/internal/controller/subscribe_list"
-	"billionmail-core/internal/service/contact"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/contact/v1"
+	"tetrisnewsemailing-core/internal/controller/subscribe_list"
+	"tetrisnewsemailing-core/internal/service/contact"
+	"tetrisnewsemailing-core/internal/service/public"
 	"github.com/gogf/gf/v2/frame/g"
 )
 

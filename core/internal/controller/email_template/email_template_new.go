@@ -5,7 +5,7 @@
 package email_template
 
 import (
-	"billionmail-core/api/email_template"
+	"tetrisnewsemailing-core/api/email_template"
 )
 
 type ControllerV1 struct{}

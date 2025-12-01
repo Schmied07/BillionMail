@@ -1,12 +1,12 @@
 package relay
 
 import (
-	domainsV1 "billionmail-core/api/domains/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/model/entity"
-	docker "billionmail-core/internal/service/dockerapi"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/public"
+	domainsV1 "tetrisnewsemailing-core/api/domains/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/model/entity"
+	docker "tetrisnewsemailing-core/internal/service/dockerapi"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"encoding/hex"
 	"fmt"

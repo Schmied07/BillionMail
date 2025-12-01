@@ -1,9 +1,9 @@
 package domains
 
 import (
-	"billionmail-core/api/domains/v1"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/domains/v1"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 )
 

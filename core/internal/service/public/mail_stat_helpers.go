@@ -1,7 +1,7 @@
 package public
 
 import (
-	"billionmail-core/internal/consts"
+	"tetrisnewsemailing-core/internal/consts"
 	"strings"
 )
 

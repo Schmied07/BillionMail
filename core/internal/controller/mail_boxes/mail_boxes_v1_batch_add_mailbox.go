@@ -1,13 +1,13 @@
 package mail_boxes
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 
-	"billionmail-core/api/mail_boxes/v1"
-	"billionmail-core/internal/service/mail_boxes"
+	"tetrisnewsemailing-core/api/mail_boxes/v1"
+	"tetrisnewsemailing-core/internal/service/mail_boxes"
 )
 
 func (c *ControllerV1) BatchAddMailbox(ctx context.Context, req *v1.BatchAddMailboxReq) (res *v1.BatchAddMailboxRes, err error) {

@@ -1,9 +1,9 @@
 package relay
 
 import (
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/frame/g"
@@ -76,7 +76,7 @@ func TestSmtpConnection(host, port, user, password string) *SmtpConnectionTestRe
 	sender := mail_service.NewEmailSender()
 	sender.Host = host
 	sender.Port = port
-	sender.Email = "test_connection@billionmail.com" // Temporary email for testing
+	sender.Email = "test_connection@tetrisnewsemailing.com" // Temporary email for testing
 
 	// Handle authentication based on whether credentials are provided
 	isAuthRequired := user != "" && password != ""

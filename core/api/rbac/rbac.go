@@ -7,7 +7,7 @@ package rbac
 import (
 	"context"
 
-	"billionmail-core/api/rbac/v1"
+	"tetrisnewsemailing-core/api/rbac/v1"
 )
 
 type IRbacV1 interface {

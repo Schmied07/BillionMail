@@ -2,14 +2,14 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-CONTAINER_PROJECT_NAME=billionmail
-PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-billionmail-1"
-DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-billionmail-1"
-POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-billionmail-1"
-RSPAMD_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-rspamd-billionmail-1"
+CONTAINER_PROJECT_NAME=tetrisnewsemailing
+PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-tetrisnewsemailing-1"
+DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-tetrisnewsemailing-1"
+POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-tetrisnewsemailing-1"
+RSPAMD_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-rspamd-tetrisnewsemailing-1"
 create_time=$(date +%s)
-DBNAME=billionmail
-DBUSER=billionmail
+DBNAME=tetrisnewsemailing
+DBUSER=tetrisnewsemailing
 SMTP_PORT=25
 SMTPS_PORT=465
 SUBMISSION_PORT=587
@@ -79,15 +79,15 @@ while [ ${#} -gt 0 ]; do
     shift 1
 done
 
-if [ -f "billionmail.conf" ]; then
+if [ -f "tetrisnewsemailing.conf" ]; then
 read -r -p "Check that the configuration file exists, will you continue to overwrite the file?? [y/N] " gogo
 case $gogo in
     [Yy][eE][sS]|[Yy])
     if [ ! -d "./backup/" ]; then
         mkdir ./backup
     fi
-        mv billionmail.conf ./backup/billionmail.conf_${time}
-    echo "Backup: billionmail.conf --> ./backup/billionmail.conf_${time}"
+        mv tetrisnewsemailing.conf ./backup/tetrisnewsemailing.conf_${time}
+    echo "Backup: tetrisnewsemailing.conf --> ./backup/tetrisnewsemailing.conf_${time}"
     if [ -f ".env" ]; then
         mv .env env_${time}
         echo "Backup: .env --> ./backup/env_${time}"
@@ -1284,7 +1284,7 @@ Billionmail(){
         done
     fi
 
-    cat << EOF > billionmail.conf
+    cat << EOF > tetrisnewsemailing.conf
 # Default BillionMail Username password
 ADMIN_USERNAME=${ADMIN_USERNAME}
 ADMIN_PASSWORD=${ADMIN_PASSWORD}
@@ -1336,7 +1336,7 @@ FAIL2BAN_INIT=y
 RETENTION_DAYS=7
 
 EOF
-    \cp -rf billionmail.conf .env
+    \cp -rf tetrisnewsemailing.conf .env
     if [ ! -f ".env" ]; then
         echo -e "Error: Failed to create .env file"
         exit 1
@@ -1457,4 +1457,4 @@ echo -e ""
 echo -e "Tip: Use \e[33m bm \e[0m or \e[33mbash bm.sh\e[0m to View login info etc."
 
 # Install
-curl -o /dev/null -fsSLk --connect-time 10 -X POST "https://www.aapanel.com/api/panel/panel_count_daily?name=billionmail" >/dev/null 2>&1
+curl -o /dev/null -fsSLk --connect-time 10 -X POST "https://www.aapanel.com/api/panel/panel_count_daily?name=tetrisnewsemailing" >/dev/null 2>&1

@@ -1,8 +1,8 @@
 package askai
 
 import (
-	v1 "billionmail-core/api/askai/v1"
-	"billionmail-core/internal/service/askai"
+	v1 "tetrisnewsemailing-core/api/askai/v1"
+	"tetrisnewsemailing-core/internal/service/askai"
 	"context"
 )
 

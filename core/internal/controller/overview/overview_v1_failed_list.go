@@ -1,14 +1,14 @@
 package overview
 
 import (
-	"billionmail-core/internal/service/maillog_stat"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/maillog_stat"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/util/gconv"
 	"time"
 
-	"billionmail-core/api/overview/v1"
+	"tetrisnewsemailing-core/api/overview/v1"
 )
 
 func (c *ControllerV1) FailedList(ctx context.Context, req *v1.FailedListReq) (res *v1.FailedListRes, err error) {

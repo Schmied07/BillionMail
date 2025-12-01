@@ -1,8 +1,8 @@
 package docker
 
 import (
-	v1 "billionmail-core/api/dockerapi/v1"
-	"billionmail-core/internal/consts"
+	v1 "tetrisnewsemailing-core/api/dockerapi/v1"
+	"tetrisnewsemailing-core/internal/consts"
 	"bytes"
 	"context"
 	"encoding/json"

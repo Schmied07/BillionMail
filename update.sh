@@ -2,11 +2,11 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-CONTAINER_PROJECT_NAME=billionmail
-PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-billionmail-1"
-DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-billionmail-1"
-POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-billionmail-1"
-RSPAMD_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-rspamd-billionmail-1"
+CONTAINER_PROJECT_NAME=tetrisnewsemailing
+PGSQL_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-pgsql-tetrisnewsemailing-1"
+DOVECOT_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-dovecot-tetrisnewsemailing-1"
+POSTFIX_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-postfix-tetrisnewsemailing-1"
+RSPAMD_CONTAINER_NAME="${CONTAINER_PROJECT_NAME}-rspamd-tetrisnewsemailing-1"
 TIME=$(date +%Y_%m_%d_%H_%M_%S)
 
 PWD_d=`pwd`

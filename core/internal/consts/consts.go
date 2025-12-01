@@ -29,12 +29,12 @@ var (
 		Webmail string
 		Core    string
 	}{
-		Pgsql:   "pgsql-billionmail",
-		Redis:   "redis-billionmail",
-		Rspamd:  "rspamd-billionmail",
-		Dovecot: "dovecot-billionmail",
-		Postfix: "postfix-billionmail",
-		Webmail: "webmail-billionmail",
-		Core:    "core-billionmail",
+		Pgsql:   "pgsql-tetrisnewsemailing",
+		Redis:   "redis-tetrisnewsemailing",
+		Rspamd:  "rspamd-tetrisnewsemailing",
+		Dovecot: "dovecot-tetrisnewsemailing",
+		Postfix: "postfix-tetrisnewsemailing",
+		Webmail: "webmail-tetrisnewsemailing",
+		Core:    "core-tetrisnewsemailing",
 	}
 )

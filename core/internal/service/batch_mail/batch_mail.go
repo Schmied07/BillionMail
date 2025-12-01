@@ -1,11 +1,11 @@
 package batch_mail
 
 import (
-	"billionmail-core/api/batch_mail/v1"
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/maillog_stat"
-	"billionmail-core/internal/service/public"
-	"billionmail-core/internal/service/warmup"
+	"tetrisnewsemailing-core/api/batch_mail/v1"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/maillog_stat"
+	"tetrisnewsemailing-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/warmup"
 	"context"
 	"fmt"
 	"strconv"

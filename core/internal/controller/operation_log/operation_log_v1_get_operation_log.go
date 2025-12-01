@@ -1,9 +1,9 @@
 package operation_log
 
 import (
-	"billionmail-core/api/operation_log/v1"
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/operation_log/v1"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/frame/g"
 	"strconv"

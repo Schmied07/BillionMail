@@ -4,8 +4,8 @@
 DOMAIN="tetrisnews.fr"
 EMAIL="contact@tetrisnews.fr"
 PASSWORD="@Schmied0629"
-CONTAINER_NAME="tetrisnews-emailing-pgsql-billionmail-1"
-DOVECOT_CONTAINER="tetrisnews-emailing-dovecot-billionmail-1"
+CONTAINER_NAME="tetrisnews-emailing-pgsql-tetrisnewsemailing-1"
+DOVECOT_CONTAINER="tetrisnews-emailing-dovecot-tetrisnewsemailing-1"
 
 echo "================================"
 echo "Création de la mailbox BillionMail"
@@ -29,7 +29,7 @@ echo ""
 
 # Create domain
 echo "2. Création du domaine '$DOMAIN'..."
-docker exec -i $CONTAINER_NAME psql -U billionmail -d billionmail << EOF
+docker exec -i $CONTAINER_NAME psql -U tetrisnewsemailing -d tetrisnewsemailing << EOF
 INSERT INTO domain (domain, a_record, mailboxes, mailbox_quota, quota, rate_limit, create_time, active)
 VALUES ('$DOMAIN', '', 50, 5368709120, 10737418240, 12, EXTRACT(EPOCH FROM NOW())::INT, 1)
 ON CONFLICT (domain) DO NOTHING;
@@ -47,7 +47,7 @@ echo ""
 echo "3. Création de la mailbox '$EMAIL'..."
 MAILDIR="$DOMAIN/contact/"
 
-docker exec -i $CONTAINER_NAME psql -U billionmail -d billionmail << EOF
+docker exec -i $CONTAINER_NAME psql -U tetrisnewsemailing -d tetrisnewsemailing << EOF
 INSERT INTO mailbox (username, password, password_encode, full_name, is_admin, maildir, quota, local_part, domain, create_time, update_time, active)
 VALUES ('$EMAIL', '$PASSWORD_HASH', 'md5-crypt', 'Contact', 0, '$MAILDIR', 5368709120, 'contact', '$DOMAIN', EXTRACT(EPOCH FROM NOW())::INT, EXTRACT(EPOCH FROM NOW())::INT, 1)
 ON CONFLICT (username) DO UPDATE SET password = EXCLUDED.password;
@@ -63,7 +63,7 @@ echo ""
 
 # Verify creation
 echo "4. Vérification de la création..."
-docker exec -i $CONTAINER_NAME psql -U billionmail -d billionmail -c "SELECT username, domain, active FROM mailbox WHERE username = '$EMAIL';"
+docker exec -i $CONTAINER_NAME psql -U tetrisnewsemailing -d tetrisnewsemailing -c "SELECT username, domain, active FROM mailbox WHERE username = '$EMAIL';"
 echo ""
 
 echo "================================"

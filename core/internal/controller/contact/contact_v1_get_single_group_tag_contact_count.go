@@ -1,9 +1,9 @@
 package contact
 
 import (
-	"billionmail-core/api/contact/v1"
-	"billionmail-core/internal/service/contact"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/contact/v1"
+	"tetrisnewsemailing-core/internal/service/contact"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"strconv"

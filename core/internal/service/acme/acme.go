@@ -1,8 +1,8 @@
 package acme
 
 import (
-	v1 "billionmail-core/api/domains/v1"
-	"billionmail-core/internal/service/public"
+	v1 "tetrisnewsemailing-core/api/domains/v1"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"crypto"
 	"crypto/ecdsa"

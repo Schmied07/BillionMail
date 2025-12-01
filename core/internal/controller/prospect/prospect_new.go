@@ -5,7 +5,7 @@
 package prospect
 
 import (
-	"billionmail-core/api/prospect"
+	"tetrisnewsemailing-core/api/prospect"
 )
 
 type ControllerV1 struct{}

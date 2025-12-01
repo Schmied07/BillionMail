@@ -1,4 +1,4 @@
-module billionmail-core
+module tetrisnewsemailing-core
 
 go 1.22.0
 

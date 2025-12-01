@@ -159,13 +159,13 @@ Une fois déployé:
 docker compose -f docker-compose.traefik.yml logs -f
 
 # Logs d'un service spécifique
-docker compose -f docker-compose.traefik.yml logs -f core-billionmail
+docker compose -f docker-compose.traefik.yml logs -f core-tetrisnewsemailing
 
 # Redémarrer tous les services
 docker compose -f docker-compose.traefik.yml restart
 
 # Redémarrer un service spécifique
-docker compose -f docker-compose.traefik.yml restart core-billionmail
+docker compose -f docker-compose.traefik.yml restart core-tetrisnewsemailing
 
 # Arrêter l'application
 docker compose -f docker-compose.traefik.yml down
@@ -215,7 +215,7 @@ ls -la postgresql-data/
 docker network inspect web
 
 # Vérifier les labels Traefik
-docker inspect core-billionmail | grep -A 50 Labels
+docker inspect core-tetrisnewsemailing | grep -A 50 Labels
 ```
 
 ### Problème de certificat SSL
@@ -232,5 +232,5 @@ dig mail.votredomaine.com
 ## 📞 Support
 
 Pour toute question, consultez:
-- [Documentation BillionMail](https://www.billionmail.com/)
+- [Documentation BillionMail](https://www.tetrisnewsemailing.com/)
 - [Issues GitHub](https://github.com/aaPanel/BillionMail/issues)

@@ -1,10 +1,10 @@
 package relay
 
 import (
-	v1 "billionmail-core/api/relay/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
-	"billionmail-core/internal/service/relay"
+	v1 "tetrisnewsemailing-core/api/relay/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/relay"
 	"context"
 	"strings"
 	"time"

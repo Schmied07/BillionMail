@@ -1,9 +1,9 @@
 package domains
 
 import (
-	"billionmail-core/internal/model"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/model"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -768,7 +768,7 @@ func buildBlacklistAlertEmailHTML(ip, domain string, result *model.BlacklistChec
 			<div class="footer">
 				<div>
 					<span>Powered by </span>
-					<a href="https://www.billionmail.com/" target="_blank">BillionMail</a>
+					<a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail</a>
 				</div>
 			</div>
 		</div>

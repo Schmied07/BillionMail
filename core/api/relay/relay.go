@@ -7,7 +7,7 @@ package relay
 import (
 	"context"
 
-	"billionmail-core/api/relay/v1"
+	"tetrisnewsemailing-core/api/relay/v1"
 )
 
 type IRelayV1 interface {

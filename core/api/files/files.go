@@ -7,7 +7,7 @@ package files
 import (
 	"context"
 
-	"billionmail-core/api/files/v1"
+	"tetrisnewsemailing-core/api/files/v1"
 )
 
 type IFilesV1 interface {

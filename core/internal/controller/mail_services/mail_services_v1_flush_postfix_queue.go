@@ -1,9 +1,9 @@
 package mail_services
 
 import (
-	"billionmail-core/internal/consts"
-	docker "billionmail-core/internal/service/dockerapi"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	docker "tetrisnewsemailing-core/internal/service/dockerapi"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/os/gtimer"
 	"strings"
@@ -12,7 +12,7 @@ import (
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
 
-	"billionmail-core/api/mail_services/v1"
+	"tetrisnewsemailing-core/api/mail_services/v1"
 )
 
 func (c *ControllerV1) FlushPostfixQueue(ctx context.Context, req *v1.FlushPostfixQueueReq) (res *v1.FlushPostfixQueueRes, err error) {

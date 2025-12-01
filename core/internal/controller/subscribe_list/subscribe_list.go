@@ -5,13 +5,13 @@
 package subscribe_list
 
 import (
-	mail_v1 "billionmail-core/api/mail_boxes/v1"
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/batch_mail"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/mail_boxes"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	mail_v1 "tetrisnewsemailing-core/api/mail_boxes/v1"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/batch_mail"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/mail_boxes"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"database/sql"
 	"fmt"

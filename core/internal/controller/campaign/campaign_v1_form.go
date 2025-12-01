@@ -1,11 +1,11 @@
 package campaign
 
 import (
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/contact"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/mail_service"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/contact"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/mail_service"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"net/url"
@@ -13,7 +13,7 @@ import (
 	"github.com/gogf/gf/v2/util/grand"
 	"time"
 
-	"billionmail-core/api/campaign/v1"
+	"tetrisnewsemailing-core/api/campaign/v1"
 )
 
 func (c *ControllerV1) Form(ctx context.Context, req *v1.FormReq) (res *v1.FormRes, err error) {

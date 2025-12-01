@@ -1,13 +1,13 @@
 package rbac
 
 import (
-	"billionmail-core/internal/service/public"
-	"billionmail-core/internal/service/rbac"
+	"tetrisnewsemailing-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/rbac"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/frame/g"
 
-	"billionmail-core/api/rbac/v1"
+	"tetrisnewsemailing-core/api/rbac/v1"
 )
 
 func (c *ControllerV1) GetValidateCode(ctx context.Context, req *v1.GetValidateCodeReq) (res *v1.GetValidateCodeRes, err error) {

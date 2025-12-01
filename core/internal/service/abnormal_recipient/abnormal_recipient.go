@@ -1,8 +1,8 @@
 package abnormal_recipient
 
 import (
-	"billionmail-core/internal/model/entity"
-	"billionmail-core/internal/service/maillog_stat"
+	"tetrisnewsemailing-core/internal/model/entity"
+	"tetrisnewsemailing-core/internal/service/maillog_stat"
 	"context"
 	"fmt"
 	"time"

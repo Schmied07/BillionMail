@@ -55,18 +55,18 @@ if [[ "$PLATFORMS" == "all" || "$PLATFORMS" == "x86" ]]; then
 
     # amd64
     echo "build start amd64"
-    rm -f billionmail-amd64
+    rm -f tetrisnewsemailing-amd64
     export GOOS=linux
     export GOARCH=amd64
-    go build -ldflags="-s -w" -o billionmail-amd64 main.go
-    if [ ! -f "billionmail-amd64" ]; then
+    go build -ldflags="-s -w" -o tetrisnewsemailing-amd64 main.go
+    if [ ! -f "tetrisnewsemailing-amd64" ]; then
         echo "build amd64 failed"
         exit 1
     fi
 
-    check_file=$(file billionmail-amd64 | grep "x86-64,")
+    check_file=$(file tetrisnewsemailing-amd64 | grep "x86-64,")
     if [ -z "${check_file}" ];then
-        echo "billionmail-amd64 is not an arm64 file, package failed.";
+        echo "tetrisnewsemailing-amd64 is not an arm64 file, package failed.";
         exit 0;
     fi
 fi
@@ -74,19 +74,19 @@ fi
 if [[ "$PLATFORMS" == "all" || "$PLATFORMS" == "arm" ]]; then
     # arm64
     echo "build start arm64"
-    rm -f billionmail-arm64
+    rm -f tetrisnewsemailing-arm64
     export GOOS=linux
     export GOARCH=arm64
-    go build -ldflags="-s -w" -o billionmail-arm64 main.go
-    if [ ! -f "billionmail-arm64" ]; then
+    go build -ldflags="-s -w" -o tetrisnewsemailing-arm64 main.go
+    if [ ! -f "tetrisnewsemailing-arm64" ]; then
         echo "build arm64 failed"
         exit 1
     fi
-    check_file=$(file billionmail-arm64 | grep -E "ARM|aarch64")
+    check_file=$(file tetrisnewsemailing-arm64 | grep -E "ARM|aarch64")
     if [ -z "${check_file}" ];then
-        echo "billionmail-arm64 is not an arm64 file, package failed.";
+        echo "tetrisnewsemailing-arm64 is not an arm64 file, package failed.";
         exit 0;
     fi
 fi
 
-ls -al billionmail-*
+ls -al tetrisnewsemailing-*

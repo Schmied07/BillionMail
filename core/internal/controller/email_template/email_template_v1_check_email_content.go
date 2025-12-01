@@ -1,13 +1,13 @@
 package email_template
 
 import (
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"regexp"
 	"strings"
 
-	"billionmail-core/api/email_template/v1"
+	"tetrisnewsemailing-core/api/email_template/v1"
 )
 
 type ScoreItem struct {

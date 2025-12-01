@@ -7,7 +7,7 @@ package prospect
 import (
 	"context"
 
-	"billionmail-core/api/prospect/v1"
+	"tetrisnewsemailing-core/api/prospect/v1"
 )
 
 type IProspectV1 interface {

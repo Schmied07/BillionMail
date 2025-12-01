@@ -1,10 +1,10 @@
 package mail_boxes
 
 import (
-	v1 "billionmail-core/api/mail_boxes/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/dockerapi"
-	"billionmail-core/internal/service/public"
+	v1 "tetrisnewsemailing-core/api/mail_boxes/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/dockerapi"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"encoding/base64"
 	"encoding/hex"

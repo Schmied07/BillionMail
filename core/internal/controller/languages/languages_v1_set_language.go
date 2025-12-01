@@ -1,8 +1,8 @@
 package languages
 
 import (
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 	"github.com/gogf/gf/v2/frame/g"
@@ -10,7 +10,7 @@ import (
 
 	"github.com/gogf/gf/v2/errors/gerror"
 
-	"billionmail-core/api/languages/v1"
+	"tetrisnewsemailing-core/api/languages/v1"
 )
 
 func (c *ControllerV1) SetLanguage(ctx context.Context, req *v1.SetLanguageReq) (res *v1.SetLanguageRes, err error) {

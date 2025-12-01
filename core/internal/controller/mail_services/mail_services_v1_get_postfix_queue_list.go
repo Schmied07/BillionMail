@@ -1,8 +1,8 @@
 package mail_services
 
 import (
-	docker "billionmail-core/internal/service/dockerapi"
-	"billionmail-core/internal/service/public"
+	docker "tetrisnewsemailing-core/internal/service/dockerapi"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"strings"
 
@@ -10,8 +10,8 @@ import (
 	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/gogf/gf/v2/frame/g"
 
-	"billionmail-core/api/mail_services/v1"
-	"billionmail-core/internal/consts"
+	"tetrisnewsemailing-core/api/mail_services/v1"
+	"tetrisnewsemailing-core/internal/consts"
 )
 
 func (c *ControllerV1) GetPostfixQueueList(ctx context.Context, req *v1.GetPostfixQueueListReq) (res *v1.GetPostfixQueueListRes, err error) {

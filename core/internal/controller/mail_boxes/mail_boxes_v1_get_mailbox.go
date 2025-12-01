@@ -1,14 +1,14 @@
 package mail_boxes
 
 import (
-	domainsV1 "billionmail-core/api/domains/v1"
-	"billionmail-core/internal/service/domains"
-	"billionmail-core/internal/service/mail_boxes"
-	"billionmail-core/internal/service/public"
+	domainsV1 "tetrisnewsemailing-core/api/domains/v1"
+	"tetrisnewsemailing-core/internal/service/domains"
+	"tetrisnewsemailing-core/internal/service/mail_boxes"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"fmt"
 
-	"billionmail-core/api/mail_boxes/v1"
+	"tetrisnewsemailing-core/api/mail_boxes/v1"
 )
 
 func (c *ControllerV1) GetMailbox(ctx context.Context, req *v1.GetMailboxReq) (res *v1.GetMailboxRes, err error) {

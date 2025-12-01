@@ -1,6 +1,6 @@
 <div align="center">
   <a name="readme-top"></a>
-  <h1><a href="https://www.billionmail.com/" target="_blank">BillionMail 📧</a></h1>
+  <h1><a href="https://www.tetrisnewsemailing.com/" target="_blank">BillionMail 📧</a></h1>
 
 
 ## スマートなキャンペーンのためのオープンソースメールサーバー／メールマガジン／Eメールマーケティングソリューション
@@ -19,7 +19,7 @@
 
 BillionMailは、ビジネスや個人がメールキャンペーンを簡単に管理できるよう設計された**オープンソースのメールサーバー兼Eメールマーケティングプラットフォーム**です。ニュースレター、プロモーションメール、取引通知などを送信する際に、メールマーケティングのすべてを**完全にコントロール**できます。**高度な分析機能**や**顧客管理機能**を活用し、プロフェッショナルのようにメールを作成、送信、トラッキングできます。
 
-![BillionMailバナー](https://www.billionmail.com/home.png?v1)
+![BillionMailバナー](https://www.tetrisnewsemailing.com/home.png?v1)
 
 # たった3ステップで10億通のメールを送信！
 **10億通のメール。あらゆるビジネスに。保証付き。**
@@ -83,11 +83,11 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
 ## ライブデモ
 
-BillionMailデモ: [https://demo.billionmail.com/billionmail](https://demo.billionmail.com/billionmail)
+BillionMailデモ: [https://demo.tetrisnewsemailing.com/tetrisnewsemailing](https://demo.tetrisnewsemailing.com/tetrisnewsemailing)
 
-ユーザー名: `billionmail`
+ユーザー名: `tetrisnewsemailing`
 
-パスワード: `billionmail`
+パスワード: `tetrisnewsemailing`
 
 ## Webメール
 
@@ -153,7 +153,7 @@ BillionMailは**AGPLv3ライセンス**のもとで公開されています。�
 
 <!-- BillionMail公式リンク -->
 
-[docs-link]: https://www.billionmail.com/
+[docs-link]: https://www.tetrisnewsemailing.com/
 
 <!-- その他のリンク -->
 [license-link]: https://www.gnu.org/licenses/gpl-3.0.html

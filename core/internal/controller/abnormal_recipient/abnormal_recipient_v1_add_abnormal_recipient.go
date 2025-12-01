@@ -1,10 +1,10 @@
 package abnormal_recipient
 
 import (
-	"billionmail-core/api/abnormal_recipient/v1"
-	"billionmail-core/internal/consts"
-	"billionmail-core/internal/service/abnormal_recipient"
-	"billionmail-core/internal/service/public"
+	"tetrisnewsemailing-core/api/abnormal_recipient/v1"
+	"tetrisnewsemailing-core/internal/consts"
+	"tetrisnewsemailing-core/internal/service/abnormal_recipient"
+	"tetrisnewsemailing-core/internal/service/public"
 	"context"
 	"github.com/gogf/gf/v2/errors/gerror"
 	"strings"
