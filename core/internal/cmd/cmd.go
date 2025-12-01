@@ -17,6 +17,7 @@ import (
 	"billionmail-core/internal/controller/middleware"
 	"billionmail-core/internal/controller/operation_log"
 	"billionmail-core/internal/controller/overview"
+	"billionmail-core/internal/controller/prospect"
 	"billionmail-core/internal/controller/rbac"
 	"billionmail-core/internal/controller/relay"
 	"billionmail-core/internal/controller/settings"
