@@ -136,7 +136,7 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
 ## License
 
-BillionMail is licensed under the **AGPLv3 License**. This means you can:
+TETRISNEWS EMAILING is licensed under the **AGPLv3 License**. This means you can:
 
 ✅ Use the software for free.  
 ✅ Modify and distribute the code.  
