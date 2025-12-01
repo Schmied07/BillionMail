@@ -65,7 +65,10 @@ services:
             - rspamd
 
     dovecot-tetrisnewsemailing:
-      image: billionmail/dovecot:1.6
+      build:
+        context: .
+        dockerfile: Dockerfiles/dovecot/Dockerfile
+      image: tetrisnewsemailing/dovecot:1.6
       hostname: dovecot
       depends_on:
         - pgsql-tetrisnewsemailing
