@@ -173,7 +173,9 @@ services:
             - webmail
 
     core-tetrisnewsemailing:
-      image: tetrisnewsemailing/core:4.8.3
+      build:
+        context: .
+        dockerfile: Dockerfiles/core/Dockerfile
       hostname: core-manage
       depends_on:
         - pgsql-tetrisnewsemailing
