@@ -562,6 +562,11 @@ onMounted(() => {
 	margin: 0;
 }
 
+.header-right {
+	display: flex;
+	gap: 12px;
+}
+
 .pipeline-stats {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
