@@ -210,15 +210,23 @@ const columns = [
 ]
 
 // Delete function
-const handleDelete = async (row: any) => {
-	try {
-		await deleteProspects({ ids: [row.id] })
-		message.success('Prospect supprimé avec succès')
-		loadProspects()
-	} catch (error) {
-		console.error('Failed to delete prospect:', error)
-		message.error('Erreur lors de la suppression')
-	}
+const handleDelete = (row: any) => {
+	dialog.warning({
+		title: 'Confirmer la suppression',
+		content: `Êtes-vous sûr de vouloir supprimer le prospect "${row.company || row.email}" ?`,
+		positiveText: 'Supprimer',
+		negativeText: 'Annuler',
+		onPositiveClick: async () => {
+			try {
+				await deleteProspects({ ids: [row.id] })
+				message.success('Prospect supprimé avec succès')
+				loadProspects()
+			} catch (error) {
+				console.error('Failed to delete prospect:', error)
+				message.error('Erreur lors de la suppression')
+			}
+		},
+	})
 }
 
 // Load functions
