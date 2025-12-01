@@ -78,25 +78,17 @@ cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail &&
 
   `bm show-record`
 
-- Update BillionMail
+- Update TETRISNEWS EMAILING
 
   `bm update`
 
-## Live Demo
-BillionMail Demo: [https://demo.billionmail.com/billionmail](https://demo.billionmail.com/billionmail)
-
-Username: `billionmail` 
-
-Password: `billionmail` 
-
-
 ## WebMail
 
-BillionMail has integrated **RoundCube**, you can access WebMail via `/roundcube/`.
+TETRISNEWS EMAILING has integrated **RoundCube**, you can access WebMail via `/roundcube/`.
 
-## Why BillionMail?
+## Why TETRISNEWS EMAILING?
 
-Most email marketing platforms are either **expensive**, **closed-source**, or **lack essential features**. BillionMail aims to be different:
+Most email marketing platforms are either **expensive**, **closed-source**, or **lack essential features**. TETRISNEWS EMAILING aims to be different:
 
 ✅ **Fully Open-Source** – No hidden costs, no vendor lock-in.  
 📊 **Advanced Analytics** – Track email delivery, open rates, click-through rates, and more.  
