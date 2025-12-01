@@ -41,7 +41,7 @@ services:
             - redis
 
     rspamd-tetrisnewsemailing:
-      image: tetrisnewsemailing/rspamd:1.2
+      image: billionmail/rspamd:1.2
       hostname: rspamd
       depends_on:
         - redis-tetrisnewsemailing
