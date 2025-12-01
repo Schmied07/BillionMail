@@ -2,8 +2,7 @@ package prospect
 
 import (
 	v1 "billionmail-core/api/prospect/v1"
-	"billionmail-core/internal/service/prospect"
-	"billionmail-core/internal/service/public"
+billionmail-core/internal/service/public
 	"bytes"
 	"context"
 	"encoding/base64"
