@@ -370,6 +370,11 @@ const addReminder = () => {
 	margin: 0;
 }
 
+.header-right {
+	display: flex;
+	gap: 12px;
+}
+
 .reminder-stats {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
