@@ -15,16 +15,14 @@ English | [简体中文](README-zh_CN.md) | [日本語](README-ja.md) | [Türkç
 <a href="https://trendshift.io/repositories/13842" target="_blank"><img src="https://trendshift.io/api/badge/repositories/13842" alt="aaPanel%2FBillionMail | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </div>
 
-## What is BillionMail?
+## What is TETRISNEWS EMAILING?
 
-BillionMail is a **future open-source Mail server, Email marketing platform** designed to help businesses and individuals manage their email campaigns with ease. Whether you're sending newsletters, promotional emails, or transactional messages, this tool will provide **full control** over your email marketing efforts. With features like **advanced analytics**, and **customer management**, you'll be able to create, send, and track emails like a pro.
+TETRISNEWS EMAILING is a **future open-source Mail server, Email marketing platform** designed to help businesses and individuals manage their email campaigns with ease. Whether you're sending newsletters, promotional emails, or transactional messages, this tool will provide **full control** over your email marketing efforts. With features like **advanced analytics**, and **customer management**, you'll be able to create, send, and track emails like a pro.
 
-![BillionMail Banner](https://www.billionmail.com/home.png?v1)
+# Just 3 steps to send your emails!
+**Powerful email marketing. Any business. Guaranteed.**
 
-# Just 3 steps to send a billion emails!
-**Billion emails. Any business. Guaranteed.**
-
-### Step 1️⃣ Install BillionMail: 
+### Step 1️⃣ Install TETRISNEWS EMAILING: 
 ✅ It takes **only 8️⃣ minutes** from installation to **✅ successful email sending**
 ```shell
 cd /opt && git clone https://github.com/aaPanel/BillionMail && cd BillionMail && bash install.sh
