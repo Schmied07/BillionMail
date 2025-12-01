@@ -62,7 +62,7 @@ services:
             - rspamd
 
     dovecot-tetrisnewsemailing:
-      image: tetrisnewsemailing/dovecot:1.6
+      image: billionmail/dovecot:1.6
       hostname: dovecot
       depends_on:
         - pgsql-tetrisnewsemailing
