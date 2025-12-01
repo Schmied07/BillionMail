@@ -230,12 +230,20 @@
 				</div>
 			</n-drawer-content>
 		</n-drawer>
+
+		<!-- Import Modal -->
+		<ImportModal v-model:show="showImportModal" @success="handleImportSuccess" />
 	</div>
 </template>
 
 <script lang="ts" setup>
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
+import { useMessage } from 'naive-ui'
+import ImportModal from '../components/ImportModal.vue'
+import { getProspectList } from '@/api/modules/prospects'
+
+const message = useMessage()
 
 interface Prospect {
 	id: string
@@ -250,10 +258,13 @@ interface Prospect {
 	notes?: string
 	lastContact?: number
 	createdAt: number
+	sourceId?: number
+	sourceName?: string
 }
 
 const showAddModal = ref(false)
 const showDrawer = ref(false)
+const showImportModal = ref(false)
 const selectedProspect = ref<Prospect | null>(null)
 
 const columns = [
