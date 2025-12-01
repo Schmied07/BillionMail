@@ -192,7 +192,7 @@ const columns = [
 		key: 'actions',
 		width: 120,
 		align: 'center' as const,
-		render: () => (
+		render: (row: any) => (
 			<NFlex justify="center" size="small">
 				<NButton text type="primary">
 					<i class="i-mdi-eye-outline text-18px"></i>
@@ -200,13 +200,25 @@ const columns = [
 				<NButton text type="info">
 					<i class="i-mdi-email-outline text-18px"></i>
 				</NButton>
-				<NButton text type="error">
+				<NButton text type="error" onClick={() => handleDelete(row)}>
 					<i class="i-mdi-delete-outline text-18px"></i>
 				</NButton>
 			</NFlex>
 		),
 	},
 ]
+
+// Delete function
+const handleDelete = async (row: any) => {
+	try {
+		await deleteProspects({ ids: [row.id] })
+		message.success('Prospect supprimé avec succès')
+		loadProspects()
+	} catch (error) {
+		console.error('Failed to delete prospect:', error)
+		message.error('Erreur lors de la suppression')
+	}
+}
 
 // Load functions
 const loadProspects = async () => {
