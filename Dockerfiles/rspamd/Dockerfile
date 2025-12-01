@@ -7,9 +7,9 @@ ARG RSPAMD_VER=rspamd_3.11.1-1~ab0b44951
 ARG CODENAME=bookworm
 ENV LC_ALL=C
 
-COPY rspamd.sh /rspamd.sh
-COPY stop-supervisor.sh /stop-supervisor.sh
-COPY rotate_log.sh /rotate_log.sh
+COPY Dockerfiles/rspamd/rspamd.sh /rspamd.sh
+COPY Dockerfiles/rspamd/stop-supervisor.sh /stop-supervisor.sh
+COPY Dockerfiles/rspamd/rotate_log.sh /rotate_log.sh
 
 # COPY debian.sources /etc/apt/sources.list.d/debian.sources
 
@@ -39,7 +39,7 @@ RUN apt-get update && apt-get install -y \
   && chmod +x /rspamd.sh /stop-supervisor.sh /rotate_log.sh \
   && echo 'alias ll="ls -la --color"' >> ~/.bashrc
 
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY Dockerfiles/rspamd/supervisord.conf /etc/supervisor/supervisord.conf
 
 ENTRYPOINT ["/rspamd.sh"]
 

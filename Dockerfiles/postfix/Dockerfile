@@ -11,9 +11,9 @@ RUN dpkg-divert --local --rename --add /sbin/initctl \
 	&& ln -sf /bin/true /usr/bin/ischroot
 
 ## Copy postfix file
-COPY postfix.sh /postfix.sh
-COPY stop-supervisor.sh /stop-supervisor.sh
-COPY rotate_log.sh /rotate_log.sh
+COPY Dockerfiles/postfix/postfix.sh /postfix.sh
+COPY Dockerfiles/postfix/stop-supervisor.sh /stop-supervisor.sh
+COPY Dockerfiles/postfix/rotate_log.sh /rotate_log.sh
 
 # COPY debian.sources /etc/apt/sources.list.d/debian.sources
 
@@ -45,7 +45,7 @@ RUN groupadd -g 102 postfix \
 
 ## Copy the supervisord configuration file
 
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY Dockerfiles/postfix/supervisord.conf /etc/supervisor/supervisord.conf
 
 # EXPOSE 25 465 587
 
