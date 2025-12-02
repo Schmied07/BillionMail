@@ -263,7 +263,7 @@ sudo bash fix_traefik_network.sh
 **Accès**:
 - Interface: https://emailing.tetrisnews.fr
 - WebMail: https://emailing.tetrisnews.fr/roundcube/
-- Login: billion / billion
+- Login: tetrisnews / tetrisnews
 
 **Gestion quotidienne**:
 ```bash

@@ -112,7 +112,7 @@ Une fois tous les services démarrés :
 
 - **Interface Web** : http://emailing.tetrisnews.fr
 - **WebMail** : http://emailing.tetrisnews.fr/roundcube/
-- **Connexion Admin** : billion / billion
+- **Connexion Admin** : tetrisnews / tetrisnews
 
 ---
 

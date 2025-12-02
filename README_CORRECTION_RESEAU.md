@@ -103,7 +103,7 @@ docker compose -f docker-compose.traefik.yml ps
 
 Ouvrez votre navigateur:
 - **Interface Admin**: https://emailing.tetrisnews.fr
-- **Login**: billion / billion
+- **Login**: tetrisnews / tetrisnews
 
 ⚠️ **Note**: Le certificat SSL Let's Encrypt peut prendre 1-2 minutes pour être généré. Si vous obtenez une erreur SSL, attendez un peu.
 

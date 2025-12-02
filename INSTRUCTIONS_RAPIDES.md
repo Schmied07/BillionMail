@@ -88,7 +88,7 @@ Une fois démarré, vous pouvez accéder à :
 
 - **Interface Web** : http://emailing.tetrisnews.fr
 - **WebMail** : http://emailing.tetrisnews.fr/roundcube/
-- **Admin** : billion / billion
+- **Admin** : tetrisnews / tetrisnews
 
 ---
 

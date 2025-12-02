@@ -50,8 +50,8 @@ Le script va:
 
 ### TetrisNewsEmailing (Application principale)
 - **URL:** https://emailing.tetrisnews.fr/
-- **Username:** billion
-- **Password:** billion
+- **Username:** tetrisnews
+- **Password:** tetrisnews
 
 ### RoundCube (Webmail)
 - **URL:** https://emailing.tetrisnews.fr/roundcube/
@@ -161,7 +161,7 @@ labels:
 ### Q: L'interface TetrisNewsEmailing est en anglais
 **R:** Vous pouvez changer la langue dans les paramètres après connexion.
 
-### Q: Je n'arrive pas à me connecter avec billion/billion
+### Q: Je n'arrive pas à me connecter avec tetrisnews/tetrisnews
 **R:** Vérifiez les logs du service core et assurez-vous que tous les services sont démarrés.
 
 ---

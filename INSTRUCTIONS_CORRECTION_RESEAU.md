@@ -69,7 +69,7 @@ Une fois les services démarrés:
 
 | Service | URL | Login |
 |---------|-----|-------|
-| **Interface Admin** | https://emailing.tetrisnews.fr | billion / billion |
+| **Interface Admin** | https://emailing.tetrisnews.fr | tetrisnews / tetrisnews |
 | **WebMail** | https://emailing.tetrisnews.fr/roundcube/ | (après création) |
 
 ⚠️ **Note SSL**: Le certificat Let's Encrypt peut prendre 1-2 minutes pour être généré.
