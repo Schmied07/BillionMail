@@ -6,167 +6,226 @@ const { t } = i18n.global
 // ========== Source APIs ==========
 
 export const getSourceList = (params: { page?: number; page_size?: number; keyword?: string }) => {
-	return instance.get('/prospect/source/list', { params })
+        return instance.get('/prospect/source/list', { params })
 }
 
 export const getSourceAll = () => {
-	return instance.get('/prospect/source/all')
+        return instance.get('/prospect/source/all')
 }
 
 export const createSource = (data: {
-	name: string
-	default_value: number
-	description?: string
-	color?: string
+        name: string
+        default_value: number
+        description?: string
+        color?: string
 }) => {
-	return instance.post('/prospect/source/create', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.createSource'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/source/create', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.createSource'),
+                        successMessage: true,
+                },
+        })
 }
 
 export const updateSource = (data: {
-	id: number
-	name?: string
-	default_value?: number
-	description?: string
-	color?: string
+        id: number
+        name?: string
+        default_value?: number
+        description?: string
+        color?: string
 }) => {
-	return instance.post('/prospect/source/update', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.updateSource'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/source/update', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.updateSource'),
+                        successMessage: true,
+                },
+        })
 }
 
 export const deleteSource = (data: { id: number }) => {
-	return instance.post('/prospect/source/delete', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.deleteSource'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/source/delete', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.deleteSource'),
+                        successMessage: true,
+                },
+        })
 }
 
 // ========== Prospect APIs ==========
 
 export interface ProspectListParams {
-	page?: number
-	page_size?: number
-	keyword?: string
-	status?: string
-	source_id?: number
-	sort_by?: string
-	sort_order?: string
+        page?: number
+        page_size?: number
+        keyword?: string
+        status?: string
+        source_id?: number
+        sort_by?: string
+        sort_order?: string
 }
 
 export const getProspectList = (params: ProspectListParams) => {
-	return instance.get('/prospect/list', { params })
+        return instance.get('/prospect/list', { params })
 }
 
 export const getProspect = (params: { id: number }) => {
-	return instance.get('/prospect/get', { params })
+        return instance.get('/prospect/get', { params })
 }
 
 export const createProspect = (data: {
-	company: string
-	contact: string
-	email: string
-	phone?: string
-	value?: number
-	score?: number
-	status?: string
-	tags?: string[]
-	notes?: string
-	source_id: number
-	// Company Information fields
-	industry?: string
-	company_size?: string
-	website?: string
-	address?: string
-	siret?: string
-	revenue?: number
+        company: string
+        contact: string
+        email: string
+        phone?: string
+        value?: number
+        score?: number
+        status?: string
+        tags?: string[]
+        notes?: string
+        source_id: number
+        // Company Information fields
+        industry?: string
+        company_size?: string
+        website?: string
+        address?: string
+        siret?: string
+        revenue?: number
 }) => {
-	return instance.post('/prospect/create', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.createProspect'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/create', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.createProspect'),
+                        successMessage: true,
+                },
+        })
 }
 
 export const updateProspect = (data: {
-	id: number
-	company?: string
-	contact?: string
-	email?: string
-	phone?: string
-	value?: number
-	score?: number
-	status?: string
-	tags?: string[]
-	notes?: string
-	source_id?: number
-	last_contact?: number
-	// Company Information fields
-	industry?: string
-	company_size?: string
-	website?: string
-	address?: string
-	siret?: string
-	revenue?: number
+        id: number
+        company?: string
+        contact?: string
+        email?: string
+        phone?: string
+        value?: number
+        score?: number
+        status?: string
+        tags?: string[]
+        notes?: string
+        source_id?: number
+        last_contact?: number
+        // Company Information fields
+        industry?: string
+        company_size?: string
+        website?: string
+        address?: string
+        siret?: string
+        revenue?: number
 }) => {
-	return instance.post('/prospect/update', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.updateProspect'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/update', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.updateProspect'),
+                        successMessage: true,
+                },
+        })
 }
 
 export const deleteProspects = (data: { ids: number[] }) => {
-	return instance.post('/prospect/delete', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.deleteProspect'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/delete', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.deleteProspect'),
+                        successMessage: true,
+                },
+        })
 }
 
 export const getProspectStats = () => {
-	return instance.get('/prospect/stats')
+        return instance.get('/prospect/stats')
 }
 
 // ========== Import APIs ==========
 
 export interface FieldMapping {
-	csv_column: string
-	app_field: string
+        csv_column: string
+        app_field: string
 }
 
 export const importPreview = (data: { file_data: string; delimiter?: string }) => {
-	return instance.post('/prospect/import/preview', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.preview'),
-		},
-	})
+        return instance.post('/prospect/import/preview', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.preview'),
+                },
+        })
 }
 
 export const importProspects = (data: {
-	source_id: number
-	file_data: string
-	delimiter?: string
-	mapping: FieldMapping[]
-	default_status?: string
-	default_score?: number
+        source_id: number
+        file_data: string
+        delimiter?: string
+        mapping: FieldMapping[]
+        default_status?: string
+        default_score?: number
 }) => {
-	return instance.post('/prospect/import', data, {
-		fetchOptions: {
-			loading: t('prospects.loading.import'),
-			successMessage: true,
-		},
-	})
+        return instance.post('/prospect/import', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.import'),
+                        successMessage: true,
+                },
+        })
+}
+
+
+// ========== Reminder APIs ==========
+
+export interface ReminderListParams {
+        page?: number
+        page_size?: number
+        prospect_id?: number
+        completed?: boolean
+        type?: string
+}
+
+export const getReminderList = (params: ReminderListParams) => {
+        return instance.get('/prospect/reminder/list', { params })
+}
+
+export const getReminder = (params: { id: number }) => {
+        return instance.get('/prospect/reminder/get', { params })
+}
+
+export const createReminder = (data: {
+        title: string
+        prospect_id: number
+        type: string
+        due_date: number
+        notes?: string
+}) => {
+        return instance.post('/prospect/reminder/create', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.createReminder'),
+                        successMessage: true,
+                },
+        })
+}
+
+export const updateReminder = (data: {
+        id: number
+        title?: string
+        type?: string
+        due_date?: number
+        notes?: string
+        completed?: boolean
+}) => {
+        return instance.post('/prospect/reminder/update', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.updateReminder'),
+                        successMessage: true,
+                },
+        })
+}
+
+export const deleteReminders = (data: { ids: number[] }) => {
+        return instance.post('/prospect/reminder/delete', data, {
+                fetchOptions: {
+                        loading: t('prospects.loading.deleteReminder'),
+                        successMessage: true,
+                },
+        })
 }
