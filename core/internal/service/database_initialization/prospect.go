@@ -66,6 +66,13 @@ func init() {
 		// Add columns if not exists (for migrations)
 		_ = AddColumnIfNotExists("bm_prospects", "attribs", "JSONB", "'{}'::jsonb", false)
 		_ = AddColumnIfNotExists("bm_prospects", "last_contact", "INTEGER", "0", true)
+		// Company information fields
+		_ = AddColumnIfNotExists("bm_prospects", "industry", "VARCHAR(100)", "''", true)
+		_ = AddColumnIfNotExists("bm_prospects", "company_size", "VARCHAR(20)", "''", true)
+		_ = AddColumnIfNotExists("bm_prospects", "website", "VARCHAR(255)", "''", true)
+		_ = AddColumnIfNotExists("bm_prospects", "address", "TEXT", "''", true)
+		_ = AddColumnIfNotExists("bm_prospects", "siret", "VARCHAR(14)", "''", true)
+		_ = AddColumnIfNotExists("bm_prospects", "revenue", "INTEGER", "0", true)
 
 		g.Log().Info(context.Background(), "Prospect tables initialized successfully")
 	})
