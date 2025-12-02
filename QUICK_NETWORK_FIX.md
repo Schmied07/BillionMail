@@ -13,7 +13,7 @@ L'erreur `numerical result out of range` signifie que la valeur `IPV4_NETWORK` d
 Vous avez déjà `stop_old_and_start_new.sh` dans votre dépôt. Exécutez-le :
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 sudo bash stop_old_and_start_new.sh
 ```
 
@@ -22,7 +22,7 @@ sudo bash stop_old_and_start_new.sh
 ### Solution Manuelle (3 commandes)
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # 1. Changer le réseau à une valeur sûre
 sed -i 's/^IPV4_NETWORK=.*/IPV4_NETWORK=172.22.1/' .env
@@ -39,7 +39,7 @@ docker compose up -d
 ## 🔧 Solution Alternative avec Script
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # Copier le script de fix réseau depuis /app (si disponible)
 # Si pas disponible, utilisez la solution manuelle ci-dessus
@@ -59,7 +59,7 @@ Votre `.env` doit contenir ces variables :
 
 ```bash
 # Vérifier
-cat ~/BillionMail/.env | grep -E "IPV4_NETWORK|TETRISNEWSEMAILING_HOSTNAME"
+cat ~/TetrisNewsEmailing/.env | grep -E "IPV4_NETWORK|TETRISNEWSEMAILING_HOSTNAME"
 ```
 
 **Valeurs attendues :**
@@ -75,7 +75,7 @@ TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr
 ### Essayer des plages réseau alternatives
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # Essayer 172.23.1
 sed -i 's/^IPV4_NETWORK=.*/IPV4_NETWORK=172.23.1/' .env
@@ -136,7 +136,7 @@ docker exec tetrisnewsemailing-postfix-tetrisnewsemailing-1 ping -c 1 pgsql
 ## 🎯 Commande Tout-en-Un
 
 ```bash
-cd ~/BillionMail && \
+cd ~/TetrisNewsEmailing && \
 sed -i 's/^IPV4_NETWORK=.*/IPV4_NETWORK=172.22.1/' .env && \
 grep -q "^TETRISNEWSEMAILING_HOSTNAME=" .env || echo "TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr" >> .env && \
 docker network prune -f && \

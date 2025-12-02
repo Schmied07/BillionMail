@@ -13,11 +13,11 @@ Error response from daemon: numerical result out of range
 
 ```bash
 # 1. Copier les scripts de correction
-cp /app/fix_traefik_network.sh ~/BillionMail/
-cp /app/diagnostic_rapide.sh ~/BillionMail/
+cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/
+cp /app/diagnostic_rapide.sh ~/TetrisNewsEmailing/
 
 # 2. Se placer dans le dossier
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # 3. Exécuter le script de correction
 chmod +x fix_traefik_network.sh
@@ -38,7 +38,7 @@ sudo bash fix_traefik_network.sh
 Si vous voulez d'abord voir quel est le problème:
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 chmod +x diagnostic_rapide.sh
 bash diagnostic_rapide.sh
 ```
@@ -127,8 +127,8 @@ Si le problème persiste après avoir exécuté le script:
 
 | Étape | Commande |
 |-------|----------|
-| 1. Copier les scripts | `cp /app/fix_traefik_network.sh ~/BillionMail/` |
-| 2. Aller dans le dossier | `cd ~/BillionMail` |
+| 1. Copier les scripts | `cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/` |
+| 2. Aller dans le dossier | `cd ~/TetrisNewsEmailing` |
 | 3. Rendre exécutable | `chmod +x fix_traefik_network.sh` |
 | 4. Exécuter | `sudo bash fix_traefik_network.sh` |
 | 5. Vérifier | `docker compose -f docker-compose.traefik.yml ps` |

@@ -13,7 +13,7 @@
 ### Option 1 : Script Automatique (Recommandé) 🎯
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 sudo bash /app/fix_env_and_build.sh
 ```
 
@@ -31,7 +31,7 @@ Ce script va :
 #### Étape 1 : Copier le fichier .env corrigé
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 cp /app/env_corrected .env
 ```
 
@@ -44,7 +44,7 @@ echo "TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr" >> .env
 #### Étape 2 : Nettoyer les anciens conteneurs
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 docker compose down
 docker network prune -f
 ```
@@ -52,7 +52,7 @@ docker network prune -f
 #### Étape 3 : Construire les images Docker
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 docker compose build
 ```
 
@@ -61,7 +61,7 @@ docker compose build
 #### Étape 4 : Démarrer les services
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 docker compose up -d
 ```
 
@@ -111,7 +111,7 @@ docker compose restart postfix-tetrisnewsemailing
 docker network ls
 
 # Supprimer un réseau spécifique
-docker network rm tetrisnews-emailing_billionmail-network
+docker network rm tetrisnews-emailing_tetrisnewsemailing-network
 
 # Nettoyer tous les réseaux inutilisés
 docker network prune -f

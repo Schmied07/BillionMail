@@ -19,10 +19,10 @@ Cette erreur est causée par un conflit de configuration réseau Docker ou par u
 
 ```bash
 # 1. Copier le script de correction
-cp /app/fix_traefik_network.sh ~/BillionMail/
+cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/
 
 # 2. Aller dans votre dossier
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # 3. Rendre le script exécutable et l'exécuter
 chmod +x fix_traefik_network.sh
@@ -93,7 +93,7 @@ cat /app/EXPLICATION_TECHNIQUE.md
 ### 1. Vérifier l'état des services
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 docker compose -f docker-compose.traefik.yml ps
 ```
 
@@ -115,7 +115,7 @@ Ouvrez votre navigateur:
 
 1. Vérifiez que vous êtes dans le bon dossier:
    ```bash
-   cd ~/BillionMail
+   cd ~/TetrisNewsEmailing
    ls docker-compose.traefik.yml  # Doit exister
    ```
 
@@ -232,7 +232,7 @@ Le script `fix_traefik_network.sh` crée automatiquement un backup:
 ### Restaurer un backup
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 cp .env.backup.YYYYMMDD_HHMMSS .env
 docker compose -f docker-compose.traefik.yml down
 docker compose -f docker-compose.traefik.yml up -d
@@ -264,7 +264,7 @@ Une fois que tous les services sont "Up":
 Avant de demander de l'aide, vérifiez:
 
 - [ ] J'ai exécuté `fix_traefik_network.sh`
-- [ ] Je suis dans le dossier `~/BillionMail`
+- [ ] Je suis dans le dossier `~/TetrisNewsEmailing`
 - [ ] Le fichier `docker-compose.traefik.yml` existe
 - [ ] Docker fonctionne (`docker ps`)
 - [ ] Tous les services sont "Up" (`docker compose -f docker-compose.traefik.yml ps`)
@@ -281,8 +281,8 @@ Avant de demander de l'aide, vérifiez:
 **Commande tout-en-un** pour tout faire d'un coup:
 
 ```bash
-cp /app/fix_traefik_network.sh ~/BillionMail/ && \
-cd ~/BillionMail && \
+cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/ && \
+cd ~/TetrisNewsEmailing && \
 chmod +x fix_traefik_network.sh && \
 sudo bash fix_traefik_network.sh
 ```

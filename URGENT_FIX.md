@@ -2,12 +2,12 @@
 
 ## ⚠️ Problème Identifié
 
-Votre **ancien déploiement BillionMail** est encore en cours d'exécution et cause un conflit de réseau avec le nouveau déploiement.
+Votre **ancien déploiement TetrisNewsEmailing** est encore en cours d'exécution et cause un conflit de réseau avec le nouveau déploiement.
 
 **Conteneurs actifs détectés :**
-- `tetrisnews-emailing-core-billionmail-1`
-- `tetrisnews-emailing-dovecot-billionmail-1`
-- `tetrisnews-emailing-postfix-billionmail-1`
+- `tetrisnews-emailing-core-tetrisnewsemailing-1`
+- `tetrisnews-emailing-dovecot-tetrisnewsemailing-1`
+- `tetrisnews-emailing-postfix-tetrisnewsemailing-1`
 - Et autres...
 
 Ces conteneurs utilisent le même espace d'adressage IP que votre nouveau déploiement.
@@ -19,7 +19,7 @@ Ces conteneurs utilisent le même espace d'adressage IP que votre nouveau déplo
 ### Option 1 : Script Automatique (Recommandé)
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 cp /app/stop_old_and_start_new.sh .
 sudo bash stop_old_and_start_new.sh
 ```
@@ -35,28 +35,28 @@ Le script va :
 ### Option 2 : Commandes Manuelles
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # 1. Arrêter tous les anciens conteneurs
-docker stop tetrisnews-emailing-core-billionmail-1 \
-            tetrisnews-emailing-webmail-billionmail-1 \
-            tetrisnews-emailing-dovecot-billionmail-1 \
-            tetrisnews-emailing-postfix-billionmail-1 \
-            tetrisnews-emailing-rspamd-billionmail-1 \
-            tetrisnews-emailing-pgsql-billionmail-1 \
-            tetrisnews-emailing-redis-billionmail-1
+docker stop tetrisnews-emailing-core-tetrisnewsemailing-1 \
+            tetrisnews-emailing-webmail-tetrisnewsemailing-1 \
+            tetrisnews-emailing-dovecot-tetrisnewsemailing-1 \
+            tetrisnews-emailing-postfix-tetrisnewsemailing-1 \
+            tetrisnews-emailing-rspamd-tetrisnewsemailing-1 \
+            tetrisnews-emailing-pgsql-tetrisnewsemailing-1 \
+            tetrisnews-emailing-redis-tetrisnewsemailing-1
 
 # 2. Supprimer les anciens conteneurs
-docker rm tetrisnews-emailing-core-billionmail-1 \
-          tetrisnews-emailing-webmail-billionmail-1 \
-          tetrisnews-emailing-dovecot-billionmail-1 \
-          tetrisnews-emailing-postfix-billionmail-1 \
-          tetrisnews-emailing-rspamd-billionmail-1 \
-          tetrisnews-emailing-pgsql-billionmail-1 \
-          tetrisnews-emailing-redis-billionmail-1
+docker rm tetrisnews-emailing-core-tetrisnewsemailing-1 \
+          tetrisnews-emailing-webmail-tetrisnewsemailing-1 \
+          tetrisnews-emailing-dovecot-tetrisnewsemailing-1 \
+          tetrisnews-emailing-postfix-tetrisnewsemailing-1 \
+          tetrisnews-emailing-rspamd-tetrisnewsemailing-1 \
+          tetrisnews-emailing-pgsql-tetrisnewsemailing-1 \
+          tetrisnews-emailing-redis-tetrisnewsemailing-1
 
 # 3. Supprimer les réseaux en conflit
-docker network rm tetrisnews-emailing_billionmail-network 2>/dev/null || true
+docker network rm tetrisnews-emailing_tetrisnewsemailing-network 2>/dev/null || true
 docker network prune -f
 
 # 4. Démarrer les nouveaux services
@@ -70,11 +70,11 @@ docker compose up -d
 Si les options ci-dessus ne fonctionnent pas :
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
-# Arrêter TOUS les conteneurs liés à billionmail/tetrisnews
-docker ps -a | grep -E "billionmail|tetrisnews-emailing" | awk '{print $1}' | xargs docker stop
-docker ps -a | grep -E "billionmail|tetrisnews-emailing" | awk '{print $1}' | xargs docker rm
+# Arrêter TOUS les conteneurs liés à tetrisnewsemailing/tetrisnews
+docker ps -a | grep -E "tetrisnewsemailing|tetrisnews-emailing" | awk '{print $1}' | xargs docker stop
+docker ps -a | grep -E "tetrisnewsemailing|tetrisnews-emailing" | awk '{print $1}' | xargs docker rm
 
 # Supprimer tous les réseaux inutilisés
 docker network prune -f
@@ -109,7 +109,7 @@ tetrisnewsemailing-rspamd-tetrisnewsemailing-1    Up
 tetrisnewsemailing-webmail-tetrisnewsemailing-1   Up
 ```
 
-**Notez le changement** : `billionmail` → `tetrisnewsemailing` dans les noms
+**Notez le changement** : `tetrisnewsemailing` → `tetrisnewsemailing` dans les noms
 
 ---
 
@@ -133,10 +133,10 @@ docker compose logs -f
 **OUI !** Les données sont stockées dans des volumes locaux :
 
 ```
-~/BillionMail/postgresql-data/
-~/BillionMail/vmail-data/
-~/BillionMail/redis-data/
-~/BillionMail/rspamd-data/
+~/TetrisNewsEmailing/postgresql-data/
+~/TetrisNewsEmailing/vmail-data/
+~/TetrisNewsEmailing/redis-data/
+~/TetrisNewsEmailing/rspamd-data/
 ```
 
 Ces répertoires sont **préservés** lors du remplacement des conteneurs. Vos emails et configurations existantes sont **sûrs**.
@@ -146,13 +146,13 @@ Ces répertoires sont **préservés** lors du remplacement des conteneurs. Vos e
 ## ❓ FAQ
 
 ### Q: Pourquoi ce conflit ?
-**R:** L'ancien déploiement utilisait `billionmail` dans les noms. Le nouveau utilise `tetrisnewsemailing`. Les deux essaient d'utiliser le même réseau IP.
+**R:** L'ancien déploiement utilisait `tetrisnewsemailing` dans les noms. Le nouveau utilise `tetrisnewsemailing`. Les deux essaient d'utiliser le même réseau IP.
 
 ### Q: Vais-je perdre mes données ?
 **R:** Non, les données sont dans des volumes montés sur le disque local, pas dans les conteneurs.
 
 ### Q: Et mes emails existants ?
-**R:** Ils sont préservés dans `~/BillionMail/vmail-data/` et seront accessibles avec les nouveaux conteneurs.
+**R:** Ils sont préservés dans `~/TetrisNewsEmailing/vmail-data/` et seront accessibles avec les nouveaux conteneurs.
 
 ### Q: Dois-je reconfigurer quelque chose ?
 **R:** Non, le nouveau déploiement utilise le même fichier `.env` et les mêmes volumes de données.
@@ -164,7 +164,7 @@ Ces répertoires sont **préservés** lors du remplacement des conteneurs. Vos e
 **Pour résoudre tout en une commande :**
 
 ```bash
-cd ~/BillionMail && cp /app/stop_old_and_start_new.sh . && sudo bash stop_old_and_start_new.sh
+cd ~/TetrisNewsEmailing && cp /app/stop_old_and_start_new.sh . && sudo bash stop_old_and_start_new.sh
 ```
 
 **C'est tout !** 🎉

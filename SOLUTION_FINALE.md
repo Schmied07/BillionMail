@@ -11,8 +11,8 @@ Les **Dockerfiles ont été corrigés** dans `/app/Dockerfiles/`. Les chemins de
 ### Étape 1 : Copier le script de correction
 
 ```bash
-cp /app/complete_fix.sh ~/BillionMail/
-cd ~/BillionMail
+cp /app/complete_fix.sh ~/TetrisNewsEmailing/
+cd ~/TetrisNewsEmailing
 ```
 
 ### Étape 2 : Exécuter le script
@@ -45,7 +45,7 @@ Si vous préférez faire manuellement :
 ### 1. Corriger le fichier .env
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # Ajouter la variable manquante
 echo "TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr" >> .env
@@ -55,13 +55,13 @@ echo "TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr" >> .env
 
 ```bash
 # Copier tous les Dockerfiles corrigés depuis /app
-cp -r /app/Dockerfiles/* ~/BillionMail/Dockerfiles/
+cp -r /app/Dockerfiles/* ~/TetrisNewsEmailing/Dockerfiles/
 ```
 
 ### 3. Nettoyer et reconstruire
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # Arrêter et nettoyer
 docker compose down
@@ -142,10 +142,10 @@ docker compose logs --tail=100
 ### Erreur "variable not set"
 ```bash
 # Vérifier que la variable existe dans .env
-grep TETRISNEWSEMAILING_HOSTNAME ~/BillionMail/.env
+grep TETRISNEWSEMAILING_HOSTNAME ~/TetrisNewsEmailing/.env
 
 # Si absent, ajouter :
-echo "TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr" >> ~/BillionMail/.env
+echo "TETRISNEWSEMAILING_HOSTNAME=emailing.tetrisnews.fr" >> ~/TetrisNewsEmailing/.env
 ```
 
 ### Erreur de construction d'image
@@ -160,7 +160,7 @@ docker compose build --no-cache --pull
 docker network ls
 
 # Supprimer les réseaux problématiques
-docker network rm tetrisnews-emailing_billionmail-network
+docker network rm tetrisnews-emailing_tetrisnewsemailing-network
 
 # Ou nettoyer tous les réseaux inutilisés
 docker network prune -f

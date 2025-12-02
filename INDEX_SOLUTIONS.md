@@ -13,8 +13,8 @@ Error response from daemon: numerical result out of range
 ### Exécutez ces 3 commandes sur votre serveur:
 
 ```bash
-cp /app/fix_traefik_network.sh ~/BillionMail/
-cd ~/BillionMail
+cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/
+cd ~/TetrisNewsEmailing
 sudo bash fix_traefik_network.sh
 ```
 
@@ -100,7 +100,7 @@ cat /app/GUIDE_CONFIGURATION_TRAEFIK.md
 
 **Utilisation**:
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 sudo bash fix_traefik_network.sh
 ```
 
@@ -119,7 +119,7 @@ sudo bash fix_traefik_network.sh
 
 **Utilisation**:
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 bash diagnostic_rapide.sh
 ```
 
@@ -248,8 +248,8 @@ Avant de demander de l'aide, vérifiez:
 Si vous voulez juste que ça fonctionne sans lire la doc:
 
 ```bash
-cp /app/fix_traefik_network.sh ~/BillionMail/ && \
-cd ~/BillionMail && \
+cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/ && \
+cd ~/TetrisNewsEmailing && \
 chmod +x fix_traefik_network.sh && \
 sudo bash fix_traefik_network.sh
 ```

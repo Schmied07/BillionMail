@@ -18,8 +18,8 @@ L'erreur `numerical result out of range` lors du redémarrage de `core-tetrisnew
 
 **1. Copiez le script de correction dans votre dossier:**
 ```bash
-cp /app/fix_traefik_network.sh ~/BillionMail/
-cd ~/BillionMail
+cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/
+cd ~/TetrisNewsEmailing
 ```
 
 **2. Exécutez le script:**
@@ -47,7 +47,7 @@ Si vous souhaitez effectuer les corrections manuellement:
 
 ### Étape 1: Backup du .env
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 cp .env .env.backup.$(date +%Y%m%d_%H%M%S)
 ```
 
@@ -59,7 +59,7 @@ docker compose -f docker-compose.traefik.yml down
 ### Étape 3: Nettoyer les anciens réseaux
 ```bash
 # Supprimer les anciens conteneurs
-docker ps -a | grep -E "tetrisnews|billionmail" | awk '{print $1}' | xargs docker rm -f 2>/dev/null
+docker ps -a | grep -E "tetrisnews|tetrisnewsemailing" | awk '{print $1}' | xargs docker rm -f 2>/dev/null
 
 # Supprimer les anciens réseaux
 docker network rm tetrisnews-emailing_tetrisnews-network 2>/dev/null || true
@@ -290,7 +290,7 @@ docker system prune -a --volumes -f
 Si quelque chose ne va pas, restaurez votre configuration:
 
 ```bash
-cd ~/BillionMail
+cd ~/TetrisNewsEmailing
 
 # Lister les backups disponibles
 ls -la .env.backup.*
@@ -324,8 +324,8 @@ docker compose -f docker-compose.traefik.yml up -d
 
 | Étape | Action | Commande |
 |-------|--------|----------|
-| 1️⃣ | Copier le script | `cp /app/fix_traefik_network.sh ~/BillionMail/` |
-| 2️⃣ | Se placer dans le dossier | `cd ~/BillionMail` |
+| 1️⃣ | Copier le script | `cp /app/fix_traefik_network.sh ~/TetrisNewsEmailing/` |
+| 2️⃣ | Se placer dans le dossier | `cd ~/TetrisNewsEmailing` |
 | 3️⃣ | Rendre exécutable | `chmod +x fix_traefik_network.sh` |
 | 4️⃣ | Exécuter | `sudo bash fix_traefik_network.sh` |
 | 5️⃣ | Vérifier | `docker compose -f docker-compose.traefik.yml ps` |
