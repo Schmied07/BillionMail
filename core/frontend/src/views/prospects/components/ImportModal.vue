@@ -430,9 +430,9 @@ const nextStep = async () => {
 				file_data: btoa(unescape(encodeURIComponent(fileContent.value))),
 				delimiter: formData.delimiter,
 			})
-			if (res.data?.data) {
-				csvColumns.value = res.data.data.columns || []
-				previewData.value = res.data.data
+			if (res) {
+				csvColumns.value = res.columns || []
+				previewData.value = res
 
 				// Auto-map columns
 				autoMapColumns()
