@@ -215,6 +215,11 @@ interface Reminder {
 	dueDate: number
 	notes?: string
 	completed: boolean
+	prospect?: {
+		company?: string
+		contact?: string
+		email?: string
+	}
 }
 
 const showAddModal = ref(false)
