@@ -326,6 +326,27 @@ const statusOptions = [
         { label: 'Converti', value: 'converted' },
 ]
 
+const companySizeOptions = [
+        { label: 'TPE (< 10 salariés)', value: 'tpe' },
+        { label: 'PME (10-249 salariés)', value: 'pme' },
+        { label: 'ETI (250-4999 salariés)', value: 'eti' },
+        { label: 'Grande Entreprise (5000+)', value: 'ge' },
+]
+
+const industryOptions = [
+        { label: 'Tech / IT', value: 'tech' },
+        { label: 'Finance / Banque', value: 'finance' },
+        { label: 'Industrie / Manufacturing', value: 'industrie' },
+        { label: 'Commerce / Retail', value: 'retail' },
+        { label: 'Santé / Pharma', value: 'sante' },
+        { label: 'Services', value: 'services' },
+        { label: 'Immobilier', value: 'immobilier' },
+        { label: 'Éducation', value: 'education' },
+        { label: 'Transport / Logistique', value: 'transport' },
+        { label: 'Énergie', value: 'energie' },
+        { label: 'Autre', value: 'autre' },
+]
+
 const tagOptions = [
         { label: 'Tech', value: 'Tech' },
         { label: 'Marketing', value: 'Marketing' },
