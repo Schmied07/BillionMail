@@ -161,6 +161,18 @@ const columns = [
                 ),
         },
         {
+                title: 'Info Entreprise',
+                key: 'company_info',
+                width: 160,
+                render: (row: any) => (
+                        <div class="text-12px">
+                                {row.industry && <div class="flex items-center gap-4px"><i class="i-mdi-domain text-gray-400"></i> {industryLabels[row.industry] || row.industry}</div>}
+                                {row.company_size && <div class="flex items-center gap-4px"><i class="i-mdi-account-group text-gray-400"></i> {companySizeLabels[row.company_size] || row.company_size}</div>}
+                                {!row.industry && !row.company_size && <span class="text-gray-400">-</span>}
+                        </div>
+                ),
+        },
+        {
                 title: 'Email',
                 key: 'email',
                 width: 220,
