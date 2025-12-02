@@ -316,8 +316,8 @@ const loadProspects = async () => {
 
 const toggleReminder = async (reminder: Reminder) => {
 	try {
-		const response = await updateReminder(reminder.id, {
-			...reminder,
+		const response = await updateReminder({
+			id: reminder.id,
 			completed: reminder.completed
 		})
 		if (!response.success) {
