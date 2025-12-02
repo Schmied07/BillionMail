@@ -13,6 +13,7 @@ interface FetchOptions {
 const instance = axios.create({
         baseURL: apiUrlPrefix,
         timeout: 600000,
+        withCredentials: true, // Important: send cookies with requests for session management
         headers: {
                 'Content-Type': 'application/json',
         },
