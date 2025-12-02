@@ -529,7 +529,9 @@ const removeTag = async (tag: string) => {
 
 const loadProspects = async () => {
         try {
+                console.log('Loading prospects...')
                 const res = await getProspectList({ page: 1, page_size: 1000 })
+                console.log('Load prospects response:', res)
                 if (res?.list) {
                         prospects.value = res.list.map((p: any) => ({
                                 id: String(p.id),
@@ -547,9 +549,15 @@ const loadProspects = async () => {
                                 sourceId: p.source_id,
                                 sourceName: p.source_name,
                         }))
+                        console.log(`Loaded ${prospects.value.length} prospects`)
+                } else {
+                        console.warn('No prospects list in response:', res)
                 }
-        } catch (error) {
+        } catch (error: any) {
                 console.error('Failed to load prospects:', error)
+                console.error('Error details:', error?.response?.data || error?.data || error)
+                const errorMsg = error?.response?.data?.msg || error?.msg || error?.message || 'Erreur lors du chargement des prospects'
+                message.error(errorMsg)
         }
 }
 
