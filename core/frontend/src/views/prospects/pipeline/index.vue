@@ -697,6 +697,13 @@ const loadProspects = async () => {
                                 createdAt: p.create_time * 1000,
                                 sourceId: p.source_id,
                                 sourceName: p.source_name,
+                                // Company Information fields
+                                industry: p.industry || '',
+                                companySize: p.company_size || '',
+                                website: p.website || '',
+                                address: p.address || '',
+                                siret: p.siret || '',
+                                revenue: p.revenue || 0,
                         }))
                         console.log(`Loaded ${prospects.value.length} prospects`)
                 } else {
