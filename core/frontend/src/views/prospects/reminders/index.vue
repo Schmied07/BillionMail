@@ -66,7 +66,7 @@
 		</div>
 
 		<!-- Reminders List -->
-		<div class="reminders-sections">
+		<div v-if="!loading" class="reminders-sections">
 			<!-- Overdue -->
 			<div class="section" v-if="overdueReminders.length > 0">
 				<h3 class="section-title urgent">
