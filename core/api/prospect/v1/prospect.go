@@ -180,6 +180,13 @@ type ProspectUpdateReq struct {
 	Notes         string   `json:"notes" dc:"Notes"`
 	SourceId      int      `json:"source_id" dc:"Source ID"`
 	LastContact   int      `json:"last_contact" dc:"Last Contact Time"`
+	// Company Information fields
+	Industry    string `json:"industry" dc:"Industry/Sector"`
+	CompanySize string `json:"company_size" v:"in:,tpe,pme,eti,ge" dc:"Company Size"`
+	Website     string `json:"website" dc:"Company Website"`
+	Address     string `json:"address" dc:"Company Address"`
+	Siret       string `json:"siret" v:"max-length:14" dc:"SIRET Number"`
+	Revenue     int    `json:"revenue" v:"min:0" dc:"Annual Revenue"`
 }
 
 type ProspectUpdateRes struct {
