@@ -288,7 +288,7 @@ const formatDate = (timestamp: number) => {
 const loadReminders = async () => {
 	try {
 		loading.value = true
-		const response = await getReminderList()
+		const response = await getReminderList({})
 		if (response.success) {
 			reminders.value = response.data.map((reminder: any) => ({
 				...reminder,
