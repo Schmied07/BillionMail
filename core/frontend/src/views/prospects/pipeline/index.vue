@@ -412,7 +412,26 @@ const handleCardAction = (key: string, prospect: Prospect) => {
                         selectProspect(prospect)
                         break
                 case 'delete':
-                        prospects.value = prospects.value.filter(p => p.id !== prospect.id)
+                        dialog.warning({
+                                title: 'Confirmer la suppression',
+                                content: `Êtes-vous sûr de vouloir supprimer le prospect "${prospect.company}" ?`,
+                                positiveText: 'Supprimer',
+                                negativeText: 'Annuler',
+                                onPositiveClick: async () => {
+                                        try {
+                                                const res = await deleteProspects({ ids: [Number(prospect.id)] })
+                                                if (res.data?.code === 0) {
+                                                        message.success('Prospect supprimé avec succès')
+                                                        loadProspects()
+                                                } else {
+                                                        message.error(res.data?.message || 'Erreur lors de la suppression')
+                                                }
+                                        } catch (error) {
+                                                console.error('Failed to delete prospect:', error)
+                                                message.error('Erreur lors de la suppression du prospect')
+                                        }
+                                },
+                        })
                         break
         }
 }
