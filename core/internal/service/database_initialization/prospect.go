@@ -53,6 +53,26 @@ func init() {
 			`CREATE INDEX IF NOT EXISTS idx_bm_prospects_source_id ON bm_prospects(source_id)`,
 			`CREATE INDEX IF NOT EXISTS idx_bm_prospects_create_time ON bm_prospects(create_time)`,
 			`CREATE INDEX IF NOT EXISTS idx_bm_prospects_value ON bm_prospects(value)`,
+
+			// Reminders table
+			`CREATE TABLE IF NOT EXISTS bm_prospect_reminders (
+				id SERIAL PRIMARY KEY,
+				title VARCHAR(200) NOT NULL,
+				prospect_id INTEGER NOT NULL,
+				type VARCHAR(20) NOT NULL DEFAULT 'call',
+				due_date BIGINT NOT NULL,
+				notes TEXT DEFAULT '',
+				completed BOOLEAN NOT NULL DEFAULT FALSE,
+				create_time INTEGER NOT NULL DEFAULT EXTRACT(EPOCH FROM NOW()),
+				update_time INTEGER NOT NULL DEFAULT EXTRACT(EPOCH FROM NOW()),
+				FOREIGN KEY (prospect_id) REFERENCES bm_prospects(id) ON DELETE CASCADE
+			)`,
+
+			// Reminder indexes
+			`CREATE INDEX IF NOT EXISTS idx_bm_prospect_reminders_prospect_id ON bm_prospect_reminders(prospect_id)`,
+			`CREATE INDEX IF NOT EXISTS idx_bm_prospect_reminders_due_date ON bm_prospect_reminders(due_date)`,
+			`CREATE INDEX IF NOT EXISTS idx_bm_prospect_reminders_completed ON bm_prospect_reminders(completed)`,
+			`CREATE INDEX IF NOT EXISTS idx_bm_prospect_reminders_type ON bm_prospect_reminders(type)`,
 		}
 
 		for _, sql := range prospectSQLList {
