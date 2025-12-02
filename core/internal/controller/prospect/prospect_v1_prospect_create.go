@@ -40,16 +40,22 @@ func (c *ControllerV1) ProspectCreate(ctx context.Context, req *v1.ProspectCreat
 
 	// Create prospect
 	id, err := prospect.CreateProspect(ctx, prospect.ProspectData{
-		Company:  req.Company,
-		Contact:  req.Contact,
-		Email:    req.Email,
-		Phone:    req.Phone,
-		Value:    value,
-		Score:    req.Score,
-		Status:   req.Status,
-		Tags:     req.Tags,
-		Notes:    req.Notes,
-		SourceId: req.SourceId,
+		Company:     req.Company,
+		Contact:     req.Contact,
+		Email:       req.Email,
+		Phone:       req.Phone,
+		Value:       value,
+		Score:       req.Score,
+		Status:      req.Status,
+		Tags:        req.Tags,
+		Notes:       req.Notes,
+		SourceId:    req.SourceId,
+		Industry:    req.Industry,
+		CompanySize: req.CompanySize,
+		Website:     req.Website,
+		Address:     req.Address,
+		Siret:       req.Siret,
+		Revenue:     req.Revenue,
 	})
 	if err != nil {
 		res.SetError(gerror.New(public.LangCtx(ctx, "Failed to create prospect")))
