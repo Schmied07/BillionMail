@@ -111,6 +111,13 @@ export const updateProspect = (data: {
 	notes?: string
 	source_id?: number
 	last_contact?: number
+	// Company Information fields
+	industry?: string
+	company_size?: string
+	website?: string
+	address?: string
+	siret?: string
+	revenue?: number
 }) => {
 	return instance.post('/prospect/update', data, {
 		fetchOptions: {
