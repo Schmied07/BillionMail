@@ -438,7 +438,13 @@ const handleAddProspect = async () => {
                 return
         }
         
+        if (!formData.email) {
+                message.warning('Veuillez entrer un email')
+                return
+        }
+        
         try {
+                console.log('Creating prospect with data:', JSON.stringify(formData, null, 2))
                 const res = await createProspect({
                         company: formData.company || '',
                         contact: formData.contact || '',
@@ -452,6 +458,7 @@ const handleAddProspect = async () => {
                         source_id: formData.source_id,
                 })
                 
+                console.log('Create prospect response:', res)
                 message.success('Prospect ajouté avec succès')
                 showAddModal.value = false
                 // Reset form
@@ -469,9 +476,11 @@ const handleAddProspect = async () => {
                 })
                 // Reload prospects
                 loadProspects()
-        } catch (error) {
+        } catch (error: any) {
                 console.error('Failed to create prospect:', error)
-                message.error('Erreur lors de la création du prospect')
+                console.error('Error response:', error?.response?.data || error?.data || error)
+                const errorMsg = error?.response?.data?.msg || error?.msg || error?.message || 'Erreur lors de la création du prospect'
+                message.error(errorMsg)
         }
 }
 
