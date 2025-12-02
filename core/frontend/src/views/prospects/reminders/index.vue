@@ -305,7 +305,7 @@ const loadReminders = async () => {
 
 const loadProspects = async () => {
 	try {
-		const response = await getProspectList()
+		const response = await getProspectList({})
 		if (response.success) {
 			prospects.value = response.data
 		}
