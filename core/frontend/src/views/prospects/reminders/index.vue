@@ -197,8 +197,8 @@
 			</n-form>
 			<template #footer>
 				<div class="modal-footer">
-					<n-button @click="showAddModal = false">Annuler</n-button>
-					<n-button type="primary" @click="addReminder">Créer</n-button>
+					<n-button @click="showAddModal = false" :disabled="loading">Annuler</n-button>
+					<n-button type="primary" @click="addReminder" :loading="loading">Créer</n-button>
 				</div>
 			</template>
 		</n-modal>
