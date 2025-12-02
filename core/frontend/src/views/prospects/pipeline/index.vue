@@ -478,19 +478,15 @@ const handleAddProspect = async () => {
 const updateProspectStatus = async (status: string) => {
         if (selectedProspect.value) {
                 try {
-                        const res = await updateProspect({
+                        await updateProspect({
                                 id: Number(selectedProspect.value.id),
                                 status: status,
                         })
-                        if (res.data?.code === 0) {
-                                const index = prospects.value.findIndex(p => p.id === selectedProspect.value?.id)
-                                if (index !== -1) {
-                                        prospects.value[index].status = status
-                                }
-                                message.success('Statut mis à jour')
-                        } else {
-                                message.error(res.data?.message || 'Erreur lors de la mise à jour')
+                        const index = prospects.value.findIndex(p => p.id === selectedProspect.value?.id)
+                        if (index !== -1) {
+                                prospects.value[index].status = status
                         }
+                        message.success('Statut mis à jour')
                 } catch (error) {
                         console.error('Failed to update prospect status:', error)
                         message.error('Erreur lors de la mise à jour du statut')
