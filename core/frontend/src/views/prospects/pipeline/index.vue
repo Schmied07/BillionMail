@@ -498,18 +498,14 @@ const removeTag = async (tag: string) => {
         if (selectedProspect.value) {
                 const newTags = selectedProspect.value.tags.filter(t => t !== tag)
                 try {
-                        const res = await updateProspect({
+                        await updateProspect({
                                 id: Number(selectedProspect.value.id),
                                 tags: newTags,
                         })
-                        if (res.data?.code === 0) {
-                                selectedProspect.value.tags = newTags
-                                const index = prospects.value.findIndex(p => p.id === selectedProspect.value?.id)
-                                if (index !== -1) {
-                                        prospects.value[index].tags = newTags
-                                }
-                        } else {
-                                message.error(res.data?.message || 'Erreur lors de la mise à jour')
+                        selectedProspect.value.tags = newTags
+                        const index = prospects.value.findIndex(p => p.id === selectedProspect.value?.id)
+                        if (index !== -1) {
+                                prospects.value[index].tags = newTags
                         }
                 } catch (error) {
                         console.error('Failed to remove tag:', error)
