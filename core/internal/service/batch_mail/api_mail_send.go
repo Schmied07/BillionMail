@@ -424,7 +424,7 @@ func sendApiMail(ctx context.Context, apiTemplate *entity.ApiTemplates, subject 
 	// generate message ID
 	messageId := "<" + log.MessageId + ">"
 
-	// add 1 billion to prevent conflict with marketing task id
+	// add 1000000000 to prevent conflict with marketing task id
 	//baseURL := domains.GetBaseURLBySender(log.Addresser)
 	baseURL := domains.GetBaseURL()
 	apiTemplate_id := apiTemplate.Id + 1000000000
