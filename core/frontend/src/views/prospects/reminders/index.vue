@@ -309,7 +309,8 @@ const loadProspects = async () => {
 	try {
 		const response = await getProspectList({})
 		if (response.success) {
-			prospects.value = response.data
+			// Backend returns { data: { total, list } }
+			prospects.value = response.data?.list || response.data || []
 		}
 	} catch (error) {
 		console.error('Erreur lors du chargement des prospects:', error)
