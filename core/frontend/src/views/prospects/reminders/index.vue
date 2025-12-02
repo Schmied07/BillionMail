@@ -201,11 +201,15 @@
 <script lang="ts" setup>
 import { format, isToday, isPast, isThisWeek } from 'date-fns'
 import { fr } from 'date-fns/locale'
+import { useMessage } from 'naive-ui'
+import { getReminderList, createReminder, updateReminder, deleteReminders, getProspectList } from '@/api/modules/prospects'
+
+const message = useMessage()
 
 interface Reminder {
-	id: string
+	id: number
 	title: string
-	prospectId: string
+	prospectId: number
 	prospectName: string
 	type: string
 	dueDate: number
@@ -214,58 +218,13 @@ interface Reminder {
 }
 
 const showAddModal = ref(false)
-
-const reminders = ref<Reminder[]>([
-	{
-		id: '1',
-		title: 'Relancer pour le devis',
-		prospectId: '1',
-		prospectName: 'Tech Solutions SA',
-		type: 'call',
-		dueDate: Date.now() - 86400000 * 2,
-		completed: false,
-	},
-	{
-		id: '2',
-		title: 'Envoyer documentation',
-		prospectId: '2',
-		prospectName: 'Marketing Pro',
-		type: 'email',
-		dueDate: Date.now(),
-		completed: false,
-	},
-	{
-		id: '3',
-		title: 'Réunion de présentation',
-		prospectId: '3',
-		prospectName: 'Global Industries',
-		type: 'meeting',
-		dueDate: Date.now() + 86400000 * 2,
-		completed: false,
-	},
-	{
-		id: '4',
-		title: 'Suivi après démo',
-		prospectId: '4',
-		prospectName: 'StartupXYZ',
-		type: 'call',
-		dueDate: Date.now() + 86400000 * 4,
-		completed: false,
-	},
-	{
-		id: '5',
-		title: 'Signature contrat',
-		prospectId: '5',
-		prospectName: 'Retail Plus',
-		type: 'meeting',
-		dueDate: Date.now() - 86400000 * 5,
-		completed: true,
-	},
-])
+const loading = ref(false)
+const reminders = ref<Reminder[]>([])
+const prospects = ref<any[]>([])
 
 const formData = reactive({
 	title: '',
-	prospectId: null as string | null,
+	prospectId: null as number | null,
 	type: 'call',
 	dueDate: Date.now(),
 	notes: '',
@@ -278,13 +237,12 @@ const typeOptions = [
 	{ label: 'Autre', value: 'other' },
 ]
 
-const prospectOptions = [
-	{ label: 'Tech Solutions SA', value: '1' },
-	{ label: 'Marketing Pro', value: '2' },
-	{ label: 'Global Industries', value: '3' },
-	{ label: 'StartupXYZ', value: '4' },
-	{ label: 'Retail Plus', value: '5' },
-]
+const prospectOptions = computed(() =>
+	prospects.value.map((p) => ({
+		label: p.company || p.contact || p.email,
+		value: p.id,
+	}))
+)
 
 const typeConfig: Record<string, { label: string; type: 'info' | 'warning' | 'success' | 'error' | 'default' }> = {
 	call: { label: 'Appel', type: 'info' },
