@@ -190,7 +190,7 @@ services:
         - /var/run/docker.sock:/var/run/docker.sock:ro
         - ./vmail-data:/opt/tetrisnewsemailing/vmail-data
         # Mount du frontend modifié (optionnel - si vous voulez utiliser le build personnalisé)
-        # - ./core/public/dist:/opt/tetrisnewsemailing/core/public/dist
+        - ./core/public/dist:/opt/tetrisnewsemailing/core/public/dist
       environment:
         - TZ=${TZ}
         - FAIL2BAN_INIT=${FAIL2BAN_INIT:-y}
