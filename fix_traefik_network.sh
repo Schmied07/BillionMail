@@ -214,7 +214,7 @@ if [ $? -eq 0 ]; then
     DOMAIN_VALUE=$(grep "^DOMAIN=" .env | cut -d'=' -f2)
     echo -e "  • Interface Admin:  ${CYAN}https://${DOMAIN_VALUE}${NC}"
     echo -e "  • WebMail:          ${CYAN}https://${DOMAIN_VALUE}/roundcube/${NC}"
-    echo -e "  • Login Admin:      ${YELLOW}billion / billion${NC}"
+    echo -e "  • Login Admin:      ${YELLOW}tetrisnews / tetrisnews${NC}"
     echo ""
     
     echo -e "${BLUE}📝 Commandes utiles:${NC}"

@@ -252,7 +252,7 @@ show_useful_commands() {
     echo ""
     echo -e "  ${GREEN}Interface Admin:${NC} https://emailing.tetrisnews.fr"
     echo -e "  ${GREEN}WebMail:${NC}         https://emailing.tetrisnews.fr/roundcube/"
-    echo -e "  ${GREEN}Login:${NC}           billion / billion"
+    echo -e "  ${GREEN}Login:${NC}           tetrisnews / tetrisnews"
     echo ""
     
     pause
