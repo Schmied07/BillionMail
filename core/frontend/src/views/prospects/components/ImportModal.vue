@@ -533,9 +533,9 @@ const handleCreateSource = async () => {
 			description: sourceForm.description,
 			color: sourceForm.color,
 		})
-		if (res.data?.data?.id) {
+		if (res?.id) {
 			await loadSources()
-			formData.source_id = res.data.data.id
+			formData.source_id = res.id
 			showSourceModal.value = false
 			// Reset form
 			sourceForm.name = ''
