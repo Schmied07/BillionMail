@@ -79,6 +79,25 @@ func (c *ControllerV1) ProspectUpdate(ctx context.Context, req *v1.ProspectUpdat
 	if req.LastContact > 0 {
 		updateData["last_contact"] = req.LastContact
 	}
+	// Company information fields
+	if req.Industry != "" {
+		updateData["industry"] = req.Industry
+	}
+	if req.CompanySize != "" {
+		updateData["company_size"] = req.CompanySize
+	}
+	if req.Website != "" {
+		updateData["website"] = req.Website
+	}
+	if req.Address != "" {
+		updateData["address"] = req.Address
+	}
+	if req.Siret != "" {
+		updateData["siret"] = req.Siret
+	}
+	if req.Revenue > 0 {
+		updateData["revenue"] = req.Revenue
+	}
 
 	err = prospect.UpdateProspect(ctx, req.Id, updateData)
 	if err != nil {
