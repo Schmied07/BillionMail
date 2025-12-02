@@ -272,33 +272,112 @@ const formatDate = (timestamp: number) => {
 	return format(new Date(timestamp), 'dd MMM à HH:mm', { locale: fr })
 }
 
-const toggleReminder = (reminder: Reminder) => {
-	// Already handled by v-model
+// Load data functions
+const loadReminders = async () => {
+	try {
+		loading.value = true
+		const response = await getReminderList()
+		if (response.success) {
+			reminders.value = response.data.map((reminder: any) => ({
+				...reminder,
+				prospectName: reminder.prospect?.company || reminder.prospect?.contact || reminder.prospect?.email || 'Prospect inconnu'
+			}))
+		}
+	} catch (error) {
+		console.error('Erreur lors du chargement des rappels:', error)
+		message.error('Erreur lors du chargement des rappels')
+	} finally {
+		loading.value = false
+	}
+}
+
+const loadProspects = async () => {
+	try {
+		const response = await getProspectList()
+		if (response.success) {
+			prospects.value = response.data
+		}
+	} catch (error) {
+		console.error('Erreur lors du chargement des prospects:', error)
+	}
+}
+
+const toggleReminder = async (reminder: Reminder) => {
+	try {
+		const response = await updateReminder(reminder.id, {
+			...reminder,
+			completed: reminder.completed
+		})
+		if (!response.success) {
+			// Revert on error
+			reminder.completed = !reminder.completed
+			message.error('Erreur lors de la mise à jour du rappel')
+		}
+	} catch (error) {
+		// Revert on error
+		reminder.completed = !reminder.completed
+		console.error('Erreur lors de la mise à jour du rappel:', error)
+		message.error('Erreur lors de la mise à jour du rappel')
+	}
 }
 
 const rescheduleReminder = (reminder: Reminder) => {
-	// Open reschedule modal
+	// Open reschedule modal - to be implemented
+	message.info('Fonctionnalité de reprogrammation à venir')
 }
 
-const deleteReminder = (reminder: Reminder) => {
-	reminders.value = reminders.value.filter(r => r.id !== reminder.id)
+const deleteReminder = async (reminder: Reminder) => {
+	try {
+		const response = await deleteReminders([reminder.id])
+		if (response.success) {
+			reminders.value = reminders.value.filter(r => r.id !== reminder.id)
+			message.success('Rappel supprimé')
+		} else {
+			message.error('Erreur lors de la suppression du rappel')
+		}
+	} catch (error) {
+		console.error('Erreur lors de la suppression du rappel:', error)
+		message.error('Erreur lors de la suppression du rappel')
+	}
 }
 
-const addReminder = () => {
-	const prospect = prospectOptions.find(p => p.value === formData.prospectId)
-	reminders.value.push({
-		id: Date.now().toString(),
-		title: formData.title,
-		prospectId: formData.prospectId || '',
-		prospectName: prospect?.label || '',
-		type: formData.type,
-		dueDate: formData.dueDate,
-		notes: formData.notes,
-		completed: false,
-	})
-	showAddModal.value = false
-	Object.assign(formData, { title: '', prospectId: null, type: 'call', dueDate: Date.now(), notes: '' })
+const addReminder = async () => {
+	try {
+		if (!formData.title || !formData.prospectId) {
+			message.warning('Veuillez remplir tous les champs obligatoires')
+			return
+		}
+
+		loading.value = true
+		const response = await createReminder({
+			title: formData.title,
+			prospect_id: formData.prospectId,
+			type: formData.type,
+			due_date: new Date(formData.dueDate).toISOString(),
+			notes: formData.notes,
+			completed: false
+		})
+
+		if (response.success) {
+			message.success('Rappel créé avec succès')
+			showAddModal.value = false
+			Object.assign(formData, { title: '', prospectId: null, type: 'call', dueDate: Date.now(), notes: '' })
+			await loadReminders() // Reload to get updated data
+		} else {
+			message.error('Erreur lors de la création du rappel')
+		}
+	} catch (error) {
+		console.error('Erreur lors de la création du rappel:', error)
+		message.error('Erreur lors de la création du rappel')
+	} finally {
+		loading.value = false
+	}
 }
+
+// Initialize data on mount
+onMounted(async () => {
+	await Promise.all([loadReminders(), loadProspects()])
+})
 </script>
 
 <style lang="scss" scoped>
