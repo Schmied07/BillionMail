@@ -220,18 +220,24 @@ func CreateProspect(ctx context.Context, data ProspectData) (int, error) {
 	tagsJson, _ := json.Marshal(data.Tags)
 
 	insertData := g.Map{
-		"company":     data.Company,
-		"contact":     data.Contact,
-		"email":       strings.ToLower(data.Email),
-		"phone":       data.Phone,
-		"value":       data.Value,
-		"score":       data.Score,
-		"status":      data.Status,
-		"tags":        string(tagsJson),
-		"notes":       data.Notes,
-		"source_id":   data.SourceId,
-		"create_time": int(now),
-		"update_time": int(now),
+		"company":      data.Company,
+		"contact":      data.Contact,
+		"email":        strings.ToLower(data.Email),
+		"phone":        data.Phone,
+		"value":        data.Value,
+		"score":        data.Score,
+		"status":       data.Status,
+		"tags":         string(tagsJson),
+		"notes":        data.Notes,
+		"source_id":    data.SourceId,
+		"industry":     data.Industry,
+		"company_size": data.CompanySize,
+		"website":      data.Website,
+		"address":      data.Address,
+		"siret":        data.Siret,
+		"revenue":      data.Revenue,
+		"create_time":  int(now),
+		"update_time":  int(now),
 	}
 
 	lastInsertId, err := g.DB().Model("bm_prospects").Ctx(ctx).Data(insertData).InsertAndGetId()
