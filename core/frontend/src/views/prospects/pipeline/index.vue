@@ -549,8 +549,8 @@ const loadSources = async () => {
         loadingSources.value = true
         try {
                 const res = await getSourceAll()
-                if (res.data?.data?.list) {
-                        sources.value = res.data.data.list
+                if (res?.list) {
+                        sources.value = res.list
                 }
         } catch (error) {
                 console.error('Failed to load sources:', error)
