@@ -219,7 +219,7 @@
                 </n-modal>
 
                 <!-- Prospect Detail Drawer -->
-                <n-drawer v-model:show="showDrawer" :width="480" placement="right">
+                <n-drawer v-model:show="showDrawer" :width="520" placement="right">
                         <n-drawer-content v-if="selectedProspect" :title="selectedProspect.company">
                                 <template #header>
                                         <div class="drawer-header">
@@ -233,42 +233,79 @@
                                         </div>
                                 </template>
                                 <div class="drawer-content">
-                                        <div class="detail-section">
-                                                <h4>Informations</h4>
-                                                <div class="detail-item">
-                                                        <i class="i-mdi-email-outline"></i>
-                                                        <span>{{ selectedProspect.email }}</span>
-                                                </div>
-                                                <div class="detail-item" v-if="selectedProspect.phone">
-                                                        <i class="i-mdi-phone-outline"></i>
-                                                        <span>{{ selectedProspect.phone }}</span>
-                                                </div>
-                                                <div class="detail-item">
-                                                        <i class="i-mdi-currency-eur"></i>
-                                                        <span>{{ formatValue(selectedProspect.value) }}</span>
-                                                </div>
-                                                <div class="detail-item">
-                                                        <i class="i-mdi-star"></i>
-                                                        <n-rate :value="selectedProspect.score" readonly size="small" />
-                                                </div>
-                                        </div>
-                                        <div class="detail-section">
-                                                <h4>Statut</h4>
-                                                <n-select v-model:value="selectedProspect.status" :options="statusOptions" @update:value="updateProspectStatus" />
-                                        </div>
-                                        <div class="detail-section">
-                                                <h4>Tags</h4>
-                                                <div class="tags-list">
-                                                        <n-tag v-for="tag in selectedProspect.tags" :key="tag" :bordered="false" closable @close="removeTag(tag)">
-                                                                {{ tag }}
-                                                        </n-tag>
-                                                </div>
-                                        </div>
-                                        <div class="detail-section">
-                                                <h4>Notes</h4>
-                                                <n-input v-model:value="selectedProspect.notes" type="textarea" placeholder="Ajouter des notes..." :rows="4" />
-                                        </div>
-                                        <div class="detail-section">
+                                        <n-tabs type="line" animated>
+                                                <n-tab-pane name="info" tab="Informations">
+                                                        <div class="detail-section">
+                                                                <h4>Contact</h4>
+                                                                <div class="detail-item">
+                                                                        <i class="i-mdi-email-outline"></i>
+                                                                        <span>{{ selectedProspect.email }}</span>
+                                                                </div>
+                                                                <div class="detail-item" v-if="selectedProspect.phone">
+                                                                        <i class="i-mdi-phone-outline"></i>
+                                                                        <span>{{ selectedProspect.phone }}</span>
+                                                                </div>
+                                                                <div class="detail-item">
+                                                                        <i class="i-mdi-currency-eur"></i>
+                                                                        <span>{{ formatValue(selectedProspect.value) }}</span>
+                                                                </div>
+                                                                <div class="detail-item">
+                                                                        <i class="i-mdi-star"></i>
+                                                                        <n-rate :value="selectedProspect.score" readonly size="small" />
+                                                                </div>
+                                                        </div>
+                                                        <div class="detail-section">
+                                                                <h4>Statut</h4>
+                                                                <n-select v-model:value="selectedProspect.status" :options="statusOptions" @update:value="updateProspectStatus" />
+                                                        </div>
+                                                        <div class="detail-section">
+                                                                <h4>Tags</h4>
+                                                                <div class="tags-list">
+                                                                        <n-tag v-for="tag in selectedProspect.tags" :key="tag" :bordered="false" closable @close="removeTag(tag)">
+                                                                                {{ tag }}
+                                                                        </n-tag>
+                                                                </div>
+                                                        </div>
+                                                        <div class="detail-section">
+                                                                <h4>Notes</h4>
+                                                                <n-input v-model:value="selectedProspect.notes" type="textarea" placeholder="Ajouter des notes..." :rows="4" />
+                                                        </div>
+                                                </n-tab-pane>
+                                                <n-tab-pane name="company" tab="Entreprise">
+                                                        <div class="detail-section">
+                                                                <h4>Information Entreprise</h4>
+                                                                <div class="detail-item" v-if="selectedProspect.industry">
+                                                                        <i class="i-mdi-domain"></i>
+                                                                        <span>{{ getIndustryLabel(selectedProspect.industry) }}</span>
+                                                                </div>
+                                                                <div class="detail-item" v-if="selectedProspect.companySize">
+                                                                        <i class="i-mdi-account-group"></i>
+                                                                        <span>{{ getCompanySizeLabel(selectedProspect.companySize) }}</span>
+                                                                </div>
+                                                                <div class="detail-item" v-if="selectedProspect.website">
+                                                                        <i class="i-mdi-web"></i>
+                                                                        <a :href="selectedProspect.website" target="_blank" class="text-primary">{{ selectedProspect.website }}</a>
+                                                                </div>
+                                                                <div class="detail-item" v-if="selectedProspect.siret">
+                                                                        <i class="i-mdi-card-account-details-outline"></i>
+                                                                        <span>SIRET: {{ selectedProspect.siret }}</span>
+                                                                </div>
+                                                                <div class="detail-item" v-if="selectedProspect.address">
+                                                                        <i class="i-mdi-map-marker-outline"></i>
+                                                                        <span>{{ selectedProspect.address }}</span>
+                                                                </div>
+                                                                <div class="detail-item" v-if="selectedProspect.revenue">
+                                                                        <i class="i-mdi-chart-line"></i>
+                                                                        <span>CA: {{ formatRevenue(selectedProspect.revenue) }}</span>
+                                                                </div>
+                                                                <div v-if="!selectedProspect.industry && !selectedProspect.companySize && !selectedProspect.website && !selectedProspect.siret && !selectedProspect.address && !selectedProspect.revenue" class="empty-state">
+                                                                        <i class="i-mdi-information-outline text-24px text-gray-400"></i>
+                                                                        <p class="text-gray-400 mt-8px">Aucune information entreprise renseignée</p>
+                                                                </div>
+                                                        </div>
+                                                </n-tab-pane>
+                                        </n-tabs>
+                                        <div class="detail-section mt-24px">
                                                 <h4>Actions rapides</h4>
                                                 <div class="quick-actions">
                                                         <n-button>
