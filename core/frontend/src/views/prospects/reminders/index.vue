@@ -340,7 +340,7 @@ const rescheduleReminder = (reminder: Reminder) => {
 
 const deleteReminder = async (reminder: Reminder) => {
 	try {
-		const response = await deleteReminders([reminder.id])
+		const response = await deleteReminders({ ids: [reminder.id] })
 		if (response.success) {
 			reminders.value = reminders.value.filter(r => r.id !== reminder.id)
 			message.success('Rappel supprimé')
