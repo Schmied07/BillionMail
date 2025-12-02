@@ -295,18 +295,24 @@ func BatchCreateProspects(ctx context.Context, prospects []ProspectData) (int, e
 		for _, p := range currentBatch {
 			tagsJson, _ := json.Marshal(p.Tags)
 			data = append(data, g.Map{
-				"company":     p.Company,
-				"contact":     p.Contact,
-				"email":       strings.ToLower(p.Email),
-				"phone":       p.Phone,
-				"value":       p.Value,
-				"score":       p.Score,
-				"status":      p.Status,
-				"tags":        string(tagsJson),
-				"notes":       p.Notes,
-				"source_id":   p.SourceId,
-				"create_time": int(now),
-				"update_time": int(now),
+				"company":      p.Company,
+				"contact":      p.Contact,
+				"email":        strings.ToLower(p.Email),
+				"phone":        p.Phone,
+				"value":        p.Value,
+				"score":        p.Score,
+				"status":       p.Status,
+				"tags":         string(tagsJson),
+				"notes":        p.Notes,
+				"source_id":    p.SourceId,
+				"industry":     p.Industry,
+				"company_size": p.CompanySize,
+				"website":      p.Website,
+				"address":      p.Address,
+				"siret":        p.Siret,
+				"revenue":      p.Revenue,
+				"create_time":  int(now),
+				"update_time":  int(now),
 			})
 		}
 
