@@ -18,8 +18,15 @@
 			</div>
 		</div>
 
+		<!-- Loading State -->
+		<div v-if="loading" class="loading-container">
+			<n-spin size="large">
+				<div style="height: 200px;"></div>
+			</n-spin>
+		</div>
+
 		<!-- Stats -->
-		<div class="reminder-stats">
+		<div v-else class="reminder-stats">
 			<div class="stat-card urgent">
 				<div class="stat-icon">
 					<i class="i-mdi-alert-circle"></i>
