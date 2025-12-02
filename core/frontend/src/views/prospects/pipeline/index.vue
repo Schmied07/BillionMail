@@ -249,9 +249,9 @@
 <script lang="ts" setup>
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
-import { useMessage } from 'naive-ui'
+import { useMessage, useDialog } from 'naive-ui'
 import ImportModal from '../components/ImportModal.vue'
-import { getProspectList, getSourceAll, createProspect } from '@/api/modules/prospects'
+import { getProspectList, getSourceAll, createProspect, deleteProspects, updateProspect } from '@/api/modules/prospects'
 
 const message = useMessage()
 const sources = ref<any[]>([])
