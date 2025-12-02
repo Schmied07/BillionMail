@@ -532,6 +532,13 @@ const handleAddProspect = async () => {
                         tags: formData.tags || [],
                         notes: formData.notes || undefined,
                         source_id: formData.source_id,
+                        // Company Information fields
+                        industry: formData.industry || undefined,
+                        company_size: formData.company_size || undefined,
+                        website: formData.website || undefined,
+                        address: formData.address || undefined,
+                        siret: formData.siret || undefined,
+                        revenue: formData.revenue || undefined,
                 })
                 
                 console.log('Create prospect response:', res)
@@ -548,7 +555,13 @@ const handleAddProspect = async () => {
                         status: 'new', 
                         tags: [], 
                         notes: '',
-                        source_id: null 
+                        source_id: null,
+                        industry: '',
+                        company_size: '',
+                        website: '',
+                        address: '',
+                        siret: '',
+                        revenue: 0,
                 })
                 // Reload prospects
                 loadProspects()
