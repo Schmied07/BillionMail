@@ -452,25 +452,23 @@ const handleAddProspect = async () => {
                         source_id: formData.source_id,
                 })
                 
-                if (res.data?.data) {
-                        message.success('Prospect ajouté avec succès')
-                        showAddModal.value = false
-                        // Reset form
-                        Object.assign(formData, { 
-                                company: '', 
-                                contact: '', 
-                                email: '', 
-                                phone: '', 
-                                value: 0, 
-                                score: 3, 
-                                status: 'new', 
-                                tags: [], 
-                                notes: '',
-                                source_id: null 
-                        })
-                        // Reload prospects
-                        loadProspects()
-                }
+                message.success('Prospect ajouté avec succès')
+                showAddModal.value = false
+                // Reset form
+                Object.assign(formData, { 
+                        company: '', 
+                        contact: '', 
+                        email: '', 
+                        phone: '', 
+                        value: 0, 
+                        score: 3, 
+                        status: 'new', 
+                        tags: [], 
+                        notes: '',
+                        source_id: null 
+                })
+                // Reload prospects
+                loadProspects()
         } catch (error) {
                 console.error('Failed to create prospect:', error)
                 message.error('Erreur lors de la création du prospect')
