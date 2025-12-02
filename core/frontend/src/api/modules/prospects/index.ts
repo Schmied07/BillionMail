@@ -82,6 +82,13 @@ export const createProspect = (data: {
 	tags?: string[]
 	notes?: string
 	source_id: number
+	// Company Information fields
+	industry?: string
+	company_size?: string
+	website?: string
+	address?: string
+	siret?: string
+	revenue?: number
 }) => {
 	return instance.post('/prospect/create', data, {
 		fetchOptions: {
