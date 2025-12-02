@@ -306,13 +306,13 @@ const pipelineStats = computed(() => [
         },
         {
                 label: 'Taux Conversion',
-                value: Math.round((prospects.value.filter(p => p.status === 'converted').length / prospects.value.length) * 100) + '%',
+                value: prospects.value.length > 0 ? Math.round((prospects.value.filter(p => p.status === 'converted').length / prospects.value.length) * 100) + '%' : '0%',
                 icon: 'i-mdi-trending-up',
                 gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
         },
         {
                 label: 'Score Moyen',
-                value: (prospects.value.reduce((sum, p) => sum + p.score, 0) / prospects.value.length).toFixed(1) + '/5',
+                value: prospects.value.length > 0 ? (prospects.value.reduce((sum, p) => sum + p.score, 0) / prospects.value.length).toFixed(1) + '/5' : '0/5',
                 icon: 'i-mdi-star',
                 gradient: 'linear-gradient(135deg, #8b5cf6, #a78bfa)',
         },
