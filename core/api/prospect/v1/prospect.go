@@ -35,6 +35,13 @@ type Prospect struct {
 	CreateTime  int               `json:"create_time" dc:"Create Time"`
 	UpdateTime  int               `json:"update_time" dc:"Update Time"`
 	Attribs     map[string]string `json:"attribs"     dc:"Custom Attributes"`
+	// Company Information fields
+	Industry    string `json:"industry"     dc:"Industry/Sector"`
+	CompanySize string `json:"company_size" dc:"Company Size (tpe/pme/eti/ge)"`
+	Website     string `json:"website"      dc:"Company Website"`
+	Address     string `json:"address"      dc:"Company Address"`
+	Siret       string `json:"siret"        dc:"SIRET Number"`
+	Revenue     int    `json:"revenue"      dc:"Annual Revenue"`
 }
 
 // ========== Source APIs ==========
