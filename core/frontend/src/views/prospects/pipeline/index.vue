@@ -517,8 +517,8 @@ const removeTag = async (tag: string) => {
 const loadProspects = async () => {
         try {
                 const res = await getProspectList({ page: 1, page_size: 1000 })
-                if (res.data?.data?.list) {
-                        prospects.value = res.data.data.list.map((p: any) => ({
+                if (res?.list) {
+                        prospects.value = res.list.map((p: any) => ({
                                 id: String(p.id),
                                 company: p.company || '',
                                 contact: p.contact || '',
