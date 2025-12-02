@@ -18,7 +18,7 @@ echo ""
 # Check if .env exists
 if [ ! -f ".env" ]; then
     echo -e "${RED}Error: .env file not found in current directory!${NC}"
-    echo "Please run this script from your TetrisNews/BillionMail directory"
+    echo "Please run this script from your TetrisNews/TetrisNewsEmailing directory"
     exit 1
 fi
 
@@ -62,7 +62,7 @@ docker compose down 2>/dev/null || true
 echo -e "${GREEN}✓${NC} Old containers stopped"
 
 # Remove old network if it exists
-OLD_NETWORKS=$(docker network ls --filter name=billionmail --format "{{.Name}}" 2>/dev/null || true)
+OLD_NETWORKS=$(docker network ls --filter name=tetrisnewsemailing --format "{{.Name}}" 2>/dev/null || true)
 if [ ! -z "$OLD_NETWORKS" ]; then
     echo "$OLD_NETWORKS" | while read network; do
         docker network rm "$network" 2>/dev/null || true

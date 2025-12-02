@@ -18,7 +18,7 @@ echo ""
 # Check if we're in the right directory
 if [ ! -f "docker-compose.yml" ]; then
     echo -e "${RED}Error: docker-compose.yml not found!${NC}"
-    echo "Please run this script from your TetrisNews/BillionMail directory"
+    echo "Please run this script from your TetrisNews/TetrisNewsEmailing directory"
     exit 1
 fi
 
@@ -74,7 +74,7 @@ docker compose down 2>/dev/null || true
 echo -e "${GREEN}✓${NC} Stopped containers"
 
 # Remove old networks
-OLD_NETWORKS=$(docker network ls --filter name=tetrisnews --filter name=billionmail --format "{{.Name}}" 2>/dev/null | grep -v "bridge\|host\|none" || true)
+OLD_NETWORKS=$(docker network ls --filter name=tetrisnews --filter name=tetrisnewsemailing --format "{{.Name}}" 2>/dev/null | grep -v "bridge\|host\|none" || true)
 if [ ! -z "$OLD_NETWORKS" ]; then
     echo "$OLD_NETWORKS" | while read network; do
         docker network rm "$network" 2>/dev/null || true

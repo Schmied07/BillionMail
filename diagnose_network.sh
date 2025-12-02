@@ -12,7 +12,7 @@ echo "2. Network IP Ranges in Use:"
 docker network ls --format "{{.Name}}" | xargs -I {} sh -c 'docker network inspect {} --format "{{.Name}}: {{range .IPAM.Config}}{{.Subnet}} {{end}}" 2>/dev/null'
 echo ""
 
-echo "3. Checking .env file (if in BillionMail directory):"
+echo "3. Checking .env file (if in TetrisNewsEmailing directory):"
 if [ -f ".env" ]; then
     echo "IPV4_NETWORK setting:"
     grep "^IPV4_NETWORK=" .env || echo "NOT FOUND"

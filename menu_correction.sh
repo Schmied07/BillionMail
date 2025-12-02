@@ -80,7 +80,7 @@ run_auto_fix() {
             sudo bash fix_traefik_network.sh
         else
             echo -e "${RED}Erreur: Impossible de trouver le script de correction.${NC}"
-            echo "Assurez-vous d'être dans le bon dossier (~/BillionMail)"
+            echo "Assurez-vous d'être dans le bon dossier (~/TetrisNewsEmailing)"
         fi
     fi
     
@@ -207,7 +207,7 @@ check_services() {
     else
         echo -e "${RED}Erreur: docker-compose.traefik.yml non trouvé!${NC}"
         echo ""
-        echo "Assurez-vous d'être dans le dossier ~/BillionMail"
+        echo "Assurez-vous d'être dans le dossier ~/TetrisNewsEmailing"
     fi
     
     pause

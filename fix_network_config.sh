@@ -18,7 +18,7 @@ echo ""
 # Check if we're in the right directory
 if [ ! -f ".env" ]; then
     echo -e "${RED}Error: .env file not found!${NC}"
-    echo "Please run this script from your BillionMail directory"
+    echo "Please run this script from your TetrisNewsEmailing directory"
     exit 1
 fi
 

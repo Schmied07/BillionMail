@@ -33,7 +33,7 @@ echo -e "${BLUE}📁 Vérification du répertoire${NC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 check_condition "[ -f 'docker-compose.traefik.yml' ]" \
     "Fichier docker-compose.traefik.yml trouvé" \
-    "Fichier docker-compose.traefik.yml introuvable! Êtes-vous dans ~/BillionMail ?"
+    "Fichier docker-compose.traefik.yml introuvable! Êtes-vous dans ~/TetrisNewsEmailing ?"
 
 check_condition "[ -f '.env' ]" \
     "Fichier .env trouvé" \
@@ -155,11 +155,11 @@ if [ "$ALL_CONTAINERS" -gt "$RUNNING_CONTAINERS" ]; then
     docker ps -a --filter "name=tetrisnews" --format "  - {{.Names}}: {{.Status}}" 2>/dev/null | grep -v "Up"
 fi
 
-# Vérifier les anciens conteneurs BillionMail
-OLD_CONTAINERS=$(docker ps -a --filter "name=billionmail" --format "{{.Names}}" 2>/dev/null | wc -l)
+# Vérifier les anciens conteneurs TetrisNewsEmailing
+OLD_CONTAINERS=$(docker ps -a --filter "name=tetrisnewsemailing" --format "{{.Names}}" 2>/dev/null | wc -l)
 if [ "$OLD_CONTAINERS" -gt 0 ]; then
-    echo -e "${YELLOW}⚠${NC}  ${OLD_CONTAINERS} ancien(s) conteneur(s) BillionMail détecté(s):"
-    docker ps -a --filter "name=billionmail" --format "  - {{.Names}}: {{.Status}}" 2>/dev/null
+    echo -e "${YELLOW}⚠${NC}  ${OLD_CONTAINERS} ancien(s) conteneur(s) TetrisNewsEmailing détecté(s):"
+    docker ps -a --filter "name=tetrisnewsemailing" --format "  - {{.Names}}: {{.Status}}" 2>/dev/null
 fi
 echo ""
 

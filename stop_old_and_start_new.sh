@@ -1,5 +1,5 @@
 #!/bin/bash
-# Stop old BillionMail deployment and start new TetrisNews Emailing
+# Stop old TetrisNewsEmailing deployment and start new TetrisNews Emailing
 
 set -e
 
@@ -15,10 +15,10 @@ echo -e "${BLUE}  Stopping Old & Starting New Deployment       ${NC}"
 echo -e "${BLUE}================================================${NC}"
 echo ""
 
-echo -e "${YELLOW}Step 1: Stopping old BillionMail containers...${NC}"
+echo -e "${YELLOW}Step 1: Stopping old TetrisNewsEmailing containers...${NC}"
 
 # Stop specific old containers
-OLD_CONTAINERS=$(docker ps -a --filter "name=tetrisnews-emailing-" --filter "name=billionmail" --format "{{.Names}}" 2>/dev/null || true)
+OLD_CONTAINERS=$(docker ps -a --filter "name=tetrisnews-emailing-" --filter "name=tetrisnewsemailing" --format "{{.Names}}" 2>/dev/null || true)
 
 if [ ! -z "$OLD_CONTAINERS" ]; then
     echo "Found old containers:"
@@ -48,7 +48,7 @@ echo ""
 echo -e "${YELLOW}Step 2: Removing conflicting networks...${NC}"
 
 # Remove old networks
-OLD_NETWORKS=$(docker network ls --filter name=billionmail --filter name=tetrisnews-emailing --format "{{.Name}}" 2>/dev/null | grep -v "bridge\|host\|none" || true)
+OLD_NETWORKS=$(docker network ls --filter name=tetrisnewsemailing --filter name=tetrisnews-emailing --format "{{.Name}}" 2>/dev/null | grep -v "bridge\|host\|none" || true)
 
 if [ ! -z "$OLD_NETWORKS" ]; then
     echo "Found old networks:"
@@ -71,7 +71,7 @@ echo -e "${YELLOW}Step 3: Starting new TetrisNews Emailing services...${NC}"
 # Make sure we're in the right directory
 if [ ! -f "docker-compose.yml" ]; then
     echo -e "${RED}Error: docker-compose.yml not found in current directory!${NC}"
-    echo "Please run this script from your TetrisNews/BillionMail directory"
+    echo "Please run this script from your TetrisNews/TetrisNewsEmailing directory"
     exit 1
 fi
 

@@ -20,7 +20,7 @@ echo ""
 # Vérifier qu'on est dans le bon répertoire
 if [ ! -f "docker-compose.traefik.yml" ]; then
     echo -e "${RED}❌ Erreur: docker-compose.traefik.yml introuvable!${NC}"
-    echo "Veuillez exécuter ce script depuis ~/BillionMail"
+    echo "Veuillez exécuter ce script depuis ~/TetrisNewsEmailing"
     exit 1
 fi
 
@@ -75,7 +75,7 @@ docker compose -f docker-compose.traefik.yml down 2>/dev/null || true
 echo -e "${GREEN}✓${NC} Services arrêtés"
 
 # Supprimer les anciens conteneurs
-OLD_CONTAINERS=$(docker ps -a --filter "name=tetrisnews" --filter "name=billionmail" --format "{{.Names}}" 2>/dev/null || true)
+OLD_CONTAINERS=$(docker ps -a --filter "name=tetrisnews" --filter "name=tetrisnewsemailing" --format "{{.Names}}" 2>/dev/null || true)
 if [ ! -z "$OLD_CONTAINERS" ]; then
     echo "Suppression des anciens conteneurs:"
     echo "$OLD_CONTAINERS" | while read container; do

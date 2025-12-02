@@ -10,7 +10,7 @@ echo "Fixing Dockerfiles/dovecot/Dockerfile..."
 cat > /app/Dockerfiles/dovecot/Dockerfile << 'EOF'
 FROM debian:bookworm-slim
 
-LABEL maintainer="https://github.com/aaPanel/BillionMail"
+LABEL maintainer="https://github.com/aaPanel/TetrisNewsEmailing"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=C
