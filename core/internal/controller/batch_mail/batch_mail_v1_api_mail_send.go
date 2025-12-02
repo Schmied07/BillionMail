@@ -280,7 +280,7 @@ func ensureContactAndGroup(ctx context.Context, email string, apiId int) (entity
 //
 //	// generate message ID
 //	messageId := sender.GenerateMessageID()
-//	// add 1 billion to prevent conflict with marketing task id
+//	// add 1000000000 to prevent conflict with marketing task id
 //	//baseURL := domains.GetBaseURLBySender(addresser)
 //	baseURL := domains.GetBaseURL()
 //	apiTemplate_id := apiTemplate.Id + 1000000000
