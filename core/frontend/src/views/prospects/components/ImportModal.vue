@@ -506,8 +506,8 @@ const handleImport = async () => {
 			default_score: formData.default_score,
 		})
 
-		if (res.data?.data) {
-			const { imported_count, skipped_count, error_count } = res.data.data
+		if (res) {
+			const { imported_count, skipped_count, error_count } = res
 			message.success(
 				t('prospects.import.success', { imported: imported_count, skipped: skipped_count, errors: error_count })
 			)
