@@ -397,6 +397,13 @@ onMounted(async () => {
 	padding: 0;
 }
 
+.loading-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 300px;
+}
+
 .reminders-header {
 	display: flex;
 	justify-content: space-between;
