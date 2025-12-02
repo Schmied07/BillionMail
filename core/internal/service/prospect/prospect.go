@@ -101,16 +101,23 @@ type ProspectListParams struct {
 }
 
 type ProspectData struct {
-	Company  string
-	Contact  string
-	Email    string
-	Phone    string
-	Value    int
-	Score    int
-	Status   string
-	Tags     []string
-	Notes    string
-	SourceId int
+	Company     string
+	Contact     string
+	Email       string
+	Phone       string
+	Value       int
+	Score       int
+	Status      string
+	Tags        []string
+	Notes       string
+	SourceId    int
+	// Company Information fields
+	Industry    string
+	CompanySize string
+	Website     string
+	Address     string
+	Siret       string
+	Revenue     int
 }
 
 type ProspectStats struct {
