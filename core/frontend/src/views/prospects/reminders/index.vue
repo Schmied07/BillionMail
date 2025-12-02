@@ -290,9 +290,11 @@ const loadReminders = async () => {
 		loading.value = true
 		const response = await getReminderList({})
 		if (response.success) {
-			reminders.value = response.data.map((reminder: any) => ({
+			// Backend returns { data: { total, list } }
+			const reminderList = response.data?.list || response.data || []
+			reminders.value = reminderList.map((reminder: any) => ({
 				...reminder,
-				prospectName: reminder.prospect?.company || reminder.prospect?.contact || reminder.prospect?.email || 'Prospect inconnu'
+				prospectName: reminder.prospect_name || reminder.prospect?.company || reminder.prospect?.contact || reminder.prospect?.email || 'Prospect inconnu'
 			}))
 		}
 	} catch (error) {
