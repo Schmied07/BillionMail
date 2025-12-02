@@ -234,8 +234,8 @@ const loadProspects = async () => {
 	loading.value = true
 	try {
 		const res = await getProspectList({ page: 1, page_size: 1000 })
-		if (res.data?.data?.list) {
-			prospects.value = res.data.data.list
+		if (res?.list) {
+			prospects.value = res.list
 		}
 	} catch (error) {
 		console.error('Failed to load prospects:', error)
@@ -247,8 +247,8 @@ const loadProspects = async () => {
 const loadSources = async () => {
 	try {
 		const res = await getSourceAll()
-		if (res.data?.data?.list) {
-			sources.value = res.data.data.list
+		if (res?.list) {
+			sources.value = res.list
 		}
 	} catch (error) {
 		console.error('Failed to load sources:', error)
