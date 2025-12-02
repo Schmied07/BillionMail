@@ -101,14 +101,14 @@ func cleanupAndIndexRelayDomainMapping(ctx context.Context) error {
 		return gerror.New("Table bm_relay_domain_mapping does not exist")
 	}
 
-	var exists int
-	err := g.DB().Model("pg_indexes").Fields("1").
+	// Check if unique index already exists
+	count, err := g.DB().Model("pg_indexes").
 		Where("indexname", "uk_relay_domain").
-		Scan(&exists)
+		Count()
 	if err != nil {
 		return err
 	}
-	if exists == 1 {
+	if count > 0 {
 		g.Log().Info(ctx, "Unique index uk_relay_domain already exists, skip cleanup.")
 		return nil
 	}
