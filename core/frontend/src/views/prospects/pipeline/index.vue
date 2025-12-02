@@ -106,65 +106,109 @@
                 </div>
 
                 <!-- Add Prospect Modal -->
-                <n-modal v-model:show="showAddModal" preset="card" title="Nouveau Prospect" style="width: 600px;">
+                <n-modal v-model:show="showAddModal" preset="card" title="Nouveau Prospect" style="width: 700px;">
                         <n-form ref="formRef" :model="formData" :rules="formRules" label-placement="top">
-                                <n-grid :cols="2" :x-gap="16">
-                                        <n-gi>
-                                                <n-form-item label="Entreprise" path="company">
-                                                        <n-input v-model:value="formData.company" placeholder="Nom de l'entreprise" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi>
-                                                <n-form-item label="Contact" path="contact">
-                                                        <n-input v-model:value="formData.contact" placeholder="Nom du contact" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi>
-                                                <n-form-item label="Email" path="email">
-                                                        <n-input v-model:value="formData.email" placeholder="email@exemple.com" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi>
-                                                <n-form-item label="Téléphone" path="phone">
-                                                        <n-input v-model:value="formData.phone" placeholder="+33 1 23 45 67 89" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi>
-                                                <n-form-item label="Valeur estimée (€)" path="value">
-                                                        <n-input-number v-model:value="formData.value" :min="0" placeholder="0" style="width: 100%;" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi>
-                                                <n-form-item label="Score (1-5)" path="score">
-                                                        <n-rate v-model:value="formData.score" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi :span="2">
-                                                <n-form-item label="Source" path="source_id">
-                                                        <n-select 
-                                                                v-model:value="formData.source_id" 
-                                                                :options="sourceOptions" 
-                                                                :loading="loadingSources"
-                                                                placeholder="Sélectionner une source" 
-                                                        />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi :span="2">
-                                                <n-form-item label="Statut" path="status">
-                                                        <n-select v-model:value="formData.status" :options="statusOptions" placeholder="Sélectionner un statut" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi :span="2">
-                                                <n-form-item label="Tags" path="tags">
-                                                        <n-select v-model:value="formData.tags" multiple :options="tagOptions" placeholder="Ajouter des tags" />
-                                                </n-form-item>
-                                        </n-gi>
-                                        <n-gi :span="2">
-                                                <n-form-item label="Notes" path="notes">
-                                                        <n-input v-model:value="formData.notes" type="textarea" placeholder="Ajouter des notes..." :rows="3" />
-                                                </n-form-item>
-                                        </n-gi>
-                                </n-grid>
+                                <n-tabs type="line" animated>
+                                        <n-tab-pane name="basic" tab="Informations de base">
+                                                <n-grid :cols="2" :x-gap="16">
+                                                        <n-gi>
+                                                                <n-form-item label="Entreprise" path="company">
+                                                                        <n-input v-model:value="formData.company" placeholder="Nom de l'entreprise" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Contact" path="contact">
+                                                                        <n-input v-model:value="formData.contact" placeholder="Nom du contact" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Email" path="email">
+                                                                        <n-input v-model:value="formData.email" placeholder="email@exemple.com" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Téléphone" path="phone">
+                                                                        <n-input v-model:value="formData.phone" placeholder="+33 1 23 45 67 89" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Valeur estimée (€)" path="value">
+                                                                        <n-input-number v-model:value="formData.value" :min="0" placeholder="0" style="width: 100%;" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Score (1-5)" path="score">
+                                                                        <n-rate v-model:value="formData.score" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi :span="2">
+                                                                <n-form-item label="Source" path="source_id">
+                                                                        <n-select 
+                                                                                v-model:value="formData.source_id" 
+                                                                                :options="sourceOptions" 
+                                                                                :loading="loadingSources"
+                                                                                placeholder="Sélectionner une source" 
+                                                                        />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi :span="2">
+                                                                <n-form-item label="Statut" path="status">
+                                                                        <n-select v-model:value="formData.status" :options="statusOptions" placeholder="Sélectionner un statut" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi :span="2">
+                                                                <n-form-item label="Tags" path="tags">
+                                                                        <n-select v-model:value="formData.tags" multiple :options="tagOptions" placeholder="Ajouter des tags" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi :span="2">
+                                                                <n-form-item label="Notes" path="notes">
+                                                                        <n-input v-model:value="formData.notes" type="textarea" placeholder="Ajouter des notes..." :rows="3" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                </n-grid>
+                                        </n-tab-pane>
+                                        <n-tab-pane name="company" tab="Information Entreprise">
+                                                <n-grid :cols="2" :x-gap="16">
+                                                        <n-gi>
+                                                                <n-form-item label="Secteur d'activité" path="industry">
+                                                                        <n-select v-model:value="formData.industry" :options="industryOptions" placeholder="Sélectionner un secteur" clearable />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Taille de l'entreprise" path="company_size">
+                                                                        <n-select v-model:value="formData.company_size" :options="companySizeOptions" placeholder="Sélectionner une taille" clearable />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="Site web" path="website">
+                                                                        <n-input v-model:value="formData.website" placeholder="https://www.exemple.com">
+                                                                                <template #prefix>
+                                                                                        <i class="i-mdi-web"></i>
+                                                                                </template>
+                                                                        </n-input>
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi>
+                                                                <n-form-item label="SIRET" path="siret">
+                                                                        <n-input v-model:value="formData.siret" placeholder="123 456 789 00012" :maxlength="14" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi :span="2">
+                                                                <n-form-item label="Adresse" path="address">
+                                                                        <n-input v-model:value="formData.address" type="textarea" placeholder="Adresse complète de l'entreprise" :rows="2" />
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                        <n-gi :span="2">
+                                                                <n-form-item label="Chiffre d'affaires annuel (€)" path="revenue">
+                                                                        <n-input-number v-model:value="formData.revenue" :min="0" placeholder="0" style="width: 100%;">
+                                                                                <template #suffix>€</template>
+                                                                        </n-input-number>
+                                                                </n-form-item>
+                                                        </n-gi>
+                                                </n-grid>
+                                        </n-tab-pane>
+                                </n-tabs>
                         </n-form>
                         <template #footer>
                                 <div class="modal-footer">
