@@ -219,15 +219,80 @@ const handleDelete = (row: any) => {
 		negativeText: 'Annuler',
 		onPositiveClick: async () => {
 			try {
-				await deleteProspects({ ids: [row.id] })
+				console.log('Deleting prospect with id:', row.id)
+				const result = await deleteProspects({ ids: [row.id] })
+				console.log('Delete result:', result)
 				message.success('Prospect supprimé avec succès')
 				loadProspects()
-			} catch (error) {
+			} catch (error: any) {
 				console.error('Failed to delete prospect:', error)
-				message.error('Erreur lors de la suppression')
+				const errorMsg = error?.response?.data?.msg || error?.msg || error?.message || 'Erreur lors de la suppression'
+				message.error(errorMsg)
 			}
 		},
 	})
+}
+
+// Export function
+const handleExport = async () => {
+	if (filteredProspects.value.length === 0) {
+		message.warning('Aucun prospect à exporter')
+		return
+	}
+	
+	exporting.value = true
+	try {
+		// Create CSV content
+		const headers = ['Entreprise', 'Contact', 'Email', 'Téléphone', 'Source', 'Valeur', 'Score', 'Statut', 'Tags', 'Notes', 'Dernier contact', 'Date création']
+		const rows = filteredProspects.value.map((p: any) => [
+			p.company || '',
+			p.contact || '',
+			p.email || '',
+			p.phone || '',
+			p.source_name || '',
+			p.value || 0,
+			p.score || 0,
+			statusConfig[p.status]?.label || p.status || '',
+			(p.tags || []).join(';'),
+			p.notes || '',
+			p.last_contact ? formatDate(p.last_contact * 1000) : '',
+			p.create_time ? formatDate(p.create_time * 1000) : ''
+		])
+		
+		// Build CSV string with proper escaping
+		const csvContent = [
+			headers.join(';'),
+			...rows.map(row => row.map((cell: any) => {
+				const str = String(cell)
+				// Escape quotes and wrap in quotes if contains semicolon or newline
+				if (str.includes(';') || str.includes('"') || str.includes('\n')) {
+					return `"${str.replace(/"/g, '""')}"`
+				}
+				return str
+			}).join(';'))
+		].join('\n')
+		
+		// Add BOM for Excel UTF-8 compatibility
+		const BOM = '\uFEFF'
+		const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' })
+		
+		// Download file
+		const url = window.URL.createObjectURL(blob)
+		const link = document.createElement('a')
+		link.href = url
+		link.setAttribute('download', `prospects_export_${new Date().toISOString().slice(0,10)}.csv`)
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+		window.URL.revokeObjectURL(url)
+		
+		message.success(`${filteredProspects.value.length} prospects exportés avec succès`)
+	} catch (error) {
+		console.error('Export failed:', error)
+		message.error('Erreur lors de l\'export')
+	} finally {
+		exporting.value = false
+	}
 }
 
 // Load functions
