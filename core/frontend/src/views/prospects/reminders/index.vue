@@ -365,9 +365,8 @@ const addReminder = async () => {
 			title: formData.title,
 			prospect_id: formData.prospectId,
 			type: formData.type,
-			due_date: new Date(formData.dueDate).toISOString(),
-			notes: formData.notes,
-			completed: false
+			due_date: formData.dueDate,
+			notes: formData.notes
 		})
 
 		if (response.success) {
