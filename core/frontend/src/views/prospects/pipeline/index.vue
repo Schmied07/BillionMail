@@ -1061,4 +1061,22 @@ onMounted(() => {
         display: flex;
         gap: 12px;
 }
+
+.empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+}
+
+.text-primary {
+        color: var(--color-primary-1);
+        text-decoration: none;
+        
+        &:hover {
+                text-decoration: underline;
+        }
+}
 </style>
