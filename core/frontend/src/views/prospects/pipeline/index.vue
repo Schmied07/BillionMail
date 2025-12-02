@@ -355,6 +355,13 @@ const formData = reactive({
         tags: [] as string[],
         notes: '',
         source_id: null as number | null,
+        // Company Information fields
+        industry: '',
+        company_size: '' as string,
+        website: '',
+        address: '',
+        siret: '',
+        revenue: 0,
 })
 
 const sourceOptions = computed(() =>
