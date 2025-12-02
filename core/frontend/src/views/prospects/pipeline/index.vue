@@ -419,13 +419,9 @@ const handleCardAction = (key: string, prospect: Prospect) => {
                                 negativeText: 'Annuler',
                                 onPositiveClick: async () => {
                                         try {
-                                                const res = await deleteProspects({ ids: [Number(prospect.id)] })
-                                                if (res.data?.code === 0) {
-                                                        message.success('Prospect supprimé avec succès')
-                                                        loadProspects()
-                                                } else {
-                                                        message.error(res.data?.message || 'Erreur lors de la suppression')
-                                                }
+                                                await deleteProspects({ ids: [Number(prospect.id)] })
+                                                message.success('Prospect supprimé avec succès')
+                                                loadProspects()
                                         } catch (error) {
                                                 console.error('Failed to delete prospect:', error)
                                                 message.error('Erreur lors de la suppression du prospect')
