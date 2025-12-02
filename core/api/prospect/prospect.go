@@ -31,4 +31,11 @@ type IProspectV1 interface {
 
 	// Stats APIs
 	ProspectStats(ctx context.Context, req *v1.ProspectStatsReq) (res *v1.ProspectStatsRes, err error)
+
+	// Reminder APIs
+	ReminderList(ctx context.Context, req *v1.ReminderListReq) (res *v1.ReminderListRes, err error)
+	ReminderCreate(ctx context.Context, req *v1.ReminderCreateReq) (res *v1.ReminderCreateRes, err error)
+	ReminderUpdate(ctx context.Context, req *v1.ReminderUpdateReq) (res *v1.ReminderUpdateRes, err error)
+	ReminderDelete(ctx context.Context, req *v1.ReminderDeleteReq) (res *v1.ReminderDeleteRes, err error)
+	ReminderGet(ctx context.Context, req *v1.ReminderGetReq) (res *v1.ReminderGetRes, err error)
 }
