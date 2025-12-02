@@ -1,7 +1,7 @@
 package consts
 
 const (
-	DEFAULT_SERVER_NAME              = "billion-mail"
+	DEFAULT_SERVER_NAME              = "tetrisnews-mail"
 	DEFAULT_DOCKER_ENV_FILE          = "../.env"
 	PHP_FPM_SOCK_PATH                = "../php-sock/php-fpm.sock"
 	ROUNDCUBE_ROOT_PATH              = "../webmail-data"
