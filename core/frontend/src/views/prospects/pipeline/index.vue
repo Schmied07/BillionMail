@@ -517,6 +517,26 @@ const formatDate = (timestamp: number) => {
         return format(new Date(timestamp), 'dd MMM', { locale: fr })
 }
 
+const formatRevenue = (value: number) => {
+        if (value >= 1000000) {
+                return (value / 1000000).toFixed(1) + 'M€'
+        }
+        if (value >= 1000) {
+                return (value / 1000).toFixed(0) + 'k€'
+        }
+        return value + '€'
+}
+
+const getIndustryLabel = (value: string) => {
+        const option = industryOptions.find(o => o.value === value)
+        return option ? option.label : value
+}
+
+const getCompanySizeLabel = (value: string) => {
+        const option = companySizeOptions.find(o => o.value === value)
+        return option ? option.label : value
+}
+
 const selectProspect = (prospect: Prospect) => {
         selectedProspect.value = { ...prospect }
         showDrawer.value = true
