@@ -87,7 +87,7 @@ func (c *ControllerV1) ApiMailSend(ctx context.Context, req *v1.ApiMailSendReq) 
 
 // 记录到日志表，状态为待发送
 func recordApiMailLog(ctx context.Context, apiTemplate *entity.ApiTemplates, recipient, addresser string, attribs map[string]string) error {
-	// 生成消息ID
+	// generate message ID
 
 	sender, err := mail_service.NewEmailSenderWithLocal(addresser)
 	if err != nil {
