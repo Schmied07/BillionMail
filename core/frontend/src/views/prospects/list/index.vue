@@ -24,7 +24,7 @@
 					</template>
 					Importer CSV
 				</n-button>
-				<n-button type="primary">
+				<n-button type="primary" @click="handleExport" :loading="exporting">
 					<template #icon>
 						<i class="i-mdi-download"></i>
 					</template>
