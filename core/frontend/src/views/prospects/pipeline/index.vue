@@ -317,6 +317,13 @@ interface Prospect {
         createdAt: number
         sourceId?: number
         sourceName?: string
+        // Company Information fields
+        industry?: string
+        companySize?: string
+        website?: string
+        address?: string
+        siret?: string
+        revenue?: number
 }
 
 const showAddModal = ref(false)
