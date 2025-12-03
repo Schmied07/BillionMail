@@ -176,7 +176,8 @@ const handleSubmit = async () => {
 		
 		const payload = {
 			...formData.value,
-			tags: formData.value.tags.join(',')
+			source_id: formData.value.source_id!,
+			tags: formData.value.tags
 		}
 		
 		await createProspect(payload)
