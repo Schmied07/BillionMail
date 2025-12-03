@@ -6,7 +6,13 @@
 		:locale="locale"
 		:date-locale="dateLocale"
 		:theme-overrides="themeOverrides">
-		<slot></slot>
+		<n-message-provider>
+			<n-dialog-provider>
+				<n-notification-provider>
+					<slot></slot>
+				</n-notification-provider>
+			</n-dialog-provider>
+		</n-message-provider>
 	</n-config-provider>
 </template>
 
