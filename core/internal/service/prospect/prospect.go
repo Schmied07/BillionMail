@@ -444,12 +444,35 @@ type ReminderUpdateData struct {
 }
 
 func GetReminderList(ctx context.Context, params ReminderListParams) (int, []*v1.Reminder, error) {
+        // Build base query for counting (without Fields to avoid SQL syntax error)
+        countModel := g.DB().Model("bm_prospect_reminders r").Ctx(ctx)
+
+        // Apply filters for count
+        if params.ProspectId > 0 {
+                countModel = countModel.Where("r.prospect_id", params.ProspectId)
+        }
+
+        if params.Completed != nil {
+                countModel = countModel.Where("r.completed", *params.Completed)
+        }
+
+        if params.Type != "" {
+                countModel = countModel.Where("r.type", params.Type)
+        }
+
+        // Get total count
+        total, err := countModel.Count()
+        if err != nil {
+                return 0, nil, err
+        }
+
+        // Build query for data with JOIN and Fields
         model := g.DB().Model("bm_prospect_reminders r").
                 LeftJoin("bm_prospects p", "r.prospect_id = p.id").
                 Ctx(ctx).
                 Fields("r.*, p.company as prospect_name")
 
-        // Apply filters
+        // Apply same filters for data query
         if params.ProspectId > 0 {
                 model = model.Where("r.prospect_id", params.ProspectId)
         }
@@ -460,12 +483,6 @@ func GetReminderList(ctx context.Context, params ReminderListParams) (int, []*v1
 
         if params.Type != "" {
                 model = model.Where("r.type", params.Type)
-        }
-
-        // Get total count
-        total, err := model.Count()
-        if err != nil {
-                return 0, nil, err
         }
 
         // Get paginated results
