@@ -51,6 +51,9 @@
 
                 <!-- Import Modal -->
                 <ImportModal v-model:show="showImportModal" @success="handleImportSuccess" />
+                
+                <!-- Add Modal -->
+                <AddModal v-model:show="showAddModal" @success="handleAddSuccess" />
         </div>
 </template>
 
