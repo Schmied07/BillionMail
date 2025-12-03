@@ -66,6 +66,7 @@ const dialog = useDialog()
 const loading = ref(false)
 const exporting = ref(false)
 const showImportModal = ref(false)
+const showAddModal = ref(false)
 
 const searchQuery = ref('')
 const filterStatus = ref<string | null>(null)
