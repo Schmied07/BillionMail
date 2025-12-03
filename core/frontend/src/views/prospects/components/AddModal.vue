@@ -65,8 +65,7 @@
 <script lang="ts" setup>
 import { ref, computed, watch } from 'vue'
 import { useMessage } from 'naive-ui'
-import { createProspect } from '@/api/modules/prospects'
-import { getSourceAll } from '@/api/modules/prospects'
+import { createProspect, getSourceAll } from '@/api/modules/prospects'
 
 const props = defineProps<{
 	show: boolean
