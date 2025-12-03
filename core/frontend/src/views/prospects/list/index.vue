@@ -30,6 +30,12 @@
                                         </template>
                                         Exporter
                                 </n-button>
+                                <n-button type="primary" @click="showAddModal = true">
+                                        <template #icon>
+                                                <i class="i-mdi-plus"></i>
+                                        </template>
+                                        Nouveau Prospect
+                                </n-button>
                         </div>
                 </div>
 
