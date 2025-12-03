@@ -62,6 +62,7 @@ import { NButton, NTag, NRate, NFlex, useMessage, useDialog } from 'naive-ui'
 import { format } from 'date-fns'
 import { fr } from 'date-fns/locale'
 import ImportModal from '../components/ImportModal.vue'
+import AddModal from '../components/AddModal.vue'
 import { getProspectList, getSourceAll, deleteProspects } from '@/api/modules/prospects'
 
 const message = useMessage()
