@@ -130,6 +130,28 @@ type ProspectStats struct {
 }
 
 func GetProspectsWithPage(ctx context.Context, params ProspectListParams) ([]*v1.Prospect, int, error) {
+        // Build base query for counting (without Fields)
+        countModel := g.DB().Model("bm_prospects p").Ctx(ctx)
+
+        if params.Keyword != "" {
+                keyword := "%" + params.Keyword + "%"
+                countModel = countModel.Where("(p.company LIKE ? OR p.contact LIKE ? OR p.email LIKE ?)", keyword, keyword, keyword)
+        }
+
+        if params.Status != "" {
+                countModel = countModel.Where("p.status", params.Status)
+        }
+
+        if params.SourceId > 0 {
+                countModel = countModel.Where("p.source_id", params.SourceId)
+        }
+
+        total, err := countModel.Count()
+        if err != nil {
+                return nil, 0, err
+        }
+
+        // Build query for data with JOIN and Fields
         model := g.DB().Model("bm_prospects p").
                 LeftJoin("bm_prospect_sources s", "p.source_id = s.id").
                 Fields("p.*, s.name as source_name").
@@ -146,11 +168,6 @@ func GetProspectsWithPage(ctx context.Context, params ProspectListParams) ([]*v1
 
         if params.SourceId > 0 {
                 model = model.Where("p.source_id", params.SourceId)
-        }
-
-        total, err := model.Count()
-        if err != nil {
-                return nil, 0, err
         }
 
         // Sort
