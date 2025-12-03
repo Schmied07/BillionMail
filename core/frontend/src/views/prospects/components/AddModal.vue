@@ -105,6 +105,9 @@ const rules = {
 	email: [
 		{ required: true, message: 'L\'email est requis' },
 		{ type: 'email', message: 'Format d\'email invalide' }
+	],
+	source_id: [
+		{ required: true, message: 'La source est requise', type: 'number' }
 	]
 }
 
