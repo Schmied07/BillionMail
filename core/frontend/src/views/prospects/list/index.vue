@@ -378,6 +378,11 @@ const handleImportSuccess = () => {
         loadProspects()
 }
 
+const handleAddSuccess = () => {
+        message.success('Prospect ajouté avec succès !')
+        loadProspects()
+}
+
 // Load on mount
 onMounted(() => {
         loadProspects()
