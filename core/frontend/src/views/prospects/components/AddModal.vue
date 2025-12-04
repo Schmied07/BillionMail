@@ -1,12 +1,16 @@
 <template>
 	<n-modal v-model:show="showModal" preset="dialog" title="Nouveau Prospect">
 		<n-form ref="formRef" :model="formData" :rules="rules" label-placement="top">
+			<n-form-item label="Entreprise" path="company">
+				<n-input v-model:value="formData.company" placeholder="Nom de l'entreprise" />
+			</n-form-item>
+			
 			<n-grid :cols="2" :x-gap="16">
-				<n-form-item-gi label="Entreprise" path="company">
-					<n-input v-model:value="formData.company" placeholder="Nom de l'entreprise" />
+				<n-form-item-gi label="Prénom" path="firstName">
+					<n-input v-model:value="formData.firstName" placeholder="Prénom du contact" />
 				</n-form-item-gi>
-				<n-form-item-gi label="Contact" path="contact">
-					<n-input v-model:value="formData.contact" placeholder="Nom du contact" />
+				<n-form-item-gi label="Nom" path="lastName">
+					<n-input v-model:value="formData.lastName" placeholder="Nom du contact" />
 				</n-form-item-gi>
 			</n-grid>
 			
@@ -19,7 +23,13 @@
 					<n-input v-model:value="formData.phone" placeholder="+33 1 23 45 67 89" />
 				</n-form-item-gi>
 				<n-form-item-gi label="Source" path="source_id">
-					<n-select v-model:value="formData.source_id" :options="sourceOptions" placeholder="Sélectionner une source" />
+					<n-select 
+						v-model:value="formData.source_id" 
+						:options="sourceOptions" 
+						placeholder="Sélectionner une source"
+						filterable
+						clearable
+					/>
 				</n-form-item-gi>
 			</n-grid>
 			
