@@ -190,6 +190,7 @@ const handleSubmit = async () => {
 		
 		const payload = {
 			...formData.value,
+			contact: `${formData.value.firstName} ${formData.value.lastName}`.trim(),
 			source_id: formData.value.source_id!,
 			tags: formData.value.tags
 		}
