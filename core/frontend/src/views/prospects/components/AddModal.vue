@@ -162,6 +162,8 @@ const sourceOptions = computed(() =>
 const resetForm = () => {
 	formData.value = {
 		company: '',
+		firstName: '',
+		lastName: '',
 		contact: '',
 		email: '',
 		phone: '',
