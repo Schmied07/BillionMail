@@ -98,6 +98,8 @@ const showModal = computed({
 
 const formData = ref({
 	company: '',
+	firstName: '',
+	lastName: '',
 	contact: '',
 	email: '',
 	phone: '',
